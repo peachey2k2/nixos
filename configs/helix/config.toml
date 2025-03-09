@@ -1,0 +1,46 @@
+theme = "catppuccin_mocha"
+
+[editor]
+line-number = "relative"
+cursorline = true
+completion-timeout = 5
+completion-replace = true
+auto-format = false
+color-modes = true
+
+[editor.statusline]
+left = ["mode", "file-name", "spinner"]
+center = []
+right = ["diagnostics", "selections", "position", "position-percentage", "file-encoding", "file-type"]
+separator = "│"
+mode.normal = "󰬕 normal"
+mode.insert = "󰬐 insert"
+mode.select = "󰬚 select"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.whitespace.render]
+tab = "all"
+
+[editor.inline-diagnostics]
+cursor-line = "warning" 
+other-lines = "error"
+
+# [editor.smart-tab]
+# supersede-menu = true
+
+[keys.normal]
+"C-left" = "move_prev_word_start"
+"C-right" = "move_next_word_end"
+
+[keys.select]
+"C-left" = "move_prev_word_start"
+"C-right" = "move_next_word_end"
+
+[keys.insert]
+"C-left" = "move_prev_word_start"
+"C-right" = ["move_next_word_end", "move_char_right"]
+

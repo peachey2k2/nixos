@@ -1,0 +1,39 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<channel name="xfce4-terminal" version="1.0">
+  <property name="color-background-vary" type="bool" value="false"/>
+  <property name="color-use-theme" type="bool" value="false"/>
+  <property name="background-mode" type="string" value="TERMINAL_BACKGROUND_TRANSPARENT"/>
+  <property name="misc-menubar-default" type="bool" value="false"/>
+  <property name="misc-borders-default" type="bool" value="false"/>
+  <property name="misc-slim-tabs" type="bool" value="true"/>
+  <property name="scrolling-bar" type="string" value="TERMINAL_SCROLLBAR_NONE"/>
+  <property name="font-name" type="string" value="Miracode 12"/>
+  <property name="misc-default-geometry" type="string" value="72x24"/>
+  <property name="cell-width-scale" type="double" value="1"/>
+  <property name="text-blink-mode" type="string" value="TERMINAL_TEXT_BLINK_MODE_FOCUSED"/>
+  <property name="font-allow-bold" type="bool" value="false"/>
+  <property name="font-use-system" type="bool" value="false"/>
+  <property name="misc-confirm-close" type="bool" value="false"/>
+  <property name="color-foreground" type="string" value="#d5d0c9"/>
+  <property name="color-background" type="string" value="#181818"/>
+  <property name="color-cursor-foreground" type="string" value=""/>
+  <property name="color-cursor" type="string" value="#efc4cd"/>
+  <property name="color-cursor-use-default" type="bool" value="true"/>
+  <property name="color-selection" type="string" value=""/>
+  <property name="color-selection-background" type="string" value=""/>
+  <property name="color-selection-use-default" type="bool" value="true"/>
+  <property name="color-bold" type="string" value=""/>
+  <property name="color-bold-use-default" type="bool" value="true"/>
+  <property name="color-palette" type="string" value="#000000;#f56e7f;#bec975;#f58669;#42d9c5;#d286b7;#37cb8a;#d5c3c3;#88847f;#e5a1a3;#e8d6a7;#f1bb79;#80c5de;#b294bb;#9dccbb;#ffffff"/>
+  <property name="color-bold-is-bright" type="bool" value="true"/>
+  <property name="tab-activity-color" type="string" value="#aa0000"/>
+  <property name="scrolling-unlimited" type="bool" value="false"/>
+  <property name="scrolling-lines" type="uint" value="10000"/>
+  <property name="overlay-scrolling" type="bool" value="false"/>
+  <property name="binding-backspace" type="string" value="TERMINAL_ERASE_BINDING_AUTO"/>
+  <property name="binding-delete" type="string" value="TERMINAL_ERASE_BINDING_AUTO"/>
+  <property name="binding-ambiguous-width" type="string" value="TERMINAL_AMBIGUOUS_WIDTH_BINDING_NARROW"/>
+  <property name="misc-show-unsafe-paste-dialog" type="bool" value="false"/>
+  <property name="background-darkness" type="double" value="0.80000000000000004"/>
+</channel>
