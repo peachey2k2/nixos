@@ -3,7 +3,6 @@
 
 let
   homeDir = config.home.homeDirectory;
-  defEditor = "emacs.desktop";
 in {
   home = {
     packages = with pkgs; [home-manager];
@@ -26,10 +25,17 @@ in {
 
   xdg.mimeApps = {
     enable = true;
-    defaultApplications = {
-      "inode/directory" = "thunar.desktop";
-      "text/plain" = defEditor;
-      "text/markdown" = defEditor;
+    defaultApplications = let
+      fileManager = "thunar.desktop";
+      text = "emacs.desktop";
+      pdf = "zathura.desktop";
+      word = "freeoffice-textmaker.desktop";
+    in {
+      "inode/directory" = fileManager;
+      "text/plain" = text;
+      "text/markdown" = text;
+      "application/pdf" = pdf;
+      "application/msword" = word;
     };
   };
 
