@@ -81,6 +81,10 @@
   
   services.teamviewer.enable = true;
   services.gvfs.enable = true;
+  services.zerotierone = {
+    enable = true;
+    port = 9993;
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pe = {
@@ -97,6 +101,10 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config.packageOverrides = with pkgs; {
+    zls = pkgs.callPackage ./packages/zls/package.nix {};
+  };
 
   # nix.settings.experimental-features = [
   #   "flakes" "nix-command"
@@ -133,7 +141,7 @@
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ 9993 25565 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

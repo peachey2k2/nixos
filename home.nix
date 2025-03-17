@@ -16,10 +16,11 @@ in {
 
     shellAliases = {
         "@rebuild" = "sudo nixos-rebuild switch --flake ~/nixos#chey";
-        "@edit" = "nvim ~/nixos/flake.nix '+cd ~/nixos'";
+        "@edit" = "hx ~/nixos/flake.nix -w ~/nixos";
         "@config-reload" = "nix run ~/nixos#generate-configs";
 
-        "fz" = "export FZF=$(fzf --walker=dir,file,hidden) && echo $FZF";
+        fz = "export FZF=$(fzf --walker=dir,file,hidden) && echo $FZF";
+        cd = "z";
     };
   };
 
@@ -41,24 +42,28 @@ in {
 
   xdg.configFile = (import ./config.nix {inherit pkgs;}).hmConfig {};
 
-  programs.zsh = {
-    enable = true;
-    initExtra = /* zsh */ ''
-      # ---[ p10k ]---
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-      if [[ -r "${homeDir}/.config/p10k.zsh" ]]; then
-        source "${homeDir}/.config/p10k.zsh"
-      fi
+  programs = {
+    zsh = {
+      enable = true;
+      initExtra = /* zsh */ ''
+        # ---[ p10k ]---
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        if [[ -r "${homeDir}/.config/p10k.zsh" ]]; then
+          source "${homeDir}/.config/p10k.zsh"
+        fi
 
-      # ---[ Keybinds ]---
-      # ctrl + L/R arrow keys to jump by a word
-      bindkey "^[[1;5D" backward-word
-      bindkey "^[[1;5C" forward-word
+        # ---[ Keybinds ]---
+        # ctrl + L/R arrow keys to jump by a word
+        bindkey "^[[1;5D" backward-word
+        bindkey "^[[1;5C" forward-word
 
-      # ctrl + bspace to erase previous word
-      bindkey '^H' backward-kill-word  # Ctrl + Backspace
-    '';
+        # ctrl + bspace to erase previous word
+        bindkey '^H' backward-kill-word  # Ctrl + Backspace
+      '';
+    };
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
-
-  
 }
