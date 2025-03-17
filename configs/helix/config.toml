@@ -35,12 +35,24 @@ other-lines = "error"
 [keys.normal]
 "C-left" = "move_prev_word_start"
 "C-right" = "move_next_word_end"
+"C-S-left" = "extend_prev_word_start"
+"C-S-right" = "extend_next_word_end"
+
+"C-up" = "goto_prev_paragraph"
+"C-down" = "goto_next_paragraph"
 
 [keys.select]
-"C-left" = "move_prev_word_start"
-"C-right" = "move_next_word_end"
+"C-left" = "extend_prev_word_start"
+"C-right" = "extend_next_word_end"
+
+"C-up" = "goto_prev_paragraph"
+"C-down" = "goto_next_paragraph"
 
 [keys.insert]
 "C-left" = "move_prev_word_start"
 "C-right" = ["move_next_word_end", "move_char_right"]
+"C-S-left" = "extend_prev_word_start"
+"C-S-right" = ["extend_next_word_end", "extend_char_right"]
 
+"C-up" = "goto_prev_paragraph"
+"C-down" = "goto_next_paragraph"
