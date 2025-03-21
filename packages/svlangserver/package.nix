@@ -12,12 +12,16 @@ buildNpmPackage rec {
     owner = "imc-trading";
     repo = "svlangserver";
     rev = "v${version}";
-    hash = "";
+    hash = "sha256-CkcKyC2W6NBvxkwYDVHpBF5T2NMiiDVVwR1mftEks54=";
   };
 
-  npmDepsHash = "";
+  npmDepsHash = "sha256-XovXh3weLh7xO96chlYwkqUnzganjLmKcUsAdBhA060=";
 
-  dontNpmBuild = true;
+  postInstall = ''
+    rm -rf $out/lib/node_modules/@imc-trading/svlangserver/node_modules/.bin
+  '';
+
+  # dontNpmBuild = true;
 
   meta = {
     description = "A language server for systemverilog";
