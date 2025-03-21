@@ -10,14 +10,15 @@ in {
     sessionVariables = {
       XDG_CONFIG_HOME = "${homeDir}/.config";
     };
-    # sessionPath = [
+    sessionPath = [
     #   "${homeDir}/.emacs.d/bin"
-    # ];
+    ];
 
     shellAliases = {
         "@rebuild" = "sudo nixos-rebuild switch --flake ~/nixos#chey";
         "@edit" = "hx ~/nixos/flake.nix -w ~/nixos";
         "@config-reload" = "nix run ~/nixos#generate-configs";
+        "@list-packages" = "nix-store -q --references /run/current-system/sw | awk '{print substr(\$0, 45)}'";
 
         fz = "export FZF=$(fzf --walker=dir,file,hidden) && echo $FZF";
         cd = "z";

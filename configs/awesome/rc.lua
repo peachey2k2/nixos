@@ -35,6 +35,7 @@ local function on_start()
     awful.spawn("picom", false)
     awful.spawn("flameshot", false)
     awful.spawn("copyq", false)
+    awful.spawn("emote", false)
     -- awful.spawn("emacs --daemon", false)
 end
 
