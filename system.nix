@@ -99,16 +99,19 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "pe";
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    config.allowBroken = true;
 
-  nixpkgs.config.packageOverrides = with pkgs; {
-    zls = pkgs.callPackage ./packages/zls/package.nix {};
+    config.packageOverrides = with pkgs; {
+      zls = pkgs.callPackage ./packages/zls/package.nix {};
+      svlangserver = pkgs.callPackage ./packages/svlangserver/package.nix {};
+    };
   };
 
-  # nix.settings.experimental-features = [
-  #   "flakes" "nix-command"
-  # ];
+  nix.settings.experimental-features = [
+    "flakes" "nix-command"
+  ];
 
 
   programs = {
