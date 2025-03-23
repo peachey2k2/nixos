@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
   # ---- UNSORTED ---- #
-  vlc qbittorrent ed lf freeoffice zerotierone cloc emote ffmpeg texliveBasic iverilog svlangserver
+  vlc qbittorrent ed lf freeoffice zerotierone cloc emote ffmpeg texliveBasic iverilog svlangserver onlyoffice-desktopeditors
   
   ######################
 

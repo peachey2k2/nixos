@@ -371,10 +371,12 @@ globalkeys = gears.table.join(
               {description = "open thunar", group = "launcher"}),
     awful.key({ modkey,           }, "g", function () awful.spawn("emacs" --[[.. "client -c --alternate-editor=\"\" "]])         end,
               {description = "open emacs", group = "launcher"}),
+    awful.key({ modkey,           }, "b", function () awful.spawn("emote")                  end,
+              {description = "open emoji picker", group = "launcher"}),
 
 
     awful.key({ modkey,           }, "q", function () mysystray.visible = not mysystray.visible                 end,
-              {description = "open thunar", group = "launcher"}),
+              {description = "toggle system tray", group = "launcher"}),
 
 
     awful.key({                   }, "XF86MonBrightnessUp",   function () brighten(0.05) end,

@@ -1,5 +1,5 @@
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -128,6 +128,15 @@
   fonts.packages = import ./fonts.nix pkgs;
 
   environment.variables = import ./envvars.nix pkgs;
+
+  # put a list of all packages into `/etc/current-system-packages`
+  environment.etc."current-system-packages".text =
+  let
+    packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
+    sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
+    formatted = builtins.concatStringsSep "\n" sortedUnique;
+  in
+    formatted;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
