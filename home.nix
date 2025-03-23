@@ -8,6 +8,8 @@ in {
     packages = with pkgs; [home-manager];
     stateVersion = "24.11";
     sessionVariables = {
+      NIX_SYSTEM_PATH = "${homeDir}/nixos";
+      NIX_CONFIG_PATH = "${homeDir}/nixos/configs";
       XDG_CONFIG_HOME = "${homeDir}/.config";
     };
     sessionPath = [
@@ -18,7 +20,7 @@ in {
         "@rebuild" = "sudo nixos-rebuild switch --flake ~/nixos#chey";
         "@edit" = "hx ~/nixos/flake.nix -w ~/nixos";
         "@config-reload" = "nix run ~/nixos#generate-configs";
-        "@list-packages" = "nix-store -q --references /run/current-system/sw | awk '{print substr(\$0, 45)}'";
+        "@list-packages" = "fzf < /etc/current-system-packages";
 
         fz = "export FZF=$(fzf --walker=dir,file,hidden) && echo $FZF";
         cd = "z";

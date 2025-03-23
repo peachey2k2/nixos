@@ -10,4 +10,5 @@ there are some aliases:
 |`@rebuild` | rebuilds the system and updates configs |
 |`@edit` | opens the system flake |
 |`@config-reload` | updates all configs without a system update |
+|`@list-packages` | list all installed packages |
 
