@@ -1,6 +1,8 @@
-{ pkgs, configDir ? ./configs }:
+{pkgs}:
 
 let
+  configDir = ./configs;
+
   allowedExtensions = [
     "lua" "txt"
   ];

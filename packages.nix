@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
   # ---- UNSORTED ---- #
-  vlc qbittorrent ed lf freeoffice zerotierone cloc emote ffmpeg texliveBasic iverilog svlangserver onlyoffice-desktopeditors
+  vlc qbittorrent ed lf freeoffice zerotierone cloc emote ffmpeg texliveBasic iverilog svlangserver onlyoffice-desktopeditors jdk21_headless jdk17_headless jdk8_headless python312Packages.python-lsp-server
   
   ######################
 

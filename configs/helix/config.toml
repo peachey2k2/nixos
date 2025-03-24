@@ -29,6 +29,9 @@ tab = "all"
 cursor-line = "warning" 
 other-lines = "error"
 
+[editor.soft-wrap]
+enable = true
+
 # [editor.smart-tab]
 # supersede-menu = true
 
