@@ -18,9 +18,9 @@ if [[ $(git log --max-count 1 | tail -n 1 | sed 's/^[ \t]*//')="$(date +%d-%m-%Y
     fi
 
   else
-    echo "$(date): No changes to commit." >> "$LOG_FILE"
+    echo "$(date): No changes to commit." >> "$AUTOPUSH_LOG"
   fi
 else
-  echo "$(date): Already commited a change today." >> "$LOG_FILE"
+  echo "$(date): Already commited a change today." >> "$AUTOPUSH_LOG"
 fi
 
