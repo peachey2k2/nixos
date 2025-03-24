@@ -11,7 +11,7 @@ if [[ $(git log --max-count 1 | tail -n 1 | sed 's/^[ \t]*//')="$(date +%d-%m-%Y
   if [[ $(git status --porcelain) ]]; then
 
     git commit -m "$(date +%d-%m-%Y)"
-    if git push origin main; then
+    if git push; then
       echo "$(date): Push successful." >> "$AUTOPUSH_LOG"
     else
       echo "$(date): Push failed." >> "$AUTOPUSH_LOG"
