@@ -85,13 +85,21 @@
     enable = true;
     port = 9993;
   };
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "0 * * * * ${./scripts/autopush.sh}"
+    ];
+  };
+
+  virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pe = {
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "pe";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 

@@ -27,22 +27,8 @@ in {
     };
   };
 
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = let
-      fileManager = "thunar.desktop";
-      text = "emacs.desktop";
-      pdf = "zathura.desktop";
-      word = "freeoffice-textmaker.desktop";
-    in {
-      "inode/directory" = fileManager;
-      "text/plain" = text;
-      "text/markdown" = text;
-      "application/pdf" = pdf;
-      "application/msword" = word;
-    };
-  };
-
+  xdg.mimeApps = import ./mime.nix;
+  xdg.desktopEntries = import ./desktop-extra.nix pkgs;
   xdg.configFile = (import ./config.nix {inherit pkgs;}).hmConfig {};
 
   programs = {
