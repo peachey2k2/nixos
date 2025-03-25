@@ -7,7 +7,7 @@ cd $NIX_DIR
 
 git add .
 
-if [[ $(git log --max-count 1 | tail -n 1 | sed 's/^[ \t]*//')="$(date +%d-%m-%Y)" ]]; then
+if [[ $(git log --max-count 1 | tail -n 1 | sed 's/^[ \t]*//') -ne "$(date +%d-%m-%Y)" ]]; then
   if [[ $(git status --porcelain) ]]; then
 
     git commit -m "$(date +%d-%m-%Y)"

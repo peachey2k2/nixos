@@ -7,6 +7,7 @@ in {
   home = {
     packages = with pkgs; [home-manager];
     stateVersion = "24.11";
+    enableNixpkgsReleaseCheck = false;
     sessionVariables = {
       NIX_SYSTEM_PATH = "${homeDir}/nixos";
       NIX_CONFIG_PATH = "${homeDir}/nixos/configs";

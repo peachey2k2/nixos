@@ -2,13 +2,21 @@
   description = "My NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/24.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
+    # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };
 
-  outputs = { self, nixpkgs, home-manager, determinate, ... }@inputs:
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    home-manager,
+    # determinate,
+    ...
+  }@inputs:
     let
       username = "pe";
       homeDir = "/home/" + username;
@@ -20,7 +28,15 @@
         modules = [
           ./system.nix
 
-          determinate.nixosModules.default
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+              })
+            ];
+          }
+
+          # determinate.nixosModules.default
 
           home-manager.nixosModules.home-manager {
             home-manager = {
