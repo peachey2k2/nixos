@@ -25,9 +25,9 @@ select = "underline"
 [editor.whitespace.render]
 tab = "all"
 
-[editor.inline-diagnostics]
-cursor-line = "warning" 
-other-lines = "error"
+# [editor.inline-diagnostics]
+# cursor-line = "warning" 
+# other-lines = "error"
 
 [editor.soft-wrap]
 enable = true

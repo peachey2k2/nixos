@@ -1,6 +1,6 @@
 pkgs: with pkgs; [
   # ---- UNSORTED ---- #
-  vlc qbittorrent ed lf freeoffice zerotierone cloc emote ffmpeg texliveBasic iverilog svlangserver onlyoffice-desktopeditors jdk21_headless jdk17_headless jdk8_headless python312Packages.python-lsp-server
+  vlc qbittorrent ed lf freeoffice zerotierone cloc emote ffmpeg texliveBasic iverilog svlangserver onlyoffice-desktopeditors jdk21_headless jdk17_headless jdk8_headless python312Packages.python-lsp-server hexdump
   
   ######################
 
@@ -25,7 +25,7 @@ pkgs: with pkgs; [
   git wget fzf pfetch duf acpi alsa-utils btop hyperfine fd ripgrep 
 
   # compilers and whatnot
-  gcc clang nodejs love zig zls python3Minimal rustc cargo qbe libllvm luajit
+  gcc clang nodejs love zig unstable.zls python3Minimal rustc cargo qbe libllvm luajit
 
   # build systems
   gnumake cmake ninja
