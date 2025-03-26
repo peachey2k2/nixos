@@ -22,6 +22,7 @@ in {
         "@edit" = "hx ~/nixos/flake.nix -w ~/nixos";
         "@config-reload" = "nix run ~/nixos#generate-configs";
         "@list-packages" = "fzf < /etc/current-system-packages";
+        "@clear-backups" = "${./scripts/clear-backups.sh}";
 
         fz = "export FZF=$(fzf --walker=dir,file,hidden) && echo $FZF";
         cd = "z";
