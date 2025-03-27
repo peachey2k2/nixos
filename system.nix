@@ -85,12 +85,7 @@
     enable = true;
     port = 9993;
   };
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-      "0 * * * * ${./scripts/autopush.sh}"
-    ];
-  };
+  services.cron.enable = true;
 
   virtualisation.docker.enable = true;
 
