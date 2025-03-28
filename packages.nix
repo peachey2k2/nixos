@@ -1,54 +1,72 @@
 pkgs: with pkgs; [
-  # ---- UNSORTED ---- #
-  vlc qbittorrent ed lf freeoffice zerotierone cloc emote ffmpeg texliveBasic iverilog svlangserver onlyoffice-desktopeditors jdk21_headless jdk17_headless jdk8_headless python312Packages.python-lsp-server hexdump
-  
-  ######################
-
-  # ----- SORTED ----- #
-
-  # shells
-  zsh bash
-
-  # terminals
-  xfce.xfce4-terminal 
-
-  # de/wm
-  awesome picom 
-
-  # file managers
-  xfce.thunar 
-
-  # text editors
-  neovim emacs helix 
-
-  # usual cli
-  git wget fzf pfetch duf acpi alsa-utils btop hyperfine fd ripgrep 
-
-  # compilers and whatnot
-  gcc clang nodejs love zig unstable.zls python3Minimal rustc cargo qbe libllvm luajit
-
-  # build systems
-  gnumake cmake ninja
-
-  # archiving
-  xarchiver unzip unrar 
-
-  # image editing
-  libresprite 
-
-  # documents
-  zathura 
-
-  # utility applets
-  networkmanagerapplet flameshot copyq 
-
-  # themes
-  themechanger arc-icon-theme vimix-gtk-themes 
-
-  # browsers
-  brave 
-
-  # gaming
-  wineWowPackages.staging winetricks prismlauncher 
+  acpi
+  alsa-utils
+  arc-icon-theme
+  awesome
+  bash
+  brave
+  btop
+  cargo
+  clang
+  manim
+  zfxtop
+  cloc
+  cmake
+  copyq
+  duf
+  ed
+  emacs
+  emote
+  fd
+  ffmpeg
+  flameshot
+  freeoffice
+  fzf
+  gcc
+  git
+  gnumake
+  helix
+  hexdump
+  hyperfine
+  iverilog
+  jdk17_headless
+  jdk21_headless
+  jdk8_headless
+  lf
+  libllvm
+  libresprite
+  love
+  luajit
+  neovim
+  networkmanagerapplet
+  ninja
+  nodejs
+  onlyoffice-desktopeditors
+  pfetch
+  picom
+  prismlauncher
+  python312Packages.python-lsp-server
+  python3Minimal
+  qbe
+  qbittorrent
+  ripgrep
+  rustc
+  svlangserver
+  texliveBasic
+  themechanger
+  unrar
+  unstable.zls
+  unzip
+  vimix-gtk-themes
+  vlc
+  wget
+  winetricks
+  wineWowPackages.staging
+  xarchiver
+  xfce.thunar
+  xfce.xfce4-terminal
+  zathura
+  zerotierone
+  zig
+  zsh
 ]
-
