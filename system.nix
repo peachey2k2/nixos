@@ -1,4 +1,3 @@
-
 { config, lib, pkgs, ... }:
 
 {
@@ -85,9 +84,15 @@
     enable = true;
     port = 9993;
   };
-  services.cron.enable = true;
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "*/5 * * * * ${./scripts/sort-packages.sh}"
+      "@reboot ${./scripts/sort-packages.sh}"
+    ];
+  };
 
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pe = {
