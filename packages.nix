@@ -8,8 +8,6 @@ pkgs: with pkgs; [
   btop
   cargo
   clang
-  manim
-  zfxtop
   cloc
   cmake
   copyq
@@ -37,6 +35,7 @@ pkgs: with pkgs; [
   libresprite
   love
   luajit
+  manim
   neovim
   networkmanagerapplet
   ninja
@@ -67,6 +66,7 @@ pkgs: with pkgs; [
   xfce.xfce4-terminal
   zathura
   zerotierone
+  zfxtop
   zig
   zsh
 ]

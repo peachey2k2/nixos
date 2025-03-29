@@ -26,7 +26,11 @@
       nixosConfigurations.chey = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./system.nix
+          (
+            import ./system.nix {
+              user = username;
+            }
+          )
 
           {
             nixpkgs.overlays = [

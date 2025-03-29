@@ -1,6 +1,9 @@
+{ user }:
 { config, lib, pkgs, ... }:
 
-{
+let
+  homeDir = "/home/${user}";
+in {
   imports = [
     # either generate and cp this or find it elsewhere
     ./hardware-configuration.nix
@@ -87,32 +90,31 @@
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "*/5 * * * * ${./scripts/sort-packages.sh}"
-      "@reboot ${./scripts/sort-packages.sh}"
+      "*/5 * * * *     ${user}    ${homeDir}/nixos/scripts/sort-packages.sh"
+      "@reboot         ${user}    ${homeDir}/nixos/scripts/sort-packages.sh"
     ];
   };
 
   # virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.pe = {
+  users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    description = "pe";
+    description = user;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "pe";
+  services.displayManager.autoLogin.user = user;
 
   nixpkgs = {
     config.allowUnfree = true;
     config.allowBroken = true;
 
     config.packageOverrides = with pkgs; {
-      zls = pkgs.callPackage ./packages/zls/package.nix {};
       svlangserver = pkgs.callPackage ./packages/svlangserver/package.nix {};
     };
   };

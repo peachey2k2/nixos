@@ -18,11 +18,12 @@ in {
     ];
 
     shellAliases = {
-        "@rebuild" = "sudo nixos-rebuild switch --flake ~/nixos#chey";
-        "@edit" = "hx ~/nixos/flake.nix -w ~/nixos";
+        "@rebuild"       = "sudo nixos-rebuild switch --flake ~/nixos#chey";
+        "@edit"          = "hx ~/nixos/flake.nix -w ~/nixos";
         "@config-reload" = "nix run ~/nixos#generate-configs";
         "@list-packages" = "fzf < /etc/current-system-packages";
-        "@clear-backups" = "${./scripts/clear-backups.sh}";
+        "@clear-backups" = "~/nixos/scripts/clear-backups.sh}";
+        "@logs"          = "tail ~/nixos/log.txt";
 
         fz = "export FZF=$(fzf --walker=dir,file,hidden) && echo $FZF";
         cd = "z";
