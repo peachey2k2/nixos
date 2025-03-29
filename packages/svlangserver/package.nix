@@ -21,8 +21,6 @@ buildNpmPackage rec {
     rm -rf $out/lib/node_modules/@imc-trading/svlangserver/node_modules/.bin
   '';
 
-  # dontNpmBuild = true;
-
   meta = {
     description = "A language server for systemverilog";
     homepage = "https://github.com/imc-trading/svlangserver";

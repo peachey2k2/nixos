@@ -1,26 +1,30 @@
 #!/bin/sh
 
 NIX_DIR="$(cd $(dirname $0) && pwd)/.."
-AUTOPUSH_LOG=$NIX_DIR/autopush.log
+LOG_FILE=$NIX_DIR/log.txt
 
 cd $NIX_DIR
 
 git add .
+
+log () {
+  echo $(date +"%d-%m-%Y %H:%M") [AUTOPUSH] $1 >> "$LOG_FILE"
+}
 
 if [[ $(git log --max-count 1 | tail -n 1 | sed 's/^[ \t]*//') != "$(date +%d-%m-%Y)" ]]; then
   if [[ $(git status --porcelain) ]]; then
 
     git commit -m "$(date +%d-%m-%Y)"
     if git push; then
-      echo "$(date): Push successful." >> "$AUTOPUSH_LOG"
+      log "Push successful."
     else
-      echo "$(date): Push failed." >> "$AUTOPUSH_LOG"
+      log "Push failed."
     fi
 
   else
-    echo "$(date): No changes to commit." >> "$AUTOPUSH_LOG"
+    log "No changes to commit."
   fi
 else
-  echo "$(date): Already commited a change today." >> "$AUTOPUSH_LOG"
+  log "Already commited a change today."
 fi
 
