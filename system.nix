@@ -116,6 +116,7 @@ in {
 
     config.packageOverrides = with pkgs; {
       svlangserver = pkgs.callPackage ./packages/svlangserver/package.nix {};
+      marked = pkgs.callPackage ./packages/marked/package.nix {};
     };
   };
 

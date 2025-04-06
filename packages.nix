@@ -1,4 +1,5 @@
 pkgs: with pkgs; [
+  SDL2
   acpi
   alsa-utils
   arc-icon-theme
@@ -36,6 +37,7 @@ pkgs: with pkgs; [
   love
   luajit
   manim
+  marked
   neovim
   networkmanagerapplet
   ninja
@@ -59,8 +61,8 @@ pkgs: with pkgs; [
   vimix-gtk-themes
   vlc
   wget
-  winetricks
   wineWowPackages.staging
+  winetricks
   xarchiver
   xfce.thunar
   xfce.xfce4-terminal

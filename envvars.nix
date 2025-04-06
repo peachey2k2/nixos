@@ -1,4 +1,4 @@
 pkgs: with pkgs; {
-  EDITOR = "nvim";
-  VISUAL = "nvim";
+  EDITOR = "hx";
+  VISUAL = "hx";
 }

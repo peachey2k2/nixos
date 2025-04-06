@@ -9,14 +9,13 @@ log () {
 }
 
 sort_pkgs () {
-  echo \
-    "pkgs: with pkgs; [" \
-    $(cat $PACKAGES_FILE | grep "^[[:space:]]" | sort) \
-    "]" \
-  > $PACKAGES_FILE
+  echo "pkgs: with pkgs; ["
+  echo "$(cat $PACKAGES_FILE | grep "^[[:space:]]" | sort)"
+  echo "]"
 }
 
-if [[ sort_pkgs ]]; then
+x=$(sort_pkgs)
+if printf "$x" > $PACKAGES_FILE; then
   log "sort successful"
 else
   log "sort failed. error code: $?"
