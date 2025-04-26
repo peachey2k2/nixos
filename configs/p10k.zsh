@@ -29,12 +29,18 @@
   [[ $ZSH_VERSION == (5.<1->*|<6->.*) ]] || return
 
   # The list of segments shown on the left. Fill it with the most important segments.
-  typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-    # os_icon               # os identifier
-    dir                     # current directory
-    vcs                     # git status
-    # prompt_char           # prompt symbol
-  )
+  # typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+  #   # os_icon               # os identifier
+  #   dir                     # current directory
+  #   vcs                     # git status
+  #   # prompt_char           # prompt symbol
+  # )
+
+  if [ -n "$IN_NIX_SHELL" ]; then
+    typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+  else
+    typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+  fi
 
   # The list of segments shown on the right. Fill it with less important segments.
   # Right prompt on the last prompt line (where you are typing your commands) gets

@@ -90,8 +90,6 @@ in {
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "*/5 * * * *     ${user}    ${homeDir}/nixos/scripts/sort-packages.sh"
-      "@reboot         ${user}    ${homeDir}/nixos/scripts/sort-packages.sh"
     ];
   };
 
@@ -117,7 +115,6 @@ in {
     config.packageOverrides = with pkgs; {
       svlangserver = pkgs.callPackage ./packages/svlangserver/package.nix {};
       marked = pkgs.callPackage ./packages/marked/package.nix {};
-      nix-shell-wrapper = pkgs.callPackage ./packages/nix-shell-wrapper/default.nix {};
     };
   };
 
@@ -137,6 +134,7 @@ in {
 
   environment.systemPackages = import ./packages.nix pkgs;
 
+  fonts.enableDefaultPackages = true;
   fonts.packages = import ./fonts.nix pkgs;
 
   environment.variables = import ./envvars.nix pkgs;

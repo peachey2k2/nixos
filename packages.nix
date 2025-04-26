@@ -1,15 +1,14 @@
 pkgs: with pkgs; [
-  nix-shell-wrapper
-  SDL2
   acpi
   alsa-utils
+  # any-nix-shell
   arc-icon-theme
   awesome
   brave
   btop
+  cached-nix-shell
   cargo
   clang
-  clang-tools
   cloc
   cmake
   copyq
@@ -23,8 +22,11 @@ pkgs: with pkgs; [
   freeoffice
   fzf
   gcc
+  gdb
   git
   gnumake
+  go
+  gopls
   helix
   hexdump
   hyperfine
@@ -53,17 +55,20 @@ pkgs: with pkgs; [
   qbittorrent
   ripgrep
   rustc
+  SDL2
   svlangserver
   texliveBasic
   themechanger
+  trash-cli
   unrar
+  unstable.llvmPackages_20.clang-tools
   unstable.zls
   unzip
   vimix-gtk-themes
   vlc
   wget
-  wineWowPackages.staging
   winetricks
+  wineWowPackages.staging
   xarchiver
   xfce.thunar
   xfce.xfce4-terminal
