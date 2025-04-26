@@ -1,4 +1,12 @@
 [[language]]
+name = "c"
+file-types = [ "c", "h" ]
+
+[[language]]
+name = "go"
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
 name = "zig"
 indent = { tab-width = 2, unit = "  " }
 

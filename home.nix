@@ -18,7 +18,8 @@ in {
     ];
 
     shellAliases = {
-        "@rebuild"       = "sudo nixos-rebuild switch --flake ~/nixos#chey";
+        # "@rebuild"       = "sudo nixos-rebuild switch --flake ~/nixos#chey";
+        "@rebuild"       = "~/nixos/scripts/rebuild.sh";
         "@edit"          = "hx ~/nixos/flake.nix -w ~/nixos";
         "@config-reload" = "nix run ~/nixos#generate-configs";
         "@list-packages" = "fzf < /etc/current-system-packages";
@@ -43,6 +44,10 @@ in {
         if [[ -r "${homeDir}/.config/p10k.zsh" ]]; then
           source "${homeDir}/.config/p10k.zsh"
         fi
+
+        # ---[ nix-shell ]---
+        # any-nix-shell zsh --info-right | source /dev/stdin
+        alias nix-shell=cached-nix-shell
 
         # ---[ Keybinds ]---
         # ctrl + L/R arrow keys to jump by a word
