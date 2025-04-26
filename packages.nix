@@ -1,14 +1,15 @@
 pkgs: with pkgs; [
+  nix-shell-wrapper
   SDL2
   acpi
   alsa-utils
   arc-icon-theme
   awesome
-  bash
   brave
   btop
   cargo
   clang
+  clang-tools
   cloc
   cmake
   copyq
@@ -27,6 +28,7 @@ pkgs: with pkgs; [
   helix
   hexdump
   hyperfine
+  imagemagick
   iverilog
   jdk17_headless
   jdk21_headless
@@ -37,7 +39,6 @@ pkgs: with pkgs; [
   love
   luajit
   manim
-  marked
   neovim
   networkmanagerapplet
   ninja

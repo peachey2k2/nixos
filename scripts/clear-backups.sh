@@ -10,7 +10,9 @@ if [[ "$BACKUPS" ]]; then
 
   read x
   if [[ "$x" = "y" ]]; then
-    rm $BACKUPS
+    echo "$BACKUPS" | while read backup; do
+      rm "$backup"
+    done
     echo "removed all."
   else
     echo "cancelled."
