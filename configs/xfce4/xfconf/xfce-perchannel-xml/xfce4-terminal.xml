@@ -8,7 +8,7 @@
   <property name="misc-borders-default" type="bool" value="false"/>
   <property name="misc-slim-tabs" type="bool" value="true"/>
   <property name="scrolling-bar" type="string" value="TERMINAL_SCROLLBAR_NONE"/>
-  <property name="font-name" type="string" value="Miracode 12"/>
+  <property name="font-name" type="string" value="Miracode 10"/>
   <property name="misc-default-geometry" type="string" value="72x24"/>
   <property name="cell-width-scale" type="double" value="1"/>
   <property name="text-blink-mode" type="string" value="TERMINAL_TEXT_BLINK_MODE_FOCUSED"/>

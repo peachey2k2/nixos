@@ -29,6 +29,8 @@ if awesome.startup_errors then
                      text = awesome.startup_errors })
 end
 
+beautiful.xresources.set_dpi(72)
+
 local function on_start()
     awful.spawn("sudo determinate-nixd init", false)
     awful.spawn("nm-applet", false)
