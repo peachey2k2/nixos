@@ -1,20 +1,15 @@
 pkgs: with pkgs; [
   acpi
   alsa-utils
-  # any-nix-shell
   arc-icon-theme
   awesome
   brave
   btop
   cached-nix-shell
   cargo
-  clang
   cloc
-  cmake
   copyq
   duf
-  ed
-  emacs
   emote
   fd
   ffmpeg
@@ -32,26 +27,17 @@ pkgs: with pkgs; [
   hyperfine
   imagemagick
   iverilog
-  jdk17_headless
-  jdk21_headless
-  jdk8_headless
-  lf
-  libllvm
   libresprite
   love
   luajit
   manim
-  neovim
   networkmanagerapplet
-  ninja
   nodejs
   onlyoffice-desktopeditors
   pfetch
   picom
-  prismlauncher
   python312Packages.python-lsp-server
   python3Minimal
-  qbe
   qbittorrent
   ripgrep
   rustc
@@ -61,7 +47,6 @@ pkgs: with pkgs; [
   themechanger
   trash-cli
   unrar
-  unstable.llvmPackages_20.clang-tools
   unstable.zls
   unzip
   vimix-gtk-themes
@@ -73,8 +58,6 @@ pkgs: with pkgs; [
   xfce.thunar
   xfce.xfce4-terminal
   zathura
-  zerotierone
-  zfxtop
   zig
   zsh
 ]
