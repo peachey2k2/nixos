@@ -14,6 +14,8 @@ in {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
 
   networking.hostName = "chey"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -103,6 +105,7 @@ in {
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
+  users.users.root.password = "";
 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
@@ -130,6 +133,7 @@ in {
     thunar.plugins = with pkgs.xfce; [
       thunar-archive-plugin thunar-volman
     ];
+    obs-studio.enable = true;
   };
 
   environment.systemPackages = import ./packages.nix pkgs;
