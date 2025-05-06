@@ -8,46 +8,43 @@ in {
     # either generate and cp this or find it elsewhere
     ./hardware-configuration.nix
     # nvidia, optimus etc.
-    ./nvidia.nix
+    # ./nvidia.nix
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 20;
+      };
+      timeout = 1;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
-  networking.hostName = "chey"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "chey";
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Istanbul";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "tr_TR.UTF-8";
-    LC_IDENTIFICATION = "tr_TR.UTF-8";
-    LC_MEASUREMENT = "tr_TR.UTF-8";
-    LC_MONETARY = "tr_TR.UTF-8";
-    LC_NAME = "tr_TR.UTF-8";
-    LC_NUMERIC = "tr_TR.UTF-8";
-    LC_PAPER = "tr_TR.UTF-8";
-    LC_TELEPHONE = "tr_TR.UTF-8";
-    LC_TIME = "tr_TR.UTF-8";
-  };
-
-  services.xserver = {
-    enable = true;
-    displayManager.lightdm.enable = true;
-    windowManager.awesome.enable = true;
-    # desktopManager.xfce.enable = true;
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "tr_TR.UTF-8";
+      LC_IDENTIFICATION = "tr_TR.UTF-8";
+      LC_MEASUREMENT = "tr_TR.UTF-8";
+      LC_MONETARY = "tr_TR.UTF-8";
+      LC_NAME = "tr_TR.UTF-8";
+      LC_NUMERIC = "tr_TR.UTF-8";
+      LC_PAPER = "tr_TR.UTF-8";
+      LC_TELEPHONE = "tr_TR.UTF-8";
+      LC_TIME = "tr_TR.UTF-8";
+    };
   };
 
   # Configure keymap in X11
@@ -70,6 +67,7 @@ in {
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -93,20 +91,20 @@ in {
     ];
   };
 
-  # virtualisation.docker.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.zsh;
     description = user;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [];
+    packages = [];
   };
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = user;
+  services.getty = {
+    autologinUser = user;
+    autologinOnce = true;
+  };
 
   nixpkgs = {
     config.allowUnfree = true;
@@ -130,23 +128,29 @@ in {
     thunar.plugins = with pkgs.xfce; [
       thunar-archive-plugin thunar-volman
     ];
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+      ];
+    };
   };
 
-  environment.systemPackages = import ./packages.nix pkgs;
+  environment = {
+    variables = import ./envvars.nix pkgs;
+    systemPackages = import ./packages.nix pkgs;
+  };
 
-  fonts.enableDefaultPackages = true;
-  fonts.packages = import ./fonts.nix pkgs;
-
-  environment.variables = import ./envvars.nix pkgs;
-
-  # put a list of all packages into `/etc/current-system-packages`
-  environment.etc."current-system-packages".text =
-  let
-    packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
-    sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
-    formatted = builtins.concatStringsSep "\n" sortedUnique;
-  in
-    formatted;
+  fonts = {
+    enableDefaultPackages = true;
+    packages = import ./fonts.nix pkgs;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

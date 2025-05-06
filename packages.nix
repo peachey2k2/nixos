@@ -1,10 +1,10 @@
 pkgs: with pkgs; [
   acpi
+  alarm-clock-applet
   alsa-utils
-  # any-nix-shell
   arc-icon-theme
-  awesome
   brave
+  brightnessctl
   btop
   cached-nix-shell
   cargo
@@ -18,7 +18,7 @@ pkgs: with pkgs; [
   emote
   fd
   ffmpeg
-  flameshot
+  (flameshot.override { enableWlrSupport = true; })
   freeoffice
   fzf
   gcc
@@ -40,12 +40,18 @@ pkgs: with pkgs; [
   libresprite
   love
   luajit
+  lua-language-server
+  mako
   manim
   neovim
   networkmanagerapplet
+  nil
   ninja
   nodejs
+  odin
+  ols
   onlyoffice-desktopeditors
+  pavucontrol
   pfetch
   picom
   prismlauncher
@@ -55,20 +61,27 @@ pkgs: with pkgs; [
   qbittorrent
   ripgrep
   rustc
+  satty
   SDL2
   svlangserver
-  texliveBasic
+  swaybg
+  sway-contrib.grimshot 
+  texliveFull
   themechanger
   trash-cli
   unrar
   unstable.llvmPackages_20.clang-tools
+  unstable.wezterm
   unstable.zls
   unzip
   vimix-gtk-themes
   vlc
+  waybar
   wget
   winetricks
   wineWowPackages.staging
+  wl-clipboard
+  wofi
   xarchiver
   xfce.thunar
   xfce.xfce4-terminal

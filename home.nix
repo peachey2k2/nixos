@@ -21,8 +21,9 @@ in {
         # "@rebuild"       = "sudo nixos-rebuild switch --flake ~/nixos#chey";
         "@rebuild"       = "~/nixos/scripts/rebuild.sh";
         "@edit"          = "hx ~/nixos/flake.nix -w ~/nixos";
-        "@config-reload" = "nix run ~/nixos#generate-configs";
-        "@list-packages" = "fzf < /etc/current-system-packages";
+        "@config-reload" = "~/nixos/scripts/config-reload.sh";
+        # "@list-packages" = "fzf < /etc/current-system-packages";
+        "@list-packages" = "nix-store -q --requisites /run/current-system/sw | fzf";
         "@clear-backups" = "~/nixos/scripts/clear-backups.sh";
         "@logs"          = "tail ~/nixos/log.txt";
 
@@ -39,6 +40,11 @@ in {
     zsh = {
       enable = true;
       initExtra = /* zsh */ ''
+        # ---[ autologin ]---
+        if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+          exec Hyprland
+        fi
+
         # ---[ p10k ]---
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         if [[ -r "${homeDir}/.config/p10k.zsh" ]]; then

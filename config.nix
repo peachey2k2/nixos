@@ -7,7 +7,7 @@ let
     "lua" "txt"
   ];
   replacements = with pkgs; {
-    arc_icon_theme = arc-icon-theme;
+    miracode = miracode;
   };
 
   lib = pkgs.lib;
@@ -39,22 +39,6 @@ let
           [ { name = relPath; value = file; } ]
       else
         [];
-
-  mkConfig = {}:
-    let
-      files = processEntry configDir "directory";
-    in
-      pkgs.symlinkJoin {
-        name = "generated-configs";
-        paths = map (x: x.value) files;
-        postBuild = ''
-          mkdir -p $out/config
-          ${lib.concatMapStrings (x: ''
-            mkdir -p $out/config/$(dirname ${lib.escapeShellArg x.name})
-            ln -sf ${x.value} $out/config/${lib.escapeShellArg x.name}
-          '') files}
-        '';
-      };
 
 in {
   hmConfig = {}:
