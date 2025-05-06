@@ -3,6 +3,7 @@
   defaultApplications = let
     fileManager = "thunar.desktop";
     text = "emacs.desktop";
+    image = "libresprite.desktop";
     pdf = "org.pwmt.zathura-pdf-mupdf.desktop";
     word = "freeoffice-textmaker.desktop";
     video = "vlc.desktop";
@@ -15,5 +16,6 @@
     "application/msword" = word;
     "video/x-matroska" = video;
     "application/zip" = archive;
+    "image/png" = image;
   };
 }

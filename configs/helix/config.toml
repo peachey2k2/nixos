@@ -4,7 +4,7 @@ theme = "catppuccin_mocha"
 line-number = "relative"
 cursorline = true
 completion-timeout = 5
-completion-replace = true
+# completion-replace = true
 auto-format = false
 color-modes = true
 
@@ -13,9 +13,9 @@ left = ["mode", "file-name", "spinner"]
 center = []
 right = ["diagnostics", "selections", "position", "position-percentage", "file-encoding", "file-type"]
 separator = "│"
-mode.normal = "󰬕 normal"
-mode.insert = "󰬐 insert"
-mode.select = "󰬚 select"
+mode.normal = "normal"
+mode.insert = "insert"
+mode.select = "select"
 
 [editor.cursor-shape]
 insert = "bar"

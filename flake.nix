@@ -2,11 +2,10 @@
   description = "My NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/24.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/24.11";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };
 
   outputs = {
@@ -14,7 +13,6 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    # determinate,
     ...
   }@inputs:
     let
@@ -39,8 +37,6 @@
               })
             ];
           }
-
-          # determinate.nixosModules.default
 
           home-manager.nixosModules.home-manager {
             home-manager = {
