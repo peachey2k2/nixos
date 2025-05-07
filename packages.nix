@@ -14,6 +14,7 @@ pkgs: with pkgs; [
   copyq
   duf
   ed
+  elvish
   emacs
   emote
   fd
