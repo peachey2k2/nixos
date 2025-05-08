@@ -94,7 +94,7 @@ in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
-    shell = pkgs.zsh;
+    shell = pkgs.elvish;
     description = user;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = [];
@@ -122,7 +122,7 @@ in {
 
 
   programs = {
-    zsh.enable = true;
+    # zsh.enable = true;
     steam.enable = true;
     xfconf.enable = true; # for thunar, terminal etc. configs
     thunar.plugins = with pkgs.xfce; [
