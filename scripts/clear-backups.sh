@@ -1,6 +1,12 @@
 #!/bin/sh
 
-BACKUPS=$(find $XDG_CONFIG_HOME -regex ".*\.backup$")
+if [[ "$1" ]]; then
+  BACKUP_DIR="$1"
+else
+  BACKUP_DIR=$XDG_CONFIG_HOME
+fi
+
+BACKUPS=$(find $BACKUP_DIR -regex ".*\.backup$")
 
 if [[ "$BACKUPS" ]]; then
   echo "--- $(echo "$BACKUPS" | wc -l) file(s) found ---"
