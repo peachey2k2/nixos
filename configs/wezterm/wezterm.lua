@@ -13,7 +13,7 @@ c.enable_wayland = true
 
 c.color_scheme = "catppuccin-mocha"
 c.font = wezterm.font("Miracode")
-c.font_size = 10
+c.font_size = 11
 
 -- heard this helps with startup seed but it might be just placebo
 c.font_dirs = { "@miracode@/share/fonts/truetype" }
@@ -57,6 +57,10 @@ c.colors = {
       fg_color = "#071f3f",
     },
   }
+}
+
+c.skip_close_confirmation_for_processes_named = {
+  "elvish", "bash", "sh", "tmux"
 }
 
 addKey("CTRL", "t", a.SpawnTab "CurrentPaneDomain")

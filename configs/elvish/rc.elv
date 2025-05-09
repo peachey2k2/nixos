@@ -1,23 +1,35 @@
 use re
 
+if (and (==s $E:DISPLAY "") (==s (tty) "/dev/tty1")) {
+  exec Hyprland
+}
 
-fn git-branch {
+fn git-prompt {
   var name add rem = '' '' ''
   try {
     set name = ' '(basename (git symbolic-ref --short HEAD 2> /dev/null))
-    set add = ' +'(re:find '\b(\d+) insertions\(\+\)' (git diff --shortstat))[groups][1][text]
-    set rem = ' -'(re:find '\b(\d+) deletions\(\-\)' (git diff --shortstat))[groups][1][text]
+    var diff = (git diff --shortstat)
+    set add = ' +'(re:find '\b(\d+) insertions\(\+\)' $diff)[groups][1][text]
+    set rem = ' -'(re:find '\b(\d+) deletions\(\-\)' $diff)[groups][1][text]
   } catch { }
   put $name$add$rem
 }
 
 set edit:prompt = {
-  var git = (git-branch)
-  var branch = (if (!=s $git "") { put $git } else { put '' })
-
-  styled " "(tilde-abbr $pwd)" " '#000000' 'bg-#1f6fdf'
-  styled $branch '#000000' 'bg-#1f6fdf'
-  styled " " '#1f6fdf'
+  var cwd = (tilde-abbr $pwd)
+  var git = (git-prompt)
+  if (!=s $E:DISPLAY "") {    
+    styled " "$cwd '#ffffff' 'bg-#1f6fdf'
+    if (!=s $git "") {
+      styled ' ' '#1f6fdf' 'bg-#af8f1f'
+      styled $git '#ffffff' 'bg-#af8f1f'
+      styled " " '#af8f1f'
+    } else {
+      styled " " '#1f6fdf'
+    }
+  } else {
+    put " "$cwd" "$git"> "
+  }
 }
 
 set edit:rprompt = (constantly ^
@@ -31,7 +43,7 @@ set edit:after-readline = [{ |line|
 
 # https://elv.sh/ref/edit.html#$edit:after-command
 set edit:after-command = [{ |m|
-  if (!=s $lastcmd "clear") {
+  if (and (!=s $lastcmd "clear") (!=s $lastcmd "")) {
     echo ''
   }
 }]
@@ -61,4 +73,9 @@ fn fz {|@a|
   echo $fzf
 }
 
+# Enable the universal command completer if available.
+# See https://github.com/rsteube/carapace-bin
+if (has-external carapace) {
+  eval (carapace _carapace | slurp)
+}
 

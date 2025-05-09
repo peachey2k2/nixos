@@ -6,7 +6,7 @@ pkgs: with pkgs; [
   brave
   brightnessctl
   btop
-  cached-nix-shell
+  carapace
   cargo
   clang
   cloc
