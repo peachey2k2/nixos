@@ -11,7 +11,8 @@ end
 
 c.enable_wayland = true
 
-c.color_scheme = "catppuccin-mocha"
+c.color_scheme = "CutiePro"
+
 c.font = wezterm.font("Miracode")
 c.font_size = 11
 

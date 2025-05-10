@@ -3,7 +3,7 @@
 if [[ "$1" ]]; then
   BACKUP_DIR="$1"
 else
-  BACKUP_DIR=$XDG_CONFIG_HOME
+  BACKUP_DIR="$XDG_CONFIG_HOME"
 fi
 
 BACKUPS=$(find $BACKUP_DIR -regex ".*\.backup$")
@@ -22,10 +22,10 @@ if [[ "$BACKUPS" ]]; then
     echo "removed all."
   else
     echo "cancelled."
-    exit 1
+    exit 0
   fi
 else
   echo "no backup files to remove."
-  exit 1
+  exit 0
 fi
 

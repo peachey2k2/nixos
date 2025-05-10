@@ -26,6 +26,7 @@ pkgs: with pkgs; [
   git
   gnumake
   go
+  godot_4-mono
   gopls
   helix
   hexdump
@@ -60,6 +61,7 @@ pkgs: with pkgs; [
   qbe
   qbittorrent
   ripgrep
+  rust-analyzer
   rustc
   satty
   SDL2
