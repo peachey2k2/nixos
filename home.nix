@@ -9,11 +9,6 @@ in {
     stateVersion = "24.11";
     enableNixpkgsReleaseCheck = false;
     sessionVariables = {
-      NIX_SYSTEM_PATH = "${homeDir}/nixos";
-      NIX_CONFIG_PATH = "${homeDir}/nixos/configs";
-      XDG_CONFIG_HOME = "${homeDir}/.config";
-      EDITOR = "hx";
-      VISUAL = "hx";
       NIXOS_OZONE_WL = "1";
     };
     sessionPath = [

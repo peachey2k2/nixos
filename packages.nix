@@ -26,7 +26,6 @@ pkgs: with pkgs; [
   git
   gnumake
   go
-  godot_4-mono
   gopls
   helix
   hexdump
@@ -72,6 +71,7 @@ pkgs: with pkgs; [
   themechanger
   trash-cli
   unrar
+  unstable.godot-mono
   unstable.llvmPackages_20.clang-tools
   unstable.wezterm
   unstable.zls

@@ -143,7 +143,7 @@ in {
   };
 
   environment = {
-    # variables = import ./envvars.nix pkgs;
+    variables = import ./envvars.nix pkgs homeDir;
     systemPackages = import ./packages.nix pkgs;
   };
 
