@@ -47,8 +47,12 @@ var last-duration
 
 set edit:rprompt = {
   var a = (if (>= $last-duration '99.99') { put '>99.99' } else { put (printf '%.2f' $last-duration) })
-  styled '' '#1f6fdf'
-  styled $a's ' '#ffffff' 'bg-#1f6fdf' 
+  if (!=s $E:DISPLAY '') {    
+    styled '' '#1f6fdf'
+    styled $a's ' '#ffffff' 'bg-#1f6fdf' 
+  } else {
+    put $a's'
+  }
 }
 
 # https://elv.sh/ref/edit.html#$edit:after-command
