@@ -20,7 +20,7 @@ fn prompt-cwd {
   put (or (re:find '[^/]*/[^/]*$' $cwd)[text] $cwd)
 }
 
-var last-cmd = ''
+var last-cmd = 'NONE££'
 set edit:after-readline = [{ |line|
   set last-cmd = $line
 }]
@@ -28,7 +28,7 @@ set edit:after-readline = [{ |line|
 set edit:prompt = {
   var cwd = (prompt-cwd)
   var git = (prompt-git)
-  if (and (!=s $last-cmd "clear") (!=s $last-cmd "")) {
+  if (and (!=s $last-cmd "clear") (!=s $last-cmd "NONE££")) {
     put "\n"
   }
   if (!=s $E:DISPLAY '') {    
