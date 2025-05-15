@@ -61,7 +61,11 @@ set edit:after-command = [{ |m|
 }]
 
 fn last-exception {
-  show $edit:exceptions[-1]
+  if (== (count $edit:exceptions) 0) {
+    echo "no exceptions found"
+  } else {
+    show $edit:exceptions[-1]
+  }
 }
 
 fn ls {|@a| e:ls --color $@a }
