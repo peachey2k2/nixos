@@ -53,6 +53,7 @@ pkgs: with pkgs; [
   onlyoffice-desktopeditors
   pavucontrol
   pfetch
+  php
   picom
   prismlauncher
   python312Packages.python-lsp-server
