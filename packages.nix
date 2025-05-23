@@ -48,6 +48,7 @@ pkgs: with pkgs; [
   nil
   ninja
   nodejs
+  nushell
   odin
   ols
   onlyoffice-desktopeditors
@@ -79,6 +80,7 @@ pkgs: with pkgs; [
   unzip
   vimix-gtk-themes
   vlc
+  vscode
   waybar
   wget
   winetricks
