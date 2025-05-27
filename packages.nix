@@ -72,6 +72,7 @@ pkgs: with pkgs; [
   texliveFull
   themechanger
   trash-cli
+  typescript-language-server
   unrar
   unstable.godot-mono
   unstable.llvmPackages_20.clang-tools
