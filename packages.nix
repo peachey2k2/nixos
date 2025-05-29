@@ -83,6 +83,7 @@ pkgs: with pkgs; [
   vlc
   vscode
   waybar
+  wayvnc
   wget
   winetricks
   wineWowPackages.staging
