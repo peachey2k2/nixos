@@ -2,6 +2,7 @@ pkgs: with pkgs; [
   acpi
   alarm-clock-applet
   alsa-utils
+  android-studio
   arc-icon-theme
   brave
   brightnessctl
