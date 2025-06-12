@@ -3,6 +3,7 @@
 
 let
   homeDir = "/home/${user}";
+  flakeDir = "${homeDir}/nixos";
 in {
   imports = [
     # either generate and cp this or find it elsewhere
@@ -141,6 +142,13 @@ in {
         obs-backgroundremoval
         obs-pipewire-audio-capture
       ];
+    };
+    nh = {
+      enable = true;
+      clean.enable = false;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = flakeDir;
+      package = pkgs.unstable.nh;
     };
   };
 
