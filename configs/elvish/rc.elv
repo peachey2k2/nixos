@@ -71,7 +71,7 @@ fn last-exception {
 fn ls {|@a| e:ls --color $@a }
 
 use ./zoxide
-fn cd {|@a| zoxide:__zoxide_z $@a}
+# fn cd {|@a| zoxide:__zoxide_z $@a}
 
 fn %clear-backups {|@a| ~/nixos/scripts/clear-backups.sh $@a}
 fn %config-reload {|@a| ~/nixos/scripts/config-reload.sh}
