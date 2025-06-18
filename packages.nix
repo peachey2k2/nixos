@@ -44,6 +44,7 @@ pkgs: with pkgs; [
   lua-language-server
   mako
   manim
+  mpv
   neovim
   networkmanagerapplet
   nil
