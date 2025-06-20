@@ -50,6 +50,7 @@ pkgs: with pkgs; [
   nil
   ninja
   nodejs
+  nu_scripts
   nushell
   odin
   ols
