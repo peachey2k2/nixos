@@ -4,10 +4,11 @@ let
   configDir = ./configs;
 
   allowedExtensions = [
-    "lua" "txt"
+    "lua" "txt" "nu"
   ];
   replacements = with pkgs; {
     miracode = miracode;
+    nu_scripts = nu_scripts;
   };
 
   lib = pkgs.lib;

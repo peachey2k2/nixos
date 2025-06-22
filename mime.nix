@@ -2,7 +2,7 @@
   enable = true;
   defaultApplications = let
     fileManager = "thunar.desktop";
-    text = "emacs.desktop";
+    text = "Helix.desktop";
     image = "libresprite.desktop";
     pdf = "org.pwmt.zathura-pdf-mupdf.desktop";
     word = "freeoffice-textmaker.desktop";
