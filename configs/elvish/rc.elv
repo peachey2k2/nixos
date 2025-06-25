@@ -79,6 +79,9 @@ fn %edit {|@a| hx ~/nixos/flake.nix -w ~/nixos}
 fn %list-packages {|@a| nix-store -q --requisites /run/current-system/sw | fzf}
 fn %logs {|@a| tail ~/nixos/log.txt}
 fn %rebuild {|@a| ~/nixos/scripts/rebuild.sh}
+fn %devel {|@a|
+  nix develop $proj --command sh -c "cd $proj && elvish"
+}
 
 var fzf = ''
 fn fz {|@a|
@@ -91,4 +94,5 @@ fn fz {|@a|
 if (has-external carapace) {
   eval (carapace _carapace | slurp)
 }
+
 
