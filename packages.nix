@@ -78,8 +78,9 @@ pkgs: with pkgs; [
   typescript-language-server
   unrar
   unstable.godot-mono
-  unstable.clang-tools
-  unstable.libllvm
+  unstable.llvmPackages_20.clang-tools
+  unstable.llvmPackages_20.libllvm
+  unstable.llvmPackages_20.llvm
   unstable.wezterm
   unstable.zls
   unzip
