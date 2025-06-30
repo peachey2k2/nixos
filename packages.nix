@@ -28,6 +28,7 @@ pkgs: with pkgs; [
   gnumake
   go
   gopls
+  gparted
   helix
   hexdump
   hyperfine
