@@ -60,6 +60,14 @@ c.colors = {
   }
 }
 
+c.mouse_bindings = {
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'NONE',
+    action = wezterm.action.Nop,
+  }
+}
+
 c.skip_close_confirmation_for_processes_named = {
   "elvish", "bash", "sh", "tmux"
 }
