@@ -2,12 +2,6 @@ local wezterm = require 'wezterm'
 local c = wezterm.config_builder()
 
 local a = wezterm.action
-c.keys = {}
-local function addKey(mods, key, action)
-  table.insert(c.keys, {
-    key = key, mods = mods, action = action
-  })
-end
 
 c.enable_wayland = true
 
@@ -60,6 +54,7 @@ c.colors = {
   }
 }
 
+-- disable copy on select
 c.mouse_bindings = {
   {
     event = { Up = { streak = 1, button = 'Left' } },
@@ -72,14 +67,22 @@ c.skip_close_confirmation_for_processes_named = {
   "elvish", "bash", "sh", "tmux"
 }
 
-addKey("CTRL", "t", a.SpawnTab "CurrentPaneDomain")
-addKey("CTRL", "w", a.CloseCurrentTab{confirm=true})
-for i = 1, 9, 1 do
-  addKey("CTRL" ,tostring(i), a.ActivateTab(i-1))
+-- binds
+c.keys = {}
+local function addKey(mods, key, action)
+  table.insert(c.keys, {
+    key = key, mods = mods, action = action
+  })
 end
-addKey("CTRL", "Tab", a.ActivateTabRelative(1))
-addKey("CTRL|SHIFT", "Tab", a.ActivateTabRelative(-1))
-addKey("CTRL", "PageUp", a.ActivateTabRelative(1))
-addKey("CTRL", "PageDown", a.ActivateTabRelative(-1))
+
+addKey("CTRL",       "t",           a.SpawnTab "CurrentPaneDomain")
+addKey("CTRL",       "w",           a.CloseCurrentTab{confirm=true})
+for i = 1, 9, 1 do
+  addKey("CTRL",     tostring(i),   a.ActivateTab(i-1))
+end
+addKey("CTRL",       "Tab",         a.ActivateTabRelative(1))
+addKey("CTRL|SHIFT", "Tab",         a.ActivateTabRelative(-1))
+addKey("CTRL",       "PageUp",      a.ActivateTabRelative(1))
+addKey("CTRL",       "PageDown",    a.ActivateTabRelative(-1))
 
 return c
