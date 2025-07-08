@@ -53,6 +53,7 @@ pkgs: with pkgs; [
   nodejs
   nu_scripts
   nushell
+  ocamlPackages.sexp
   odin
   ols
   onlyoffice-desktopeditors
