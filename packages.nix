@@ -15,10 +15,10 @@ pkgs: with pkgs; [
   copyq
   duf
   ed
-  emacs
+  # emacs
   emote
   fd
-  ffmpeg
+  # ffmpeg
   (flameshot.override { enableWlrSupport = true; })
   freeoffice
   fzf
@@ -32,7 +32,7 @@ pkgs: with pkgs; [
   helix
   hexdump
   hyperfine
-  imagemagick
+  # imagemagick
   iverilog
   jdk17_headless
   jdk21_headless
@@ -44,7 +44,7 @@ pkgs: with pkgs; [
   luajit
   lua-language-server
   mako
-  manim
+  # manim
   mpv
   neovim
   networkmanagerapplet
@@ -64,7 +64,7 @@ pkgs: with pkgs; [
   prismlauncher
   python312Packages.python-lsp-server
   python3Minimal
-  qbe
+  # qbe
   qbittorrent
   ripgrep
   rust-analyzer
