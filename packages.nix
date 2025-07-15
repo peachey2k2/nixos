@@ -17,6 +17,7 @@ pkgs: with pkgs; [
   ed
   # emacs
   emote
+  fasm
   fd
   # ffmpeg
   (flameshot.override { enableWlrSupport = true; })
