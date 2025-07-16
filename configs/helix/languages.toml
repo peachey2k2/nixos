@@ -18,3 +18,7 @@ source = { git = "https://github.com/tree-sitter-grammars/tree-sitter-zig", rev 
 name = "python"
 language-servers = ["pylsp"]
 
+[[language]]
+name = "nasm"
+indent = { tab-width = 2, unit = "  " }
+
