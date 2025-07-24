@@ -6,7 +6,7 @@ let
 in {
   home = {
     packages = with pkgs; [home-manager];
-    stateVersion = "24.11";
+    stateVersion = "25.05";
     enableNixpkgsReleaseCheck = false;
     sessionVariables = {
       NIXOS_OZONE_WL = "1";

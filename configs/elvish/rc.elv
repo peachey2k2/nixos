@@ -137,3 +137,6 @@ fn nix {|subcmd @rest|
   }
 }
 
+fn duf {|@rest|
+  e:duf --only-mp /,/boot $@rest
+}

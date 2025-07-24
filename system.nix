@@ -83,12 +83,12 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
   
-  services.teamviewer.enable = true;
+  # services.teamviewer.enable = true;
   services.gvfs.enable = true;
-  services.zerotierone = {
-    enable = true;
-    port = 9993;
-  };
+  # services.zerotierone = {
+  #   enable = true;
+  #   port = 9993;
+  # };
   services.cron = {
     enable = true;
     systemCronJobs = [

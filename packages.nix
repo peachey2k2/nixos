@@ -30,7 +30,6 @@ pkgs: with pkgs; [
   go
   gopls
   gparted
-  helix
   hexdump
   hyperfine
   # imagemagick
@@ -81,6 +80,7 @@ pkgs: with pkgs; [
   typescript-language-server
   unrar
   unstable.godot-mono
+  unstable.helix
   unstable.llvmPackages_20.clang-tools
   # unstable.llvmPackages_20.libllvm
   # unstable.llvmPackages_20.llvm
