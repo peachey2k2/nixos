@@ -3,6 +3,7 @@ pkgs: with pkgs; [
   alarm-clock-applet
   alsa-utils
   android-studio
+  anki
   arc-icon-theme
   brave
   brightnessctl
