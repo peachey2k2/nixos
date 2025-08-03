@@ -75,14 +75,16 @@ local function addKey(mods, key, action)
   })
 end
 
-addKey("CTRL",       "t",           a.SpawnTab "CurrentPaneDomain")
-addKey("CTRL",       "w",           a.CloseCurrentTab{confirm=true})
 for i = 1, 9, 1 do
   addKey("CTRL",     tostring(i),   a.ActivateTab(i-1))
 end
+addKey("CTRL",       "t",           a.SpawnTab "CurrentPaneDomain")
+addKey("CTRL",       "w",           a.CloseCurrentTab{confirm=true})
 addKey("CTRL",       "Tab",         a.ActivateTabRelative(1))
 addKey("CTRL|SHIFT", "Tab",         a.ActivateTabRelative(-1))
 addKey("CTRL",       "PageUp",      a.ActivateTabRelative(1))
 addKey("CTRL",       "PageDown",    a.ActivateTabRelative(-1))
+
+c.warn_about_missing_glyphs = false
 
 return c
