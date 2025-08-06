@@ -94,6 +94,7 @@ pkgs: with pkgs; [
   waybar
   wayvnc
   wget
+  wgsl-analyzer
   winetricks
   wineWowPackages.staging
   wl-clipboard
