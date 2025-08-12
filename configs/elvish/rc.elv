@@ -140,3 +140,6 @@ fn nix {|subcmd @rest|
 fn duf {|@rest|
   e:duf --only-mp /,/boot $@rest
 }
+
+set E:EDITOR = "hx"
+set E:VISUAL = "hx"

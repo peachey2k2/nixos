@@ -38,6 +38,7 @@ pkgs: with pkgs; [
   jdk17_headless
   jdk21_headless
   jdk8_headless
+  jujutsu
   lf
   # libllvm
   libresprite
