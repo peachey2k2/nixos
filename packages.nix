@@ -76,7 +76,6 @@ pkgs: with pkgs; [
   svlangserver
   swaybg
   sway-contrib.grimshot 
-  texliveFull
   themechanger
   trash-cli
   typescript-language-server

@@ -24,6 +24,10 @@ select = "underline"
 
 [editor.whitespace.render]
 tab = "all"
+nbsp = "all"
+
+[editor.whitespace.characters]
+nbsp = "x"
 
 # [editor.inline-diagnostics]
 # cursor-line = "warning" 
