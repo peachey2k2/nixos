@@ -73,6 +73,7 @@ pkgs: with pkgs; [
   rustc
   satty
   SDL2
+  starship
   svlangserver
   swaybg
   sway-contrib.grimshot 

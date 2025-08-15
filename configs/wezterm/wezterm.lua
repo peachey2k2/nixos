@@ -74,7 +74,7 @@ c.mouse_bindings = {
 }
 
 c.skip_close_confirmation_for_processes_named = {
-  "elvish", "bash", "sh", "tmux"
+  "elvish", "bash", "sh", "tmux", "nu"
 }
 
 -- binds

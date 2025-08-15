@@ -98,7 +98,7 @@ in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
-    shell = pkgs.elvish;
+    shell = pkgs.nushell;
     description = user;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = [];
