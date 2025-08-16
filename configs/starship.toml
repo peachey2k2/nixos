@@ -99,6 +99,7 @@ $character\
 
 [character]
 success_symbol = '[ \$](cyan)'
+error_symbol = '[ \$](cyan)'
 
 [os]
 disabled = false

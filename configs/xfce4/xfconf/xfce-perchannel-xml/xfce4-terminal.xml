@@ -8,11 +8,11 @@
   <property name="misc-borders-default" type="bool" value="false"/>
   <property name="misc-slim-tabs" type="bool" value="true"/>
   <property name="scrolling-bar" type="string" value="TERMINAL_SCROLLBAR_NONE"/>
-  <property name="font-name" type="string" value="Miracode 10"/>
+  <property name="font-name" type="string" value="Miracode 11"/>
   <property name="misc-default-geometry" type="string" value="72x24"/>
   <property name="cell-width-scale" type="double" value="1"/>
   <property name="text-blink-mode" type="string" value="TERMINAL_TEXT_BLINK_MODE_FOCUSED"/>
-  <property name="font-allow-bold" type="bool" value="false"/>
+  <property name="font-allow-bold" type="bool" value="true"/>
   <property name="font-use-system" type="bool" value="false"/>
   <property name="misc-confirm-close" type="bool" value="false"/>
   <property name="color-foreground" type="string" value="#d5d0c9"/>
@@ -36,4 +36,12 @@
   <property name="binding-ambiguous-width" type="string" value="TERMINAL_AMBIGUOUS_WIDTH_BINDING_NARROW"/>
   <property name="misc-show-unsafe-paste-dialog" type="bool" value="false"/>
   <property name="background-darkness" type="double" value="0.80000000000000004"/>
+  <property name="misc-search-dialog-opacity" type="uint" value="80"/>
+  <property name="misc-hyperlinks-enabled" type="bool" value="true"/>
+  <property name="background-image-shading" type="double" value="0.80000000000000004"/>
+  <property name="misc-maximize-default" type="bool" value="true"/>
+  <property name="encoding" type="string" value=""/>
+  <property name="shortcuts-no-mnemonics" type="bool" value="true"/>
+  <property name="misc-bell-urgent" type="bool" value="false"/>
+  <property name="misc-mouse-autohide" type="bool" value="true"/>
 </channel>
