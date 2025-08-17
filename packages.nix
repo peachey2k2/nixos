@@ -68,6 +68,7 @@ pkgs: with pkgs; [
   python3Minimal
   # qbe
   qbittorrent
+  renderdoc
   ripgrep
   rust-analyzer
   rustc
