@@ -37,6 +37,8 @@ def "__init" [] {
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
+alias "cal" = cal --week-start "mo"
+
 alias "core-nu" = nu
 alias "nu" = core-nu -e $"$env.SHELL_DEPTH = (($env.SHELL_DEPTH | into int) + 1)"
 
