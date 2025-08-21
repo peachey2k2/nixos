@@ -82,7 +82,7 @@ pkgs: with pkgs; [
   trash-cli
   typescript-language-server
   unrar
-  unstable.godot-mono
+  unstable.godot
   unstable.helix
   unstable.llvmPackages_20.clang-tools
   # unstable.llvmPackages_20.libllvm
