@@ -51,6 +51,8 @@ pkgs: with pkgs; [
   neovim
   networkmanagerapplet
   nil
+  nim
+  nimble
   ninja
   nodejs
   nu_scripts

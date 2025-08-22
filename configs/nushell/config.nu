@@ -55,6 +55,11 @@ alias "%list-packages" = nix-store -q --requisites /run/current-system/sw | fzf
 alias "%logs"          = tail ~/nixos/log.txt
 alias "%rebuild"       = ~/nixos/scripts/rebuild.sh
 
+def "%env" [...pkgs] { nix shell ...$pkgs --command nu -e $"
+  $env.SHELL_DEPTH = (($env.SHELL_DEPTH | into int) + 1);
+  $env.NIX_SHELL_DEPTH = (($env.NIX_SHELL_DEPTH | into int) + 1)" 
+}
+
 def "%devel" [] {
   let proj = try {
     ls ~/development | where type == "dir" | get name | input list -f

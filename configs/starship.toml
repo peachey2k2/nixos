@@ -208,7 +208,7 @@ symbol = "󰍛 "
 symbol = "󰔷 "
 
 [nim]
-symbol = "󰆥 "
+symbol = " "
 
 [nix_shell]
 symbol = " "
