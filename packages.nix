@@ -69,7 +69,7 @@ pkgs: with pkgs; [
   prismlauncher
   python312Packages.python-lsp-server
   python3Minimal
-  # qbe
+  qbe
   qbittorrent
   renderdoc
   ripgrep
