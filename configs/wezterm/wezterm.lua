@@ -10,7 +10,7 @@ c.color_scheme = "CutiePro"
 c.font = wezterm.font("Miracode")
 c.font_size = 11
 
--- heard this helps with startup seed but it might be just placebo
+-- heard this helps with startup speed but it might be just placebo
 c.font_dirs = { "@miracode@/share/fonts/truetype" }
 c.font_locator="ConfigDirsOnly"
 
