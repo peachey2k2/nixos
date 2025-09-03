@@ -57,7 +57,6 @@ pkgs: with pkgs; [
   ninja
   nodejs
   nu_scripts
-  nushell
   ocamlPackages.sexp
   odin
   ols
@@ -90,6 +89,7 @@ pkgs: with pkgs; [
   unstable.llvmPackages_20.clang-tools
   # unstable.llvmPackages_20.libllvm
   # unstable.llvmPackages_20.llvm
+  unstable.nushell
   unstable.wezterm
   unstable.zls
   unzip

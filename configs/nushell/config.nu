@@ -75,6 +75,17 @@ def "%devel" [] {
   }
 }
 
+$env.config.keybindings ++= [{
+  name: unfreeze
+  modifier: control
+  keycode: char_z
+  mode: emacs
+  event: {
+    send: executehostcommand,
+    cmd: "job unfreeze"
+  }
+}]
+
 if not ("DISPLAY" in $env) and (tty) == "/dev/tty1" {
   exec Hyprland
 }
