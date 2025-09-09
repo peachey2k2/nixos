@@ -40,6 +40,7 @@ pkgs: with pkgs; [
   jdk8_headless
   jq
   jujutsu
+  krita
   lf
   # libllvm
   libresprite
