@@ -5,6 +5,7 @@ pkgs: with pkgs; [
   android-studio
   anki
   arc-icon-theme
+  blender
   brave
   brightnessctl
   btop
