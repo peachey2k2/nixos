@@ -5,6 +5,7 @@ pkgs: with pkgs; [
   android-studio
   anki
   arc-icon-theme
+  aseprite
   blender
   brave
   brightnessctl
@@ -44,7 +45,6 @@ pkgs: with pkgs; [
   krita
   lf
   # libllvm
-  libresprite
   love
   luajit
   lua-language-server
@@ -86,7 +86,7 @@ pkgs: with pkgs; [
   trash-cli
   typescript-language-server
   unrar
-  unstable.godot
+  unstable.godot-mono
   unstable.helix
   unstable.llvmPackages_20.clang-tools
   # unstable.llvmPackages_20.libllvm
