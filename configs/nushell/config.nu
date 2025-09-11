@@ -47,11 +47,12 @@ alias "nix develop" = core-nix-develop --command nu -e $"
   $env.SHELL_DEPTH = (($env.SHELL_DEPTH | into int) + 1);
   $env.NIX_SHELL_DEPTH = (($env.NIX_SHELL_DEPTH | into int) + 1)"
 
+alias duf = duf --only-mp /,/boot --output mountpoint,size,used,avail,usage
 
 alias "%clear-backups" = ~/nixos/scripts/clear-backups.sh
 alias "%config-reload" = ~/nixos/scripts/config-reload.sh
 alias "%edit"          = hx ~/nixos/flake.nix -w ~/nixos
-alias "%list-packages" = nix-store -q --requisites /run/current-system/sw | fzf
+alias "%list-packages" = nix-store -q --requisites /run/current-system/sw # temp fix
 alias "%logs"          = tail ~/nixos/log.txt
 alias "%rebuild"       = ~/nixos/scripts/rebuild.sh
 
