@@ -21,6 +21,9 @@ $env.NIX_SHELL_DEPTH = $env.NIX_SHELL_DEPTH? | default 0
 $env.SHELL_DEPTH = $env.SHELL_DEPTH? | default 0
 $env.config.show_banner = false
 
+$env.EDITOR = "hx"
+$env.VISUAL = $env.EDITOR
+
 def "__init" [] {
   # show disk usage when the shell is opened
   if $env.SHELL_DEPTH == "0" {
