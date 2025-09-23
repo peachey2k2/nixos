@@ -155,7 +155,9 @@ in {
 
   environment = {
     variables = import ./envvars.nix pkgs homeDir;
-    systemPackages = import ./packages.nix pkgs;
+    systemPackages = import ./packages.nix pkgs ++ [
+      config.boot.kernelPackages.perf
+    ];
   };
 
   fonts = {

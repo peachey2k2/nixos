@@ -7,22 +7,26 @@ log () {
   echo $(date +"%d-%m-%Y %H:%M") [REBUILD] $1 >> "$LOG_FILE"
 }
 
-updated_today() {
-  tac nixos/log.txt | grep -q -m 1 "$(date +"%d-%m-%Y") ..:.. \[REBUILD\] rebuild successful"
-}
-
 git -C "$NIX_DIR" add .
 ~/nixos/scripts/sort-packages.sh
 # sudo nixos-rebuild switch --flake ~/nixos#chey
 
-if updated_today; then
+tac "$NIX_DIR/log.txt" | grep -q -m 1 "$(date +"%d-%m-%Y") ..:.. \[REBUILD\] recreated flake\.lock"
+updated_today="$?"
+
+if [[ "$updated_today" -eq "0" ]]; then
   nh os switch /home/pe/nixos -H chey
 else
   nh os switch /home/pe/nixos -H chey --update
 fi
 
+result="$?"
 
-if [[ "$?" -eq "0" ]]; then
+if [[ "$updated_today" -ne "0" ]]; then
+  log "recreated flake.lock"
+fi
+
+if [[ "$result" -eq "0" ]]; then
   log "rebuild successful"
 else
   log "failed to rebuild"
