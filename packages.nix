@@ -31,6 +31,7 @@ pkgs: with pkgs; [
   git
   gnumake
   go
+  godot
   gopls
   gparted
   hexdump
@@ -86,7 +87,6 @@ pkgs: with pkgs; [
   trash-cli
   typescript-language-server
   unrar
-  unstable.godot-mono
   unstable.helix
   unstable.llvmPackages_20.clang-tools
   # unstable.llvmPackages_20.libllvm
