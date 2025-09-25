@@ -6,6 +6,7 @@ pkgs: with pkgs; [
   anki
   arc-icon-theme
   aseprite
+  bc
   blender
   brave
   brightnessctl
