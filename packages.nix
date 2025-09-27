@@ -33,6 +33,7 @@ pkgs: with pkgs; [
   gnumake
   go
   godot
+  godot-mono
   gopls
   gparted
   hexdump
