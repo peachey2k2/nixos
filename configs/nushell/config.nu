@@ -46,9 +46,13 @@ alias "core-nu" = nu
 alias "nu" = core-nu -e $"$env.SHELL_DEPTH = (($env.SHELL_DEPTH | into int) + 1)"
 
 alias "core-nix-develop" = nix develop
-alias "nix develop" = core-nix-develop --command nu -e $"
-  $env.SHELL_DEPTH = (($env.SHELL_DEPTH | into int) + 1);
-  $env.NIX_SHELL_DEPTH = (($env.NIX_SHELL_DEPTH | into int) + 1)"
+
+def --wrapped "nix develop" [...args] {
+  core-nix-develop ...$args --command nu -e $"
+    $env.SHELL_DEPTH = (($env.SHELL_DEPTH | into int) + 1);
+    $env.NIX_SHELL_DEPTH = (($env.NIX_SHELL_DEPTH | into int) + 1)
+  "
+}
 
 alias duf = duf --only-mp /,/boot --output mountpoint,size,used,avail,usage
 
