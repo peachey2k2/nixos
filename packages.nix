@@ -77,8 +77,6 @@ pkgs: with pkgs; [
   qbittorrent
   renderdoc
   ripgrep
-  rust-analyzer
-  rustc
   satty
   SDL2
   starship
@@ -94,6 +92,8 @@ pkgs: with pkgs; [
   # unstable.llvmPackages_20.libllvm
   # unstable.llvmPackages_20.llvm
   unstable.nushell
+  unstable.rust-analyzer
+  unstable.rustc
   unstable.wezterm
   unstable.zls
   unzip
