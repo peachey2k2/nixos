@@ -43,6 +43,7 @@ pkgs: with pkgs; [
   jdk8_headless
   jq
   jujutsu
+  kdePackages.qtdeclarative
   krita
   lf
   # libllvm
