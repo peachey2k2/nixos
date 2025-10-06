@@ -7,7 +7,7 @@ pkgs: with pkgs; [
   arc-icon-theme
   aseprite
   bc
-  blender
+  # blender
   brave
   brightnessctl
   btop
@@ -31,16 +31,16 @@ pkgs: with pkgs; [
   gdb
   git
   gnumake
-  go
-  gopls
+  # go
+  # gopls
   gparted
   hexdump
   hyperfine
   # imagemagick
   iverilog
   jdk17_headless
-  jdk21_headless
-  jdk8_headless
+  # jdk21_headless
+  # jdk8_headless
   jq
   jujutsu
   kdePackages.qtdeclarative
@@ -69,7 +69,7 @@ pkgs: with pkgs; [
   pfetch
   php
   picom
-  prismlauncher
+  # prismlauncher
   python312Packages.python-lsp-server
   python3Minimal
   qbe
@@ -77,7 +77,7 @@ pkgs: with pkgs; [
   renderdoc
   ripgrep
   satty
-  SDL2
+  # SDL2
   starship
   svlangserver
   swaybg
@@ -93,7 +93,7 @@ pkgs: with pkgs; [
   # unstable.llvmPackages_20.llvm
   unstable.nushell
   unstable.quickshell
-  unstable.rust-analyzer
+  # unstable.rust-analyzer
   unstable.rustc
   unstable.wezterm
   unstable.zls
