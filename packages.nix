@@ -93,7 +93,7 @@ pkgs: with pkgs; [
   # unstable.llvmPackages_20.llvm
   unstable.nushell
   unstable.quickshell
-  # unstable.rust-analyzer
+  unstable.rust-analyzer
   unstable.rustc
   unstable.wezterm
   unstable.zls
