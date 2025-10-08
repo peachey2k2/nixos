@@ -1,5 +1,6 @@
 pkgs: with pkgs; [
+  emojione
   corefonts
   miracode
-  unstable.nerd-fonts.symbols-only
+  nerd-fonts.symbols-only
 ]
