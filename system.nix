@@ -127,7 +127,7 @@ in {
 
   programs = {
     # zsh.enable = true;
-    steam.enable = true;
+    # steam.enable = true;
     xfconf.enable = true; # for thunar, terminal etc. configs
     thunar.plugins = with pkgs.xfce; [
       thunar-archive-plugin thunar-volman
