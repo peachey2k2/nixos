@@ -52,6 +52,7 @@ pkgs: with pkgs; [
   lua-language-server
   mako
   # manim
+  mono
   mpv
   neovim
   networkmanagerapplet
