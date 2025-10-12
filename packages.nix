@@ -52,7 +52,6 @@ pkgs: with pkgs; [
   lua-language-server
   mako
   # manim
-  mono
   mpv
   neovim
   networkmanagerapplet
@@ -65,6 +64,7 @@ pkgs: with pkgs; [
   ocamlPackages.sexp
   odin
   ols
+  omnisharp-roslyn
   onlyoffice-desktopeditors
   pavucontrol
   pfetch
