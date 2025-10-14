@@ -26,6 +26,9 @@ c.window_padding = {
   left = padding, right = padding, top = padding, bottom = padding,
 }
 
+-- disable ligatures
+c.harfbuzz_features = { 'calt = 0', 'clig = 0', 'liga = 0' }
+
 c.use_fancy_tab_bar = false
 c.hide_tab_bar_if_only_one_tab = true
 c.colors = {
