@@ -34,6 +34,7 @@ pkgs: with pkgs; [
   # go
   # gopls
   gparted
+  gtkwave
   hexdump
   hyperfine
   # imagemagick
