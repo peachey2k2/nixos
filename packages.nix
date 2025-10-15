@@ -115,6 +115,7 @@ pkgs: with pkgs; [
   xfce.thunar
   xfce.xfce4-terminal
   zathura
+  zen-browser
   zerotierone
   zfxtop
   zig

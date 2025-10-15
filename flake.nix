@@ -6,6 +6,8 @@
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs = {
@@ -34,6 +36,7 @@
             nixpkgs.overlays = [
               (final: prev: {
                 unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+                zen-browser = inputs.zen-browser.packages."${system}".default;
               })
             ];
           }
