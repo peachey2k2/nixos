@@ -3,11 +3,15 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/25.05";
+
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs-unstable.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
