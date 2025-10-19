@@ -2,7 +2,7 @@ pkgs: with pkgs; [
   acpi
   alarm-clock-applet
   alsa-utils
-  android-studio
+  # android-studio
   anki
   arc-icon-theme
   aseprite
@@ -90,6 +90,7 @@ pkgs: with pkgs; [
   unrar
   unstable.godot
   unstable.helix
+  unstable.jetbrains.idea-community-bin
   unstable.llvmPackages_20.clang-tools
   # unstable.llvmPackages_20.libllvm
   # unstable.llvmPackages_20.llvm
