@@ -2,7 +2,7 @@ pkgs: with pkgs; [
   acpi
   alarm-clock-applet
   alsa-utils
-  # android-studio
+  android-studio
   anki
   arc-icon-theme
   aseprite
@@ -17,6 +17,7 @@ pkgs: with pkgs; [
   cloc
   cmake
   copyq
+  # darwin.xcode
   duf
   ed
   # emacs
@@ -25,6 +26,7 @@ pkgs: with pkgs; [
   fd
   # ffmpeg
   (flameshot.override { enableWlrSupport = true; })
+  flutter
   freeoffice
   fzf
   gcc
@@ -66,7 +68,7 @@ pkgs: with pkgs; [
   odin
   ols
   omnisharp-roslyn
-  onlyoffice-desktopeditors
+  # onlyoffice-desktopeditors
   pavucontrol
   pfetch
   php
@@ -90,7 +92,7 @@ pkgs: with pkgs; [
   unrar
   unstable.godot
   unstable.helix
-  unstable.jetbrains.idea-community-bin
+  # unstable.jetbrains.idea-community-bin
   unstable.llvmPackages_20.clang-tools
   # unstable.llvmPackages_20.libllvm
   # unstable.llvmPackages_20.llvm
