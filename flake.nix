@@ -5,7 +5,10 @@
     nixpkgs.url = "nixpkgs/25.05";
 
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    nixpkgs-unstable.inputs.nixpkgs.follows = "nixpkgs";
+    # nixpkgs-unstable.inputs.nixpkgs.follows = "nixpkgs";
+
+    # nixpkgs-master.url = "nixpkgs/master";
+    # nixpkgs-master.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +21,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
+    # nixpkgs-master,
     home-manager,
     ...
   }@inputs:
@@ -40,6 +44,7 @@
             nixpkgs.overlays = [
               (final: prev: {
                 unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+                # master = nixpkgs-master.legacyPackages.${prev.system};
                 zen-browser = inputs.zen-browser.packages."${system}".default;
               })
             ];
