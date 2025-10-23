@@ -12,7 +12,6 @@ pkgs: with pkgs; [
   brightnessctl
   btop
   carapace
-  cargo
   clang
   cloc
   cmake
@@ -24,6 +23,7 @@ pkgs: with pkgs; [
   emote
   fasm
   fd
+  (fenix.withComponents ["cargo" "rustc"])
   # ffmpeg
   (flameshot.override { enableWlrSupport = true; })
   flutter
@@ -99,7 +99,6 @@ pkgs: with pkgs; [
   unstable.nushell
   unstable.quickshell
   unstable.rust-analyzer
-  unstable.rustc
   unstable.wezterm
   unstable.zls
   unzip

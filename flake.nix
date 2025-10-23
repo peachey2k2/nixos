@@ -15,6 +15,9 @@
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+    fenix.url = "github:nix-community/fenix/monthly";
+    fenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -46,6 +49,7 @@
                 unstable = nixpkgs-unstable.legacyPackages.${prev.system};
                 # master = nixpkgs-master.legacyPackages.${prev.system};
                 zen-browser = inputs.zen-browser.packages."${system}".default;
+                fenix = inputs.fenix.packages."${system}".default;
               })
             ];
           }
