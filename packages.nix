@@ -17,6 +17,7 @@ pkgs: with pkgs; [
   cmake
   copyq
   # darwin.xcode
+  dosbox-x
   duf
   ed
   # emacs
