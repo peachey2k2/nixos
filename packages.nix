@@ -27,7 +27,6 @@ pkgs: with pkgs; [
   (fenix.withComponents ["cargo" "rustc"])
   # ffmpeg
   (flameshot.override { enableWlrSupport = true; })
-  flutter
   freeoffice
   fzf
   gcc
@@ -91,6 +90,7 @@ pkgs: with pkgs; [
   trash-cli
   typescript-language-server
   unrar
+  unstable.flutter
   unstable.godot
   unstable.helix
   # unstable.jetbrains.idea-community-bin
