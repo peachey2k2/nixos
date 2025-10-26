@@ -2,7 +2,7 @@ pkgs: with pkgs; [
   acpi
   alarm-clock-applet
   alsa-utils
-  android-studio
+  # android-studio
   anki
   arc-icon-theme
   aseprite
@@ -90,7 +90,7 @@ pkgs: with pkgs; [
   trash-cli
   typescript-language-server
   unrar
-  unstable.flutter
+  # unstable.flutter332
   unstable.godot
   unstable.helix
   # unstable.jetbrains.idea-community-bin
