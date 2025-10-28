@@ -22,6 +22,16 @@ in {
       timeout = 1;
       efi.canTouchEfiVariables = true;
     };
+
+    kernelModules = [ "v4l2loopback" ];
+
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback # https://nixos.wiki/wiki/OBS_Studio
+    ];
+
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
   };
 
   networking = {
@@ -98,7 +108,7 @@ in {
     isNormalUser = true;
     shell = pkgs.unstable.nushell;
     description = user;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
     packages = [];
   };
 
@@ -136,10 +146,13 @@ in {
     };
     obs-studio = {
       enable = true;
+      # package = pkgs.unstable.obs-studio;
+      enableVirtualCamera = true;
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
         obs-backgroundremoval
         obs-pipewire-audio-capture
+        droidcam-obs
       ];
     };
     nh = {
