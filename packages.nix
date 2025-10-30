@@ -39,6 +39,7 @@ pkgs: with pkgs; [
   gtkwave
   hexdump
   hyperfine
+  hyprpolkitagent
   # imagemagick
   iverilog
   jdk17_headless
@@ -117,6 +118,7 @@ pkgs: with pkgs; [
   xarchiver
   xfce.thunar
   xfce.xfce4-terminal
+  xorg.xhost
   zathura
   zen-browser
   zerotierone
