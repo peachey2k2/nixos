@@ -23,6 +23,9 @@ in {
       efi.canTouchEfiVariables = true;
     };
 
+    # windows
+    supportedFilesystems = [ "ntfs" ];
+
     kernelModules = [ "v4l2loopback" ];
 
     extraModulePackages = with config.boot.kernelPackages; [
