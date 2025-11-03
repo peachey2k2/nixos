@@ -70,7 +70,7 @@ def "%env" [...pkgs] { nix shell ...$pkgs --command nu -e $"
 
 def "%devel" [] {
   let proj = try {
-    ls ~/development | where type == "dir" | get name | input list -f
+    (ls ~/development) ++ (ls ~/git) | where type == "dir" | get name | input list -f
   } catch { return }
   if ($"($proj)/flake.nix" | path exists) {
     core-nix-develop $proj --command nu -e $"
