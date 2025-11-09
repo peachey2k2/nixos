@@ -88,7 +88,6 @@ pkgs: with pkgs; [
   swaybg
   sway-contrib.grimshot 
   themechanger
-  trash-cli
   typescript-language-server
   unrar
   # unstable.flutter332
