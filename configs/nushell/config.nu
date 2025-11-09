@@ -21,8 +21,23 @@ $env.NIX_SHELL_DEPTH = $env.NIX_SHELL_DEPTH? | default 0
 $env.SHELL_DEPTH = $env.SHELL_DEPTH? | default 0
 $env.config.show_banner = false
 
-$env.EDITOR = "hx"
-$env.VISUAL = $env.EDITOR
+$env.EDITOR = "@editor@"
+$env.VISUAL = "@editor@"
+
+# default `rm` to send to trash instead of deleting. `-p` bypasses.
+$env.config.rm.always_trash = true
+
+# basic vim bindings for commands
+$env.config.edit_mode = "vi"
+
+# make the cursor look sane
+$env.config.cursor_shape.vi_insert = "line"
+$env.config.cursor_shape.vi_normal = "block"
+
+# completion thingy
+$env.CARAPACE_BRIDGES = "inshellisense,carapace,zsh,fish,bash"
+
+$env.config.use_kitty_protocol = true
 
 def "__init" [] {
   # show disk usage when the shell is opened

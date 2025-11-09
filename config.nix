@@ -7,6 +7,7 @@ let
     "lua" "txt" "nu"
   ];
   replacements = with pkgs; {
+    editor = "hx";
     miracode = miracode;
     nu_scripts = nu_scripts;
   };
