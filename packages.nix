@@ -64,6 +64,7 @@ pkgs: with pkgs; [
   nimble
   ninja
   nodejs
+  nur.repos.forkprince.helium-nightly
   nu_scripts
   ocamlPackages.sexp
   odin

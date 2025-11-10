@@ -13,7 +13,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    zen-browser.url = "github:youwen5/zen-browser-flake";
+    nur.url = "github:nix-community/NUR";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
+
+    zen-browser.url = "github:crashim03/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     fenix.url = "github:nix-community/fenix/monthly";
@@ -26,6 +29,7 @@
     nixpkgs-unstable,
     # nixpkgs-master,
     home-manager,
+    nur,
     ...
   }@inputs:
     let
@@ -47,6 +51,7 @@
             nixpkgs.overlays = [
               (final: prev: {
                 unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+                nur = nur.legacyPackages.${prev.system};
                 # master = nixpkgs-master.legacyPackages.${prev.system};
                 zen-browser = inputs.zen-browser.packages."${system}".default;
                 fenix = inputs.fenix.packages."${system}".default;
