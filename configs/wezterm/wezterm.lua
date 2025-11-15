@@ -5,7 +5,7 @@ local a = wezterm.action
 
 c.enable_wayland = true
 
-c.color_scheme = "CutiePro"
+c.color_scheme = "catppuccin-mocha"
 
 c.font = wezterm.font("Miracode")
 c.font_size = 11
