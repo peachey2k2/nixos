@@ -147,3 +147,5 @@ $env.config.keybindings ++= [
 if not ("DISPLAY" in $env) and (tty) == "/dev/tty1" {
   exec Hyprland
 }
+
+$env.RUST_BACKTRACE = 1

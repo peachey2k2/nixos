@@ -11,11 +11,14 @@ pkgs: with pkgs; [
   brave
   brightnessctl
   btop
+  caelestia-cli
+  caelestia-shell
   carapace
   clang
   cloc
   cmake
   copyq
+  cpu-x
   # darwin.xcode
   dosbox-x
   duf
@@ -49,12 +52,13 @@ pkgs: with pkgs; [
   jujutsu
   kdePackages.qtdeclarative
   krita
+  lenovo-legion
   lf
   # libllvm
   love
   luajit
   lua-language-server
-  mako
+  # mako
   # manim
   mpv
   neovim
@@ -66,6 +70,7 @@ pkgs: with pkgs; [
   nodejs
   nur.repos.forkprince.helium-nightly
   nu_scripts
+  nwg-look
   ocamlPackages.sexp
   odin
   ols
@@ -88,7 +93,6 @@ pkgs: with pkgs; [
   svlangserver
   swaybg
   sway-contrib.grimshot 
-  themechanger
   typescript-language-server
   unrar
   # unstable.flutter332

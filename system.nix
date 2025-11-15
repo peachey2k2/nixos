@@ -26,14 +26,16 @@ in {
     # windows
     supportedFilesystems = [ "ntfs" ];
 
-    kernelModules = [ "v4l2loopback" ];
+    kernelModules = [ "v4l2loopback" "lenovo-legion-module" ];
 
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback # https://nixos.wiki/wiki/OBS_Studio
+      lenovo-legion-module
     ];
 
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+      options legion_laptop force=1
     '';
   };
 
@@ -93,6 +95,10 @@ in {
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  services.switcherooControl.enable = true;
+
+  services.upower.enable = true;
   
   # services.teamviewer.enable = true;
   services.gvfs.enable = true;
@@ -222,7 +228,7 @@ in {
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
-  networking.firewall.allowedUDPPorts = [ 9993 25565 22 ];
+  networking.firewall.allowedUDPPorts = [ 9993 25565 22 42000 42001 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

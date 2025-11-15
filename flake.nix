@@ -21,6 +21,12 @@
 
     fenix.url = "github:nix-community/fenix/monthly";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
+
+    caelestia-shell.url = "github:caelestia-dots/shell";
+    caelestia-shell.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    caelestia-cli.url = "github:caelestia-dots/cli";
+    caelestia-cli.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = {
@@ -50,11 +56,13 @@
           {
             nixpkgs.overlays = [
               (final: prev: {
-                unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-                nur = nur.legacyPackages.${prev.system};
-                # master = nixpkgs-master.legacyPackages.${prev.system};
-                zen-browser = inputs.zen-browser.packages."${system}".default;
-                fenix = inputs.fenix.packages."${system}".default;
+                unstable = nixpkgs-unstable.legacyPackages.${system};
+                nur = nur.legacyPackages.${system};
+                # master = nixpkgs-master.legacyPackages.${system};
+                zen-browser = inputs.zen-browser.packages.${system}.default;
+                fenix = inputs.fenix.packages.${system}.default;
+                caelestia-shell = inputs.caelestia-shell.packages.${system}.with-cli;
+                caelestia-cli = inputs.caelestia-cli.packages.${system}.with-shell;
               })
             ];
           }
