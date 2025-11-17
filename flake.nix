@@ -23,9 +23,11 @@
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
     caelestia-shell.url = "github:caelestia-dots/shell";
+    # caelestia-shell.url = "github:caelestia-dots/shell?rev=c0ea060ffecd3f38233652556d3085d094082400";
     caelestia-shell.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     caelestia-cli.url = "github:caelestia-dots/cli";
+    # caelestia-cli.url = "github:caelestia-dots/cli?rev=d89c438284311e99148ece61054cd6f9bc8e8cb7";
     caelestia-cli.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
