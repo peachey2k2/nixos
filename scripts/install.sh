@@ -7,6 +7,6 @@ sudo nixos-generate-config --show-hardware-config > "$NIX_DIR"/hardware-configur
 
 echo ">> rebuilding system..."
 # using `boot` instead of `switch` cuz otherwise it just nukes the current system
-sudo nixos-rebuild boot --flake "$NIX_DIR"#chey
+sudo nixos-rebuild boot --accept-flake-config --flake "$NIX_DIR"#chey
 
 echo ">> done!"

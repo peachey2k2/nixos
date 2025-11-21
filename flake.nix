@@ -1,5 +1,33 @@
-{
+rec {
   description = "My NixOS Configuration";
+
+  # TODO: move these to somewhere else (idk rn since config.nix already exists)
+  nixConfig = {
+    experimental-features = [
+      "flakes"         # duh
+      "nix-command"    # duh
+      "pipe-operators" # Gives access to <| and |>, Prior works like $ in Haskell, latter is the same as in Elixir.
+    ];
+
+    extra-substituters = [
+      "https://cache.nixos.org/"
+      "https://nix-community.cachix.org"
+      "https://cache.iog.io"
+      "https://cuda-maintainers.cachix.org"
+      "https://nixpkgs-unfree.cachix.org"
+    ];
+
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPiCe+467rJVel7/TrsBQQQTfvs5cBUOQ="
+      "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nqlt0="
+    ];
+
+    max-substitution-jobs = 32;
+    http-connections = 50;
+  };
 
   inputs = {
     nixpkgs.url = "nixpkgs/25.05";
@@ -23,15 +51,17 @@
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
     caelestia-shell.url = "github:caelestia-dots/shell";
-    # caelestia-shell.url = "github:caelestia-dots/shell?rev=c0ea060ffecd3f38233652556d3085d094082400";
     caelestia-shell.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    caelestia-shell.inputs.quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell?rev=1ddb355121484bcac70f49edd4bd006b1d3a753e";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     caelestia-cli.url = "github:caelestia-dots/cli";
-    # caelestia-cli.url = "github:caelestia-dots/cli?rev=d89c438284311e99148ece61054cd6f9bc8e8cb7";
     caelestia-cli.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     nixpkgs,
     nixpkgs-unstable,
@@ -39,7 +69,7 @@
     home-manager,
     nur,
     ...
-  }@inputs:
+  }:
     let
       username = "pe";
       homeDir = "/home/" + username;
@@ -48,18 +78,30 @@
     in {
       nixosConfigurations.chey = nixpkgs.lib.nixosSystem {
         inherit system;
+
         modules = [
           (
             import ./system.nix {
               user = username;
+              inherit nixConfig;
             }
           )
 
           {
+            nixpkgs.config = {
+              allowUnfree = true;
+              allowBroken = true;
+
+              packageOverrides = with pkgs; {
+                svlangserver = callPackage ./packages/svlangserver/default.nix {};
+                marked = callPackage ./packages/marked/default.nix {};
+              };
+            };
+
             nixpkgs.overlays = [
+              nur.overlays.default
               (final: prev: {
                 unstable = nixpkgs-unstable.legacyPackages.${system};
-                nur = nur.legacyPackages.${system};
                 # master = nixpkgs-master.legacyPackages.${system};
                 zen-browser = inputs.zen-browser.packages.${system}.default;
                 fenix = inputs.fenix.packages.${system}.default;
