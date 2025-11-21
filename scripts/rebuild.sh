@@ -15,9 +15,9 @@ tac "$NIX_DIR/log.txt" | grep -q -m 1 "$(date +"%d-%m-%Y") ..:.. \[REBUILD\] rec
 updated_today="$?"
 
 if [[ "$updated_today" -eq "0" ]]; then
-  nh os switch /home/pe/nixos -H chey
+  nh os switch /home/pe/nixos -H chey --accept-flake-config
 else
-  nh os switch /home/pe/nixos -H chey --update
+  nh os switch /home/pe/nixos -H chey --update --accept-flake-config
 fi
 
 result="$?"

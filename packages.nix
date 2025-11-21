@@ -69,6 +69,7 @@ pkgs: with pkgs; [
   ninja
   nodejs
   nur.repos.forkprince.helium-nightly
+  nur.repos.lonerOrz.antigravity
   nu_scripts
   nwg-look
   ocamlPackages.sexp
@@ -95,7 +96,6 @@ pkgs: with pkgs; [
   sway-contrib.grimshot 
   typescript-language-server
   unrar
-  # unstable.flutter332
   unstable.godot
   unstable.helix
   # unstable.jetbrains.idea-community-bin
@@ -103,7 +103,6 @@ pkgs: with pkgs; [
   # unstable.llvmPackages_20.libllvm
   # unstable.llvmPackages_20.llvm
   unstable.nushell
-  unstable.quickshell
   unstable.rust-analyzer
   unstable.wezterm
   unstable.zls

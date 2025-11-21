@@ -8,6 +8,7 @@
     word = "freeoffice-textmaker.desktop";
     video = "vlc.desktop";
     archive = "xarchiver.desktop";
+    browser = "helium.desktop";
   in {
     "inode/directory" = fileManager;
     "text/plain" = text;
@@ -17,5 +18,9 @@
     "video/x-matroska" = video;
     "application/zip" = archive;
     "image/png" = image;
+    "x-scheme-handler/http" = browser;
+    "x-scheme-handler/https" = browser;
+    "x-scheme-handler/about" = browser;
+    "x-scheme-handler/unknown" = browser;
   };
 }
