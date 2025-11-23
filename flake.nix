@@ -7,6 +7,7 @@ rec {
       "flakes"         # duh
       "nix-command"    # duh
       "pipe-operators" # Gives access to <| and |>, Prior works like $ in Haskell, latter is the same as in Elixir.
+      "cgroups"
     ];
 
     extra-substituters = [
@@ -17,7 +18,7 @@ rec {
       "https://nixpkgs-unfree.cachix.org"
     ];
 
-    trusted-public-keys = [
+    extra-trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
@@ -25,8 +26,15 @@ rec {
       "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nqlt0="
     ];
 
-    max-substitution-jobs = 32;
-    http-connections = 50;
+    builders-use-substitutes = true;
+    flake-registry           = "";
+    http-connections         = 50;
+    max-substitution-jobs    = 32;
+    # lazy-trees               = true; # determinate
+    show-trace               = true;
+    trusted-users            = [ "root" "@build" "@wheel" "@admin" ];
+    use-cgroups              = true;
+    warn-dirty               = false;
   };
 
   inputs = {
