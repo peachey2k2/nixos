@@ -26,6 +26,7 @@ rec {
       "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nqlt0="
     ];
 
+    accept-flake-config      = true;
     builders-use-substitutes = true;
     flake-registry           = "";
     http-connections         = 50;
@@ -60,10 +61,6 @@ rec {
 
     caelestia-shell.url = "github:caelestia-dots/shell";
     caelestia-shell.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    caelestia-shell.inputs.quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell?rev=1ddb355121484bcac70f49edd4bd006b1d3a753e";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
 
     caelestia-cli.url = "github:caelestia-dots/cli";
     caelestia-cli.inputs.nixpkgs.follows = "nixpkgs-unstable";
