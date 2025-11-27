@@ -81,7 +81,7 @@ pkgs: with pkgs; [
   pfetch
   php
   picom
-  # prismlauncher
+  prismlauncher
   python312Packages.python-lsp-server
   python3Minimal
   qbe
@@ -106,6 +106,7 @@ pkgs: with pkgs; [
   unstable.rust-analyzer
   unstable.wezterm
   unstable.zls
+  unstable.zulu25
   unzip
   vimix-gtk-themes
   vlc
