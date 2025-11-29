@@ -119,7 +119,7 @@ in {
     isNormalUser = true;
     shell = pkgs.unstable.nushell;
     description = user;
-    extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" "libvirtd" ];
     packages = [];
   };
 
@@ -158,6 +158,14 @@ in {
       flake = flakeDir;
       package = pkgs.unstable.nh;
     };
+    virt-manager = {
+      enable = true;
+    };
+  };
+
+  virtualisation = {
+    libvirtd.enable = true;
+    spiceUSBRedirection.enable = true;
   };
 
   environment = {
