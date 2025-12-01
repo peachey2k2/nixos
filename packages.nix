@@ -109,6 +109,7 @@ pkgs: with pkgs; [
   unstable.zulu25
   unzip
   vimix-gtk-themes
+  virtiofsd
   vlc
   vscode
   waybar
