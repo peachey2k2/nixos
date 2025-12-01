@@ -65,68 +65,74 @@ in {
     };
   };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "tr";
-    variant = "intl";
-  };
-
-  # Configure console keymap
   console.keyMap = "trq";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services = {
+    xserver.xkb = {
+      layout = "tr";
+      variant = "intl";
+    };
+    # printing.enable = true;
+    blueman.enable = true;
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+
+      # use the example session manager (no others are packaged yet so this is enabled by default,
+      # no need to redefine it in your config for now)
+      #media-session.enable = true;
+    };
+
+    switcherooControl.enable = true;
+    upower.enable = true;
+    gvfs.enable = true;
+
+    cron = {
+      enable = true;
+      systemCronJobs = [
+      ];
+    };
+
+    getty = {
+      autologinUser = user;
+      autologinOnce = true;
+    };
+
+    # Enable the OpenSSH daemon.
+    openssh = {
+      enable = true;
+      ports = [ 22 ];
+      settings = {
+        PasswordAuthentication = true;
+        AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
+        UseDns = true;
+        X11Forwarding = false;
+        PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      };
+    };
+
+    qemuGuest.enable = true;
+    spice-vdagentd.enable = true;  # enable copy and paste between host and guest
+  };
+
+  hardware = {
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
+  };
   
   security.rtkit.enable = true;
   security.polkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  services.switcherooControl.enable = true;
-
-  services.upower.enable = true;
-  
-  # services.teamviewer.enable = true;
-  services.gvfs.enable = true;
-  # services.zerotierone = {
-  #   enable = true;
-  #   port = 9993;
-  # };
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-    ];
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.unstable.nushell;
     description = user;
     extraGroups = [ "networkmanager" "wheel" "docker" "video" "libvirtd" ];
     packages = [];
-  };
-
-  # Enable automatic login for the user.
-  services.getty = {
-    autologinUser = user;
-    autologinOnce = true;
   };
 
   programs = {
@@ -180,34 +186,12 @@ in {
     packages = import ./fonts.nix pkgs;
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    ports = [ 22 ];
-    settings = {
-      PasswordAuthentication = true;
-      AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
-      UseDns = true;
-      X11Forwarding = false;
-      PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
-    };
-  };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
   networking.firewall.allowedUDPPorts = [ 9993 25565 22 42000 42001 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
