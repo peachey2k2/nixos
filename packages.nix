@@ -23,6 +23,7 @@ pkgs: with pkgs; [
   dosbox-x
   duf
   ed
+  edb
   # emacs
   emote
   fasm
