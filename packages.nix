@@ -28,6 +28,7 @@ pkgs: with pkgs; [
   emote
   fasm
   fd
+  feh
   (fenix.withComponents ["cargo" "rustc"])
   # ffmpeg
   (flameshot.override { enableWlrSupport = true; })
