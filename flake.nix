@@ -1,5 +1,5 @@
 rec {
-  description = "My NixOS Configuration";
+  description = "six seven";
 
   # TODO: move these to somewhere else (idk rn since config.nix already exists)
   nixConfig = {
@@ -39,9 +39,9 @@ rec {
   };
 
   inputs = {
-    nixpkgs.url = "nixpkgs/25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs-unstable.inputs.nixpkgs.follows = "nixpkgs";
 
     # nixpkgs-master.url = "nixpkgs/master";
