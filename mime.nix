@@ -3,7 +3,7 @@
   defaultApplications = let
     fileManager = "thunar.desktop";
     text = "Helix.desktop";
-    image = "libresprite.desktop";
+    image = "feh.desktop";
     pdf = "org.pwmt.zathura-pdf-mupdf.desktop";
     word = "freeoffice-textmaker.desktop";
     video = "vlc.desktop";
