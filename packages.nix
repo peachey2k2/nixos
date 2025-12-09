@@ -52,6 +52,7 @@ pkgs: with pkgs; [
   # jdk8_headless
   jq
   jujutsu
+  kdePackages.kdenlive
   kdePackages.qtdeclarative
   krita
   lenovo-legion
@@ -84,6 +85,7 @@ pkgs: with pkgs; [
   php
   picom
   prismlauncher
+  protonvpn-gui
   python312Packages.python-lsp-server
   python3Minimal
   qbe
