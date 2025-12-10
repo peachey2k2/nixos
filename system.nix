@@ -176,9 +176,12 @@ in {
 
   environment = {
     variables = import ./envvars.nix pkgs homeDir;
-    systemPackages = import ./packages.nix pkgs ++ [
-      config.boot.kernelPackages.perf
-    ];
+    systemPackages =
+      import ./packages.nix pkgs ++
+      map (x: pkgs.makeDesktopItem x) (import ./desktop-extra.nix pkgs) ++
+      [
+        config.boot.kernelPackages.perf
+      ];
   };
 
   fonts = {

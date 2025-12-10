@@ -39,16 +39,13 @@ rec {
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs-unstable.inputs.nixpkgs.follows = "nixpkgs";
 
     # nixpkgs-master.url = "nixpkgs/master";
     # nixpkgs-master.inputs.nixpkgs.follows = "nixpkgs";
-
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
@@ -71,7 +68,6 @@ rec {
     nixpkgs,
     nixpkgs-unstable,
     # nixpkgs-master,
-    home-manager,
     nur,
     ...
   }:
@@ -115,19 +111,10 @@ rec {
               })
             ];
           }
-
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              backupFileExtension = "backup";
-              users.${username} = import ./home.nix;
-            };
-          }
         ];
       };
       packages.${system} = {
-        generated-configs = (import ./config.nix {inherit pkgs;}).standaloneConfig {};
+        generated-configs = (import ./config.nix {inherit pkgs;}).run {};
       };
 
       apps.${system} = {

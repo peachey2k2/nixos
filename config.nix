@@ -13,7 +13,15 @@ let
   };
 
   lib = pkgs.lib;
-  
+
+  # nixos removed pkgs.substituteAll so i do this instead.
+  # and no pkgs.replaceVars won't work since it errors when it doesn't find a replacement
+  safeSubstitute = src:
+    pkgs.runCommand
+      "processed-${builtins.baseNameOf src}"
+      replacements
+     ''substituteAll "${src}" "$out"'';
+
   getExt = filename: 
     let 
       split = lib.splitString "." filename;
@@ -34,7 +42,7 @@ let
         let
           ext = getExt relPath;
           file = if lib.elem ext allowedExtensions then
-            pkgs.substituteAll ({ src = path; } // replacements)
+            safeSubstitute path
           else
             path;
         in
@@ -43,11 +51,7 @@ let
         [];
 
 in {
-  hmConfig = {}:
-    lib.listToAttrs (map (x: lib.nameValuePair x.name { source = x.value; })
-      (processEntry configDir "directory"));
-
-  standaloneConfig = {}:
+  run = {}:
     pkgs.runCommand "generated-configs" {
       nativeBuildInputs = [ pkgs.coreutils ];
     } ''

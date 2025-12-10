@@ -1,5 +1,5 @@
 pkgs: with pkgs; [
-  emojione
+  # emojione # TODO: fix the fucking emojis
   corefonts
   miracode
   nerd-fonts.symbols-only
