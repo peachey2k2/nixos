@@ -1,0 +1,17 @@
+[Added Associations]
+
+[Default Applications]
+application/msword=freeoffice-textmaker.desktop
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+application/zip=xarchiver.desktop
+image/png=feh.desktop
+inode/directory=thunar.desktop
+text/markdown=Helix.desktop
+text/plain=Helix.desktop
+video/x-matroska=vlc.desktop
+x-scheme-handler/about=helium.desktop
+x-scheme-handler/http=helium.desktop
+x-scheme-handler/https=helium.desktop
+x-scheme-handler/unknown=helium.desktop
+
+[Removed Associations]
