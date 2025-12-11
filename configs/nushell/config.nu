@@ -6,6 +6,7 @@ $env.config.show_banner = false
 
 $env.EDITOR = "@editor@"
 $env.VISUAL = "@editor@"
+$env.SHELL = (^which nu)
 
 # default `rm` to send to trash instead of deleting. `-p` bypasses.
 $env.config.rm.always_trash = true
