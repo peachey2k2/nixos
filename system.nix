@@ -176,10 +176,14 @@ in {
 
   environment = {
     variables = import ./envvars.nix pkgs homeDir;
+
+    # sessionVariables = {
+    #   SHELL = "/bin/sh"; # otherwise some programs like gparted get pissed
+    # };
+
     systemPackages =
       import ./packages.nix pkgs ++
-      map (x: pkgs.makeDesktopItem x) (import ./desktop-extra.nix pkgs) ++
-      [
+      map (x: pkgs.makeDesktopItem x) (import ./desktop-extra.nix pkgs) ++ [
         config.boot.kernelPackages.perf
       ];
   };
