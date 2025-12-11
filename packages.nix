@@ -4,6 +4,7 @@ pkgs: with pkgs; [
   alsa-utils
   # android-studio
   anki
+  antigravity
   arc-icon-theme
   aseprite
   bc
@@ -36,6 +37,7 @@ pkgs: with pkgs; [
   fzf
   gcc
   gdb
+  ghostty
   git
   gnumake
   # go
@@ -72,7 +74,6 @@ pkgs: with pkgs; [
   ninja
   nodejs
   nur.repos.forkprince.helium-nightly
-  nur.repos.lonerOrz.antigravity
   nu_scripts
   nwg-look
   ocamlPackages.sexp

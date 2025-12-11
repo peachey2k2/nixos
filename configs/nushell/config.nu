@@ -75,12 +75,25 @@ alias "%list-packages" = nix-store -q --requisites /run/current-system/sw # temp
 alias "%logs"          = tail ~/nixos/log.txt
 alias "%rebuild"       = ~/nixos/scripts/rebuild.sh
 
-def "%env" [...pkgs] { nix shell ...$pkgs --command nu -e $"
-  $env.SHELL_DEPTH = (($env.SHELL_DEPTH | into int) + 1);
-  $env.NIX_SHELL_DEPTH = (($env.NIX_SHELL_DEPTH | into int) + 1)" 
+
+def --wrapped "%env" [...rest] {
+  nix shell ...(
+    $rest | each {|x|
+      if not (
+        ($x | str contains "#") or
+        ($x | str starts-with "-")
+      ) {
+        "nixpkgs#" ++ $x
+      } else {
+        $x
+      }
+    }
+  ) --command nu -e $"
+    $env.SHELL_DEPTH = (($env.SHELL_DEPTH | into int) + 1);
+    $env.NIX_SHELL_DEPTH = (($env.NIX_SHELL_DEPTH | into int) + 1)";
 }
 
-def "%devel" [] {
+def "%devel" [...rest] {
   let proj = try {
     (ls ~/development) ++ (ls ~/git) | where type == "dir" | get name | input list -f
   } catch { return }

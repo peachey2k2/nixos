@@ -11,9 +11,9 @@ Here is my entire NixOS system.
 There are some aliases I added to enhance my workflow:
 | alias | description |
 |---|---|
-|`%rebuild`|rebuilds the system and updates configs|
+|`%rebuild`|rebuilds the system|
 |`%edit`|opens the system flake on an editor|
-|`%config-reload`|updates all configs without a system update|
+|`%config-reload`|updates all configs|
 |`%list-packages`|list all installed packages|
 |`%clear-backups`|brings up a prompt to remove the old instances of every replaced config|
 |`%devel`|brings up a fuzzy finder to select between my projects|
