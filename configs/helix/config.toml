@@ -19,7 +19,8 @@ mode.select = "select"
 
 [editor.cursor-shape]
 insert = "bar"
-normal = "block"
+# normal = "block"
+normal = "underline" # otherwise it doesn't use a real cursor and ghostty shader can't pick up on it
 select = "underline"
 
 [editor.whitespace.render]

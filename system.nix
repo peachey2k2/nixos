@@ -177,9 +177,7 @@ in {
   environment = {
     variables = import ./envvars.nix pkgs homeDir;
 
-    # sessionVariables = {
-    #   SHELL = "/bin/sh"; # otherwise some programs like gparted get pissed
-    # };
+    shells = [ pkgs.nushell ];
 
     systemPackages =
       import ./packages.nix pkgs ++
