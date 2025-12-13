@@ -8,6 +8,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float completion = delta * (1.0/ANIMATION_LEN);
 
     vec2 pos = mix(iPreviousCursor.xy, iCurrentCursor.xy, completion);
+    vec2 size = mix(iPreviousCursor.zw, iCurrentCursor.zw, completion);
 
     vec2 bounds = pos - fragCoord;
     bounds.x *= -1;
@@ -15,11 +16,15 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     if (
         bounds.x >= 0.0 &&
         bounds.y >= 0.0 &&
-        bounds.x < iCurrentCursor.z &&
-        bounds.y < iCurrentCursor.w
+        bounds.x < size.x &&
+        bounds.y < size.y
     ) {
-        col = sqrt(col);
+        col = vec4(
+            sqrt(col.rgb*2) / sqrt(2),
+            col.a
+        );
     }
+
     fragColor = col;
 }
 

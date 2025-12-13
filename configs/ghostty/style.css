@@ -1,0 +1,31 @@
+tabbar tabbox {
+  margin: 0;
+  padding: 0;
+  min-height: 8px;
+  background-color: #011f3f;
+  font-family: monospace;
+}
+
+tabbar tabbox tab {
+  margin: 0;
+  padding: 0;
+  color: #9ca3af;
+  border-right: 1px solid #374151;
+}
+
+tabbar tabbox tab:selected {
+  background-color: #174f8f;
+  color: #c0c0c0;
+  min-width: 5px;
+}
+
+tabbar tabbox tab {
+  min-width: 5px;
+  background-color: #0b2f57;
+  color: #c0c0c0;
+  min-width: 5px;
+}
+
+tabbar tabbox tab label {
+  font-size: 13px;
+}
