@@ -175,7 +175,7 @@ in {
   };
 
   environment = {
-    variables = import ./envvars.nix pkgs homeDir;
+    sessionVariables = import ./envvars.nix pkgs homeDir;
 
     shells = [ pkgs.nushell ];
 
