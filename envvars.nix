@@ -7,4 +7,5 @@ pkgs: homeDir: with pkgs; {
   XDG_CONFIG_HOME = "${homeDir}/.config";
   EDITOR = "hx";
   VISUAL = "hx";
+  GTK_IM_MODULE = "simple";
 }
