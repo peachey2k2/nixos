@@ -13,7 +13,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 
     float delta = iTime - iTimeCursorChange;
     float completion = clamp(delta, 0.0, ANIMATION_LEN) / ANIMATION_LEN;
-    completion = sqrt(completion); // Ease out
+    completion = sqrt(completion);
 
     vec2 start = iPreviousCursor.xy;
     vec2 end = iCurrentCursor.xy;
