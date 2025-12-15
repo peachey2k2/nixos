@@ -122,7 +122,8 @@ pkgs: with pkgs; [
   wget
   wgsl-analyzer
   winetricks
-  wineWowPackages.staging
+  # wineWowPackages.staging
+  wineWowPackages.wayland
   wl-clipboard
   wofi
   xarchiver

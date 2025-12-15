@@ -1,9 +1,9 @@
+/* colors etc */
 tabbar tabbox {
   margin: 0;
   padding: 0;
   min-height: 8px;
   background-color: #011f3f;
-  font-family: monospace;
 }
 
 tabbar tabbox tab {
@@ -26,6 +26,12 @@ tabbar tabbox tab {
 
 tabbar tabbox tab label {
   font-size: 13px;
+  font-family: Miracode;
+}
+
+/* make it shorter */
+tabbar tabbox * {
+  min-height: 16px;
 }
 
 /* hack to hide the stupid gtk tab separators */
@@ -42,11 +48,22 @@ tabbar tabbox tab * {
   margin-left: 0px;
 }
 
-/* hack to hide the disable button */
+tabbar {
+  margin: 0px -2px;
+}
+
+/* hack to hide the close button */
 tabbar tabbox button {
   opacity: 0;
   min-height: 0;
   min-width: 0;
   margin: 0;
   margin-right: -100px;
+}
+
+/* hide the bottom indicator lines on each tab */
+tabbar tabbox, tabbar tabbox tab {
+  box-shadow: none;
+  border-bottom: none;
+  border: none;
 }
