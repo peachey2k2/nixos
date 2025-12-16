@@ -16,7 +16,6 @@ window-decoration = none
 
 background-opacity = 0.8
 
-
 cursor-opacity = 0
 custom-shader = "./shaders/cursor.glsl"
 custom-shader-animation = true
@@ -24,6 +23,11 @@ cursor-color = #0077bb
 cursor-text = cell-foreground
 adjust-cursor-thickness = 2
 
+# This is objectively stupid. If this is true (default),
+# it'll put ALL newly opened shells to the same cwd.
+# If it is false, it doesn't do that, EVEN IN NEW TABS
+# OF THE SAME TERMINAL WINDOW???? WHY??????????
+window-inherit-working-directory = false
 
 app-notifications = false
 
