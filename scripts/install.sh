@@ -18,7 +18,8 @@ if [[ "$result" -ne "0" ]]; then
 fi
 
 echo ">> generating configs..."
-"$NIX_DIR"/scripts/config-reload.sh
+nix run "$NIX_DIR"#generate-configs
+
 
 if [[ "$result" -ne "0" ]]; then
   exit 1

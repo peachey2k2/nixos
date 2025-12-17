@@ -16,6 +16,7 @@ rec {
       "https://cache.iog.io"
       "https://cuda-maintainers.cachix.org"
       "https://nixpkgs-unfree.cachix.org"
+      "https://install.determinate.systems"
     ];
 
     extra-trusted-public-keys = [
@@ -24,6 +25,7 @@ rec {
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPiCe+467rJVel7/TrsBQQQTfvs5cBUOQ="
       "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nqlt0="
+      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
     ];
 
     accept-flake-config      = true;
@@ -31,7 +33,7 @@ rec {
     flake-registry           = "";
     http-connections         = 50;
     max-substitution-jobs    = 32;
-    # lazy-trees               = true; # determinate
+    lazy-trees               = true; # determinate
     show-trace               = true;
     trusted-users            = [ "root" "@build" "@wheel" "@admin" ];
     use-cgroups              = true;
@@ -39,13 +41,12 @@ rec {
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs-unstable.inputs.nixpkgs.follows = "nixpkgs";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
-    # nixpkgs-master.url = "nixpkgs/master";
-    # nixpkgs-master.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+    nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
 
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
@@ -65,6 +66,7 @@ rec {
 
   outputs = inputs @ {
     self,
+    determinate,
     nixpkgs,
     nixpkgs-unstable,
     # nixpkgs-master,
@@ -81,6 +83,8 @@ rec {
         inherit system;
 
         modules = [
+          determinate.nixosModules.default
+          
           (
             import ./system.nix {
               user = username;
@@ -113,6 +117,7 @@ rec {
           }
         ];
       };
+
       packages.${system} = {
         generated-configs = (import ./config.nix {inherit pkgs;}).run {};
       };
@@ -124,9 +129,16 @@ rec {
             let
               configs = self.packages.${system}.generated-configs;
               script = pkgs.writeShellScriptBin "install-configs" ''
+                # sneaky gc root
+                mkdir -p "$HOME/.local/state"
+                "${pkgs.nix}/bin/nix-store" \
+                  --add-root "$HOME/.local/state/latest-configs" \
+                  --realise "${configs}"
+
                 echo "Installing config files to ~/.config"
-                mkdir -p $HOME/.config
-                cp -r --no-preserve=mode ${configs}/config/* $HOME/.config/
+                mkdir -p "$HOME/.config"
+
+                cp -r --no-preserve=mode "${configs}/config/"* "$HOME/.config/"
                 echo "Done!"
               '';
             in

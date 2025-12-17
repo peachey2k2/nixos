@@ -28,7 +28,7 @@ let
     in 
       if lib.length split > 1 then 
         lib.last split 
-      else "";
+     else "";
 
   processEntry = path: type:
     let
@@ -59,7 +59,7 @@ in {
       ${lib.concatMapStrings (file: ''
         targetPath="$out/config/${lib.escapeShellArg file.name}"
         mkdir -p "$(dirname "$targetPath")"
-        ln -sfT "${lib.escapeShellArg file.value}" "$targetPath"
+        ln -sfT "${file.value}" "$targetPath"
       '') (processEntry configDir "directory")}
     '';
 }

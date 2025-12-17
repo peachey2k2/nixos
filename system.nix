@@ -155,6 +155,7 @@ in {
         obs-backgroundremoval
         obs-pipewire-audio-capture
         droidcam-obs
+        input-overlay
       ];
     };
     nh = {
