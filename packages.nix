@@ -82,7 +82,7 @@ pkgs: with pkgs; [
   omnisharp-roslyn
   # onlyoffice-desktopeditors
   pavucontrol
-  pfetch
+  pfetch-rs
   php
   picom
   prismlauncher
