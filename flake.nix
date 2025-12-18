@@ -41,10 +41,7 @@ rec {
   };
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
     nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
 
