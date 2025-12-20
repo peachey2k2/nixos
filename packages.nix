@@ -37,6 +37,7 @@ pkgs: with pkgs; [
   fzf
   gcc
   gdb
+  gemini-cli
   ghostty
   git
   gnumake
