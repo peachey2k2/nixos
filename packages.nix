@@ -123,8 +123,8 @@ pkgs: with pkgs; [
   wget
   wgsl-analyzer
   winetricks
-  # wineWowPackages.staging
-  wineWowPackages.wayland
+  wineWowPackages.staging
+  wineWowPackages.waylandFull
   wl-clipboard
   wofi
   xarchiver
