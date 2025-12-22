@@ -35,9 +35,9 @@ let
       relPath = lib.removePrefix (toString configDir + "/") (toString path);
     in
       if type == "directory" then
-        lib.concatLists (lib.mapAttrsToList
+        lib.concatLists <| lib.mapAttrsToList
           (name: type: processEntry (path + "/${name}") type)
-          (builtins.readDir path))
+          (builtins.readDir path)
       else if type == "regular" then
         let
           ext = getExt relPath;
