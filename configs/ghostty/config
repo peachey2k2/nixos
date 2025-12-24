@@ -27,7 +27,7 @@ adjust-cursor-thickness = 2
 # it'll put ALL newly opened shells to the same cwd.
 # If it is false, it doesn't do that, EVEN IN NEW TABS
 # OF THE SAME TERMINAL WINDOW???? WHY??????????
-window-inherit-working-directory = false
+window-inherit-working-directory = true
 
 app-notifications = false
 
