@@ -77,6 +77,7 @@ pkgs: with pkgs; [
   nur.repos.forkprince.helium-nightly
   nu_scripts
   nwg-look
+  # nyxt
   ocamlPackages.sexp
   odin
   ols
