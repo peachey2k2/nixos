@@ -7,7 +7,7 @@ rec {
       "flakes"         # duh
       "nix-command"    # duh
       "pipe-operators" # Gives access to <| and |>, Prior works like $ in Haskell, latter is the same as in Elixir.
-      "cgroups"
+      "cgroups"        # https://wiki.archlinux.org/title/Cgroups
     ];
 
     extra-substituters = [
