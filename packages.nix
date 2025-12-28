@@ -124,7 +124,7 @@ pkgs: with pkgs; [
   wget
   wgsl-analyzer
   winetricks
-  wineWowPackages.staging
+  wineWowPackages.stable
   wineWowPackages.waylandFull
   wl-clipboard
   wofi
