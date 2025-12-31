@@ -8,7 +8,7 @@ let
   ];
   replacements = with pkgs; {
     editor = "hx";
-    miracode = miracode;
+    monaspace = monaspace;
     nu_scripts = nu_scripts;
   };
 

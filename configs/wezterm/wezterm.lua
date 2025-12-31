@@ -7,11 +7,11 @@ c.enable_wayland = true
 
 c.color_scheme = "catppuccin-mocha"
 
-c.font = wezterm.font("Miracode")
+c.font = wezterm.font("Monaspace Krypton")
 c.font_size = 11
 
 -- heard this helps with startup speed but it might be just placebo
-c.font_dirs = { "@miracode@/share/fonts/truetype" }
+c.font_dirs = { "@monaspace@/share/fonts/opentype" }
 c.font_locator="ConfigDirsOnly"
 
 c.window_background_opacity = 0.8
