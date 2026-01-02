@@ -1,6 +1,5 @@
 #!/bin/sh
 
-NIX_DIR="$(cd $(dirname $0) && pwd)/.."
 PACKAGES_FILE=$NIX_DIR/packages.nix
 LOG_FILE=$NIX_DIR/log.txt
 
