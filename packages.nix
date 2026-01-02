@@ -2,13 +2,11 @@ pkgs: with pkgs; [
   acpi
   alarm-clock-applet
   alsa-utils
-  # android-studio
   anki
   antigravity
   arc-icon-theme
   aseprite
   bc
-  # blender
   brave
   brightnessctl
   btop
@@ -20,18 +18,15 @@ pkgs: with pkgs; [
   cmake
   copyq
   cpu-x
-  # darwin.xcode
   dosbox-x
   duf
   ed
   edb
-  # emacs
   emote
   fasm
   fd
   feh
   (fenix.withComponents ["cargo" "rustc"])
-  # ffmpeg
   (flameshot.override { enableWlrSupport = true; })
   freeoffice
   fzf
@@ -41,18 +36,13 @@ pkgs: with pkgs; [
   ghostty
   git
   gnumake
-  # go
-  # gopls
   gparted
   gtkwave
   hexdump
   hyperfine
   hyprpolkitagent
-  # imagemagick
   iverilog
   jdk17_headless
-  # jdk21_headless
-  # jdk8_headless
   jq
   jujutsu
   kdePackages.kdenlive
@@ -60,12 +50,9 @@ pkgs: with pkgs; [
   krita
   lenovo-legion
   lf
-  # libllvm
   love
   luajit
   lua-language-server
-  # mako
-  # manim
   mpv
   neovim
   networkmanagerapplet
@@ -77,12 +64,10 @@ pkgs: with pkgs; [
   nur.repos.forkprince.helium-nightly
   nu_scripts
   nwg-look
-  # nyxt
   ocamlPackages.sexp
   odin
   ols
   omnisharp-roslyn
-  # onlyoffice-desktopeditors
   pavucontrol
   pfetch-rs
   php
@@ -96,7 +81,6 @@ pkgs: with pkgs; [
   renderdoc
   ripgrep
   satty
-  # SDL2
   starship
   svlangserver
   swaybg
@@ -105,10 +89,7 @@ pkgs: with pkgs; [
   unrar
   unstable.godot
   unstable.helix
-  # unstable.jetbrains.idea-community-bin
   unstable.llvmPackages_20.clang-tools
-  # unstable.llvmPackages_20.libllvm
-  # unstable.llvmPackages_20.llvm
   unstable.nushell
   unstable.rust-analyzer
   unstable.wezterm
