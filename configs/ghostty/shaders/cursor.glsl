@@ -25,7 +25,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec3 cursor_color = mix(iCurrentCursorColor.rgb, iPreviousCursorColor.rgb, completion);
 
     if (is_inside_box(fragCoord, head_pos, head_size)) {
-        vec3 brighten = sqrt(col.rgb * 2.0) / sqrt(2.0);
+        vec3 brighten = sqrt(col.rgb);
         col.rgb = mix(brighten, cursor_color, 0.3);
     } 
 
