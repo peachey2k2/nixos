@@ -2,6 +2,7 @@ pkgs: with pkgs; [
   acpi
   alarm-clock-applet
   alsa-utils
+  android-studio
   anki
   antigravity
   arc-icon-theme
@@ -16,6 +17,7 @@ pkgs: with pkgs; [
   clang
   cloc
   cmake
+  codex
   copyq
   cpu-x
   dosbox-x

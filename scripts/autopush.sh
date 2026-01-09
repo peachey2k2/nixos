@@ -1,6 +1,5 @@
 #!/bin/sh
 
-NIX_DIR="$(cd $(dirname $0) && pwd)/.."
 LOG_FILE=$NIX_DIR/log.txt
 
 cd $NIX_DIR
