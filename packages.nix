@@ -35,7 +35,6 @@ pkgs: with pkgs; [
   gcc
   gdb
   gemini-cli
-  ghostty
   git
   gnumake
   gparted
@@ -63,6 +62,7 @@ pkgs: with pkgs; [
   nimble
   ninja
   nodejs
+  ghostty
   nur.repos.forkprince.helium-nightly
   nu_scripts
   nwg-look
