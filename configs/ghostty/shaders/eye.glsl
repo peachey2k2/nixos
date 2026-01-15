@@ -24,11 +24,10 @@ float draw_eye(vec2 pxCoord) {
         }
 
         float eye = (p.x * p.x + p.y * p.y) / 4.0;
-        alpha = clamp(alpha, 0, 1);
         alpha += (eye < 360 && eye > 290 || eye < 20) ? iFocus : 0;
     }
 
-    return alpha;
+    return clamp(alpha, 0, 1);
 }
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
@@ -37,15 +36,17 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 
     vec2 pos = vec2(iCurrentCursor.x, iCurrentCursor.y);
 
-    float eye = draw_eye(fragCoord);
-
     float t = iFocus == 1
         ? 1-clamp(4*(iTime - iTimeFocus), 0, 1)
         : 1;
-    
-    col.rgb *= (1-t)/2 +0.5;
-    eye *= t;
 
-    col.rgb += eye;
+    col.rgb *= (1-t)/2 +0.5;
+
+    if (t > 0) {
+        float eye = draw_eye(fragCoord);
+        eye *= t;
+        col.rgb += eye;
+    }
+
     fragColor = col;
 }

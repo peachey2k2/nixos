@@ -59,6 +59,9 @@ rec {
 
     caelestia-cli.url = "github:caelestia-dots/cli";
     caelestia-cli.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    ghostty.url = "github:ghostty-org/ghostty";
+    ghostty.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = inputs @ {
@@ -109,6 +112,7 @@ rec {
                 fenix = inputs.fenix.packages.${system}.default;
                 caelestia-shell = inputs.caelestia-shell.packages.${system}.with-cli;
                 caelestia-cli = inputs.caelestia-cli.packages.${system}.with-shell;
+                ghostty = inputs.ghostty.packages.${system}.default;
               })
             ];
           }
