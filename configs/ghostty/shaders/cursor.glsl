@@ -11,11 +11,10 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 uv = fragCoord / iResolution.xy;
     vec4 col = texture(iChannel0, uv);
 
-    // TODO: add this with the next ghostty release
-    // if (iFocus == 0) {
-    //     fragColor = col;
-    //     return;
-    // }
+    if (iFocus == 0) {
+        fragColor = col;
+        return;
+    }
 
     float delta = iTime - iTimeCursorChange;
     float completion = clamp(delta, 0.0, ANIMATION_LEN) / ANIMATION_LEN;
