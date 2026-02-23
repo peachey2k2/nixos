@@ -77,7 +77,14 @@ rec {
       username = "pe";
       homeDir = "/home/" + username;
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          allowBroken = true;
+        };
+      };
     in {
       nixosConfigurations.chey = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -96,18 +103,17 @@ rec {
             nixpkgs.config = {
               allowUnfree = true;
               allowBroken = true;
-
-              packageOverrides = with pkgs; {
-                svlangserver = callPackage ./packages/svlangserver/default.nix {};
-                marked = callPackage ./packages/marked/default.nix {};
-              };
             };
 
             nixpkgs.overlays = [
               nur.overlays.default
               (final: prev: {
                 unstable = nixpkgs-unstable.legacyPackages.${system};
-                # master = nixpkgs-master.legacyPackages.${system};
+
+                svlangserver = pkgs.callPackage ./packages/svlangserver/default.nix {};
+                marked = pkgs.callPackage ./packages/marked/default.nix {};
+                zynk-cli = pkgs.callPackage ./packages/zynk-cli/default.nix {};
+                
                 zen-browser = inputs.zen-browser.packages.${system}.default;
                 fenix = inputs.fenix.packages.${system}.default;
                 caelestia-shell = inputs.caelestia-shell.packages.${system}.with-cli;

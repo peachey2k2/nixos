@@ -4,11 +4,11 @@ file-types = [ "c", "h" ]
 
 [[language]]
 name = "go"
-indent = { tab-width = 2, unit = "  " }
+indent = { tab-width = 2, unit = "\t" }
 
 [[language]]
 name = "zig"
-indent = { tab-width = 2, unit = "  " }
+indent = { tab-width = 2, unit = "\t" }
 
 [[grammar]]
 name = "zig"
@@ -20,11 +20,11 @@ language-servers = ["pylsp"]
 
 [[language]]
 name = "nasm"
-indent = { tab-width = 2, unit = "  " }
+indent = { tab-width = 2, unit = "\t" }
 
 [[language]]
 name = "rust"
-indent = { tab-width = 2, unit = "  " }
+indent = { tab-width = 2, unit = "\t" }
 
 [language-server.godot]
 command = "nc"

@@ -4,7 +4,6 @@ pkgs: with pkgs; [
   alsa-utils
   android-studio
   anki
-  antigravity
   arc-icon-theme
   aseprite
   bc
@@ -55,6 +54,8 @@ pkgs: with pkgs; [
   love
   luajit
   lua-language-server
+  man-pages
+  marksman
   mpv
   neovim
   networkmanagerapplet
@@ -70,7 +71,6 @@ pkgs: with pkgs; [
   odin
   ols
   omnisharp-roslyn
-  opencode
   pavucontrol
   pfetch-rs
   php
@@ -94,6 +94,7 @@ pkgs: with pkgs; [
   unstable.helix
   unstable.llvmPackages_20.clang-tools
   unstable.nushell
+  unstable.opencode
   unstable.rust-analyzer
   unstable.wezterm
   unstable.zls
@@ -122,4 +123,5 @@ pkgs: with pkgs; [
   zfxtop
   zig
   zsh
+  zynk-cli
 ]

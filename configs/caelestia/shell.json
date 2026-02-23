@@ -230,7 +230,7 @@
                 "name": "Random",
                 "icon": "casino",
                 "description": "Switch to a random wallpaper",
-                "command": ["caelestia", "wallpaper", "-r"],
+                "command": ["caelestia", "wallpaper", "-r", "~/.config/hypr/wallpapers/"],
                 "enabled": true,
                 "dangerous": false
             },
@@ -337,7 +337,7 @@
         "weatherLocation": "",
         "useFahrenheit": false,
         "useTwelveHourClock": false,
-        "smartScheme": true,
+        "smartScheme": false,
         "visualiserBars": 45
     },
     "session": {
