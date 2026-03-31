@@ -7,7 +7,6 @@ pkgs: with pkgs; [
   arc-icon-theme
   aseprite
   bc
-  brave
   brightnessctl
   btop
   caelestia-cli
@@ -27,15 +26,15 @@ pkgs: with pkgs; [
   fasm
   fd
   feh
-  (fenix.withComponents ["cargo" "rustc"])
+  (fenix.complete.withComponents ["cargo" "rustc" "rust-src"])
   (flameshot.override { enableWlrSupport = true; })
   freeoffice
   fzf
   gcc
   gdb
-  gemini-cli
-  ghostty
+  # ghostty
   git
+  gnome-keyring
   gnumake
   gparted
   gtkwave
@@ -43,6 +42,8 @@ pkgs: with pkgs; [
   hyperfine
   hyprpolkitagent
   iverilog
+  jai
+  jails
   jdk17_headless
   jq
   jujutsu
@@ -51,11 +52,13 @@ pkgs: with pkgs; [
   krita
   lenovo-legion
   lf
+  # loopspinner
   love
   luajit
   lua-language-server
   man-pages
   marksman
+  microfetch
   mpv
   neovim
   networkmanagerapplet
@@ -63,6 +66,7 @@ pkgs: with pkgs; [
   nim
   nimble
   ninja
+  niri
   nodejs
   nur.repos.forkprince.helium-nightly
   nu_scripts
@@ -72,7 +76,6 @@ pkgs: with pkgs; [
   ols
   omnisharp-roslyn
   pavucontrol
-  pfetch-rs
   php
   picom
   prismlauncher
@@ -83,19 +86,22 @@ pkgs: with pkgs; [
   qbittorrent
   renderdoc
   ripgrep
+  # rusic
+  rust-analyzer-nightly
   satty
   starship
   svlangserver
   swaybg
   sway-contrib.grimshot 
+  tokei
   typescript-language-server
   unrar
+  unstable.gemini-cli
   unstable.godot
   unstable.helix
   unstable.llvmPackages_20.clang-tools
   unstable.nushell
   unstable.opencode
-  unstable.rust-analyzer
   unstable.wezterm
   unstable.zls
   unstable.zulu25
@@ -106,6 +112,7 @@ pkgs: with pkgs; [
   vscode
   waybar
   wayvnc
+  weechat
   wget
   wgsl-analyzer
   winetricks
@@ -114,9 +121,13 @@ pkgs: with pkgs; [
   wl-clipboard
   wofi
   xarchiver
+  xdg-desktop-portal-gnome
+  xdg-desktop-portal-gtk
   xfce.thunar
   xfce.xfce4-terminal
   xorg.xhost
+  xwayland-satellite
+  yazi
   zathura
   zen-browser
   zerotierone

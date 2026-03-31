@@ -13,9 +13,9 @@ tac "$NIX_DIR/log.txt" | grep -q -m 1 "$(date +"%d-%m-%Y") ..:.. \[REBUILD\] rec
 updated_today="$?"
 
 if [[ "$updated_today" -eq "0" ]]; then
-  nh os switch "$NIX_DIR" -H chey --accept-flake-config
+  nh os switch "$NIX_DIR" -H chey --accept-flake-config $@
 else
-  nh os switch "$NIX_DIR" -H chey --update --accept-flake-config
+  nh os switch "$NIX_DIR" -H chey --update --accept-flake-config $@
 fi
 
 "$NIX_DIR"/scripts/sort-packages.sh

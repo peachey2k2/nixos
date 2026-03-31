@@ -17,6 +17,7 @@ rec {
       "https://cuda-maintainers.cachix.org"
       "https://nixpkgs-unfree.cachix.org"
       "https://install.determinate.systems"
+      "https://rusic.cachix.org"
     ];
 
     extra-trusted-public-keys = [
@@ -26,6 +27,7 @@ rec {
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPiCe+467rJVel7/TrsBQQQTfvs5cBUOQ="
       "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nqlt0="
       "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
+      "rusic.cachix.org-1:WXMpGpamblLUiJtcoxBxGGGGwIcWxGPJBUxarLiqWmw="
     ];
 
     accept-flake-config      = true;
@@ -43,7 +45,7 @@ rec {
   inputs = {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
-    nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+    nixpkgs-unstable.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/*";
 
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
@@ -59,9 +61,13 @@ rec {
 
     caelestia-cli.url = "github:caelestia-dots/cli";
     caelestia-cli.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    caelestia-cli.inputs.caelestia-shell.follows = "caelestia-shell";
 
-    ghostty.url = "github:ghostty-org/ghostty";
-    ghostty.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # ghostty.url = "github:ghostty-org/ghostty";
+    # ghostty.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    # rusic.url = "github:temidaradev/rusic";
+    # rusic.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = inputs @ {
@@ -89,7 +95,9 @@ rec {
       nixosConfigurations.chey = nixpkgs.lib.nixosSystem {
         inherit system;
 
-        modules = [
+        modules = let
+          system = pkgs.stdenv.hostPlatform.system;
+        in [
           determinate.nixosModules.default
           
           (
@@ -107,18 +115,25 @@ rec {
 
             nixpkgs.overlays = [
               nur.overlays.default
+
+              inputs.fenix.overlays.default
+
               (final: prev: {
                 unstable = nixpkgs-unstable.legacyPackages.${system};
 
                 svlangserver = pkgs.callPackage ./packages/svlangserver/default.nix {};
                 marked = pkgs.callPackage ./packages/marked/default.nix {};
                 zynk-cli = pkgs.callPackage ./packages/zynk-cli/default.nix {};
+                jai = pkgs.callPackage ./packages/jai/default.nix {};
+                jails = pkgs.callPackage ./packages/jails/default.nix {};
                 
                 zen-browser = inputs.zen-browser.packages.${system}.default;
-                fenix = inputs.fenix.packages.${system}.default;
                 caelestia-shell = inputs.caelestia-shell.packages.${system}.with-cli;
                 caelestia-cli = inputs.caelestia-cli.packages.${system}.with-shell;
                 ghostty = inputs.ghostty.packages.${system}.default;
+                rusic = inputs.rusic.packages.${system}.default;
+
+                # loopspinner = pkgs.callPackage /home/pe/development/loopspinner { };
               })
             ];
           }

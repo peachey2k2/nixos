@@ -66,18 +66,33 @@ def --wrapped "nix develop" [...args] {
   "
 }
 
-alias duf = duf --only-mp /,/boot --output mountpoint,size,used,avail,usage
+alias duf = duf --only-mp /,/home --output mountpoint,size,avail,usage
 
-alias "%clear-backups" = ~/nixos/scripts/clear-backups.sh
-alias "%config-reload" = ~/nixos/scripts/config-reload.sh
-alias "%edit"          = hx ~/nixos/flake.nix -w ~/nixos
-alias "%list-packages" = nix-store -q --requisites /run/current-system/sw # temp fix
-alias "%logs"          = tail ~/nixos/log.txt
-alias "%rebuild"       = ~/nixos/scripts/rebuild.sh
+alias "%clear-backups" = /home/pe/nixos/scripts/clear-backups.sh          # clear all .backup files to prevent conflicts on config replaces
+alias "%config-reload" = /home/pe/nixos/scripts/config-reload.sh          # rebuild all config files in nixos/configs
+alias "%edit"          = hx /home/pe/nixos/flake.nix -w /home/pe/nixos    # edit the system flake
+alias "%list"          = nix-store -q --requisites /run/current-system/sw # list all store paths for the current system derivation
+alias "%logs"          = tail /home/pe/nixos/log.txt                      # calls `tail` on script logs
+alias "%rebuild"       = /home/pe/nixos/scripts/rebuild.sh                # rebuild the system derivation
 
+# its the fortify warning bullshit on -o0
+# ~@amaanq
+$env.NIX_HARDENING_ENABLE = ($env.NIX_HARDENING_ENABLE? | default '' | split row ' ' | where { $in !~ 'fortify' } | str join ' ') 
+
+def --wrapped run0 [...rest] {
+  (^run0
+    --setenv=TERMINFO=($env.TERMINFO?)
+    --setenv=STARSHIP_CONFIG=($env.HOME)/.config/starship.toml
+    ...$rest)
+}
+
+def --wrapped sudo [...rest] {
+  print "use run0 instead!!!!"
+  run0 ...$rest
+}
 
 def --wrapped "%env" [...rest] {
-  nix shell ...(
+  NIXPKGS_ALLOW_UNFREE=1 NIXPKGS_ALLOW_INSECURE=1 nix shell --impure ...(
     $rest | each {|x|
       if not (
         ($x | str contains "#") or
@@ -95,9 +110,12 @@ def --wrapped "%env" [...rest] {
 
 def "%devel" [...rest] {
   let proj = try {
-    (ls ~/development) ++ (ls ~/git) | where type == "dir" | get name | input list -f
+    (ls /home/pe/development) ++ (ls /home/pe/git) | where type == "dir" | get name | input list -f
   } catch { return }
-  if ($"($proj)/flake.nix" | path exists) {
+  if (
+    ($"($proj)/flake.nix" | path exists) and
+    not (nix flake show $proj --quiet --json e> /dev/null | from json | get -o inventory.devShells.output.children.x86_64-linux | is-empty)
+    ) {
     core-nix-develop $proj --command nu -e $"
       cd ($proj);
       $env.SHELL_DEPTH = (($env.SHELL_DEPTH | into int) + 1);
@@ -145,6 +163,16 @@ def "nu-keybind commandline-copy" []: nothing -> nothing {
   | clip copy --ansi
 }
 
+def --env y [...args] {
+  let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+  ^yazi ...$args --cwd-file $tmp
+  let cwd = (open $tmp)
+  if $cwd != $env.PWD and ($cwd | path exists) {
+    cd $cwd
+  }
+  rm -fp $tmp
+}
+
 $env.config.keybindings ++= [
   {
     name: copy_color_commandline
@@ -158,8 +186,17 @@ $env.config.keybindings ++= [
   }
 ]
 
+$env.RUST_BACKTRACE = 1
+
+
 if not ("DISPLAY" in $env) and (tty) == "/dev/tty1" {
+  try {
+    nvidia-smi --query-gpu=name --format=csv,noheader o+e> /dev/null
+    $env.NVIDIA_GPU_ENABLED = "1"
+  } catch {}
+
   exec Hyprland
 }
 
-$env.RUST_BACKTRACE = 1
+
+alias nduf = /home/pe/development/disk-size/nduf

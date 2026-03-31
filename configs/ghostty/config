@@ -29,6 +29,12 @@ tab-inherit-working-directory = true
 
 app-notifications = false
 
+# ghostty tries to add an alias to sudo to preserve $env.TERMINFO
+# but that fucks with my own alias to run0, so we disable it here
+shell-integration-features = no-sudo
+# aaaaaand this doesn't work, so i'll just turn it off altogether:
+shell-integration = none
+
 keybind = ctrl+shift+r=reload_config
 
 keybind = ctrl+t=new_tab
