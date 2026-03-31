@@ -27,10 +27,13 @@ c.window_padding = {
 }
 
 -- disable ligatures
-c.harfbuzz_features = { 'calt = 0', 'clig = 0', 'liga = 0' }
+-- c.harfbuzz_features = { 'calt = 0', 'clig = 0', 'liga = 0' }
 
 c.use_fancy_tab_bar = false
+c.tab_max_width = 32
+
 c.hide_tab_bar_if_only_one_tab = true
+
 c.colors = {
   tab_bar = {
     background = "#071f3f",

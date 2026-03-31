@@ -33,3 +33,13 @@ args = ["127.0.0.1", "6005"]
 [[language]]
 name = "gdscript"
 language-servers = ["godot"]
+
+[language-server.jails]
+command = "jails"
+
+[[language]]
+name = "jai"
+scope = "source.jai"
+file-types = ["jai"]
+comment-tokens = "//"
+language-servers = ["jails"]

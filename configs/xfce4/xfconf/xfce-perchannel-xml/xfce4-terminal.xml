@@ -8,7 +8,7 @@
   <property name="misc-borders-default" type="bool" value="false"/>
   <property name="misc-slim-tabs" type="bool" value="true"/>
   <property name="scrolling-bar" type="string" value="TERMINAL_SCROLLBAR_NONE"/>
-  <property name="font-name" type="string" value="Miracode 11"/>
+  <property name="font-name" type="string" value="Monaspace Krypton 11"/>
   <property name="misc-default-geometry" type="string" value="72x24"/>
   <property name="cell-width-scale" type="double" value="1"/>
   <property name="text-blink-mode" type="string" value="TERMINAL_TEXT_BLINK_MODE_FOCUSED"/>
@@ -16,7 +16,7 @@
   <property name="font-use-system" type="bool" value="false"/>
   <property name="misc-confirm-close" type="bool" value="false"/>
   <property name="color-foreground" type="string" value="#d5d0c9"/>
-  <property name="color-background" type="string" value="#181818"/>
+  <property name="color-background" type="string" value="#181825"/>
   <property name="color-cursor-foreground" type="string" value=""/>
   <property name="color-cursor" type="string" value="#efc4cd"/>
   <property name="color-cursor-use-default" type="bool" value="true"/>

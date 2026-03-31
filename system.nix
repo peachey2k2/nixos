@@ -9,12 +9,17 @@ in {
     # either generate and cp this or find it elsewhere
     ./hardware-configuration.nix
     # nvidia, optimus etc.
-    # ./nvidia.nix
+    ./nvidia.nix
   ];
 
   nix.settings = nixConfig;
 
-  # Bootloader.
+  systemd = {
+    settings.Manager = {
+      DefaultTimeoutStopSec = "4s";
+    };
+  };
+  
   boot = {
     loader = {
       systemd-boot = {
@@ -124,8 +129,11 @@ in {
     bluetooth.powerOnBoot = true;
   };
   
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;    
+    # sudo.enable = false; # commenting for now to not cause inconvenience if somethinng fucks up with run0
+  };
 
   users.users.${user} = {
     isNormalUser = true;
