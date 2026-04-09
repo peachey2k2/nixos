@@ -1,5 +1,6 @@
 # format = "${env_var.NIX_SHELL_DEPTH}"
 format = """
+${env_var.TODO_ITEM}\
 $os\
 $username\
 $hostname\
@@ -105,6 +106,10 @@ error_symbol = '[](cyan)'
 
 [os]
 disabled = false
+
+[env_var.TODO_ITEM]
+format = "[ task: ](yellow)[$env_value\n]()"
+variable = "TODO_ITEM"
 
 [env_var.NIX_SHELL_DEPTH]
 format = "[$env_value]()"

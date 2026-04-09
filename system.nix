@@ -132,7 +132,7 @@ in {
   security = {
     rtkit.enable = true;
     polkit.enable = true;    
-    # sudo.enable = false; # commenting for now to not cause inconvenience if somethinng fucks up with run0
+    sudo.enable = false; # commenting for now to not cause inconvenience if somethinng fucks up with run0
   };
 
   users.users.${user} = {
@@ -153,6 +153,7 @@ in {
     hyprland = {
       enable = true;
       xwayland.enable = true;
+      package = pkgs.unstable.hyprland;
     };
     obs-studio = {
       enable = true;

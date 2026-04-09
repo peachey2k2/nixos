@@ -17,7 +17,6 @@ rec {
       "https://cuda-maintainers.cachix.org"
       "https://nixpkgs-unfree.cachix.org"
       "https://install.determinate.systems"
-      "https://rusic.cachix.org"
     ];
 
     extra-trusted-public-keys = [
@@ -27,7 +26,6 @@ rec {
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPiCe+467rJVel7/TrsBQQQTfvs5cBUOQ="
       "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nqlt0="
       "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
-      "rusic.cachix.org-1:WXMpGpamblLUiJtcoxBxGGGGwIcWxGPJBUxarLiqWmw="
     ];
 
     accept-flake-config      = true;
@@ -63,11 +61,8 @@ rec {
     caelestia-cli.inputs.nixpkgs.follows = "nixpkgs-unstable";
     caelestia-cli.inputs.caelestia-shell.follows = "caelestia-shell";
 
-    # ghostty.url = "github:ghostty-org/ghostty";
-    # ghostty.inputs.nixpkgs.follows = "nixpkgs-unstable";
-
-    # rusic.url = "github:temidaradev/rusic";
-    # rusic.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    _0fetch.url = "github:peachey2k2/0fetch";
+    _0fetch.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = inputs @ {
@@ -131,7 +126,7 @@ rec {
                 caelestia-shell = inputs.caelestia-shell.packages.${system}.with-cli;
                 caelestia-cli = inputs.caelestia-cli.packages.${system}.with-shell;
                 ghostty = inputs.ghostty.packages.${system}.default;
-                rusic = inputs.rusic.packages.${system}.default;
+                _0fetch = inputs._0fetch.packages.${system}.default;
 
                 # loopspinner = pkgs.callPackage /home/pe/development/loopspinner { };
               })
