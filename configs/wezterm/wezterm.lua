@@ -5,7 +5,14 @@ local a = wezterm.action
 
 c.enable_wayland = true
 
-c.color_scheme = "catppuccin-mocha"
+c.color_scheme =
+  -- "catppuccin-mocha"
+  -- "Decaf (base16)"
+  -- "Dehydration (Gogh)"
+  -- "Dimmed Monokai (Gogh)"
+  -- "Doom Peacock"
+  "duskfox"
+;;
 
 c.font = wezterm.font("Monaspace Krypton")
 c.font_size = 11

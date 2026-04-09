@@ -1,4 +1,5 @@
 pkgs: with pkgs; [
+  _0fetch
   acpi
   alarm-clock-applet
   alsa-utils
@@ -15,7 +16,6 @@ pkgs: with pkgs; [
   clang
   cloc
   cmake
-  codex
   copyq
   cpu-x
   dosbox-x
@@ -42,11 +42,12 @@ pkgs: with pkgs; [
   hyperfine
   hyprpolkitagent
   iverilog
-  jai
-  jails
+  # jai
+  # jails
   jdk17_headless
   jq
   jujutsu
+  kdePackages.kdeconnect-kde
   kdePackages.kdenlive
   kdePackages.qtdeclarative
   krita
@@ -84,6 +85,7 @@ pkgs: with pkgs; [
   python3Minimal
   qbe
   qbittorrent
+  (qdiskinfo.override { themeBundle = qdiskinfo.themeBundles.aoi; })
   renderdoc
   ripgrep
   # rusic
@@ -96,7 +98,6 @@ pkgs: with pkgs; [
   tokei
   typescript-language-server
   unrar
-  unstable.gemini-cli
   unstable.godot
   unstable.helix
   unstable.llvmPackages_20.clang-tools
@@ -123,6 +124,7 @@ pkgs: with pkgs; [
   xarchiver
   xdg-desktop-portal-gnome
   xdg-desktop-portal-gtk
+  xdg-utils
   xfce.thunar
   xfce.xfce4-terminal
   xorg.xhost
@@ -133,6 +135,5 @@ pkgs: with pkgs; [
   zerotierone
   zfxtop
   zig
-  zsh
   zynk-cli
 ]
