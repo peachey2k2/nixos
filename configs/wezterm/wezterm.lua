@@ -14,11 +14,19 @@ c.color_scheme =
   "duskfox"
 ;;
 
-c.font = wezterm.font("Monaspace Krypton")
+c.font = wezterm.font_with_fallback({
+  "Monaspace Krypton",
+  "Noto Sans Mono CJK JP",
+  {family = "Twitter Color Emoji", assume_emoji_presentation = true},
+})
 c.font_size = 11
 
 -- heard this helps with startup speed but it might be just placebo
-c.font_dirs = { "@monaspace@/share/fonts/opentype" }
+c.font_dirs = {
+  "@monaspace@/share/fonts/opentype",
+  "@noto_cjk@/share/fonts/opentype",
+  "@twemoji@/share/fonts/truetype",
+}
 c.font_locator="ConfigDirsOnly"
 
 c.window_background_opacity = 0.8
@@ -107,6 +115,10 @@ addKey("CTRL",       "Tab",         a.ActivateTabRelative(1))
 addKey("CTRL|SHIFT", "Tab",         a.ActivateTabRelative(-1))
 addKey("CTRL",       "PageUp",      a.ActivateTabRelative(1))
 addKey("CTRL",       "PageDown",    a.ActivateTabRelative(-1))
+
+
+-- ctrl+shift+u collides with fcitx5
+addKey("CTRL|SHIFT", "y",           a.CharSelect{})
 
 c.warn_about_missing_glyphs = false
 

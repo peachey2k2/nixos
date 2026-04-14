@@ -68,6 +68,18 @@ in {
       LC_TELEPHONE = "tr_TR.UTF-8";
       LC_TIME = "tr_TR.UTF-8";
     };
+
+    inputMethod = {
+      enable = true;
+      enabled = "fcitx5";
+      fcitx5 = {
+        waylandFrontend = true;
+        addons = with pkgs; [
+          fcitx5-mozc
+          fcitx5-gtk
+        ];
+      };
+    };
   };
 
   console.keyMap = "trq";
@@ -131,8 +143,24 @@ in {
   
   security = {
     rtkit.enable = true;
-    polkit.enable = true;    
-    sudo.enable = false; # commenting for now to not cause inconvenience if somethinng fucks up with run0
+    sudo.enable = false; # run0 ftw
+
+    polkit = {
+      enable = true;
+
+      # NOTE: stable has polkit 126 but AUTH_KEEP was added in 127
+      # https://github.com/polkit-org/polkit/pull/533
+      package = pkgs.unstable.polkit;
+      
+      extraConfig = /* js */ ''
+        // this is so run0 doesn't keep asking for auth (but it doesn't work and i have no clue why)
+        polkit.addRule(function(action, subject) {
+          if (action.id == "org.freedesktop.systemd1.manage-units" && subject.isInGroup("wheel")) {
+            return polkit.Result.AUTH_KEEP;
+          }
+        });
+      '';
+    };
   };
 
   users.users.${user} = {
@@ -205,15 +233,42 @@ in {
 
   fonts = {
     enableDefaultPackages = true;
-    packages = import ./fonts.nix pkgs;
+
+    packages = with pkgs; [
+      twemoji-color-font # TODO: fix the fucking emojis
+      corefonts
+      miracode
+      monaspace
+      nerd-fonts.symbols-only
+      noto-fonts-cjk-sans
+    ];
+
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = "Monaspace Krypton";
+        emoji = "Twitter Color Emoji";
+      }
+    };
   };
 
 
-  networking.firewall.allowedUDPPorts = [ 9993 25565 22 42000 42001 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  
+  networking.firewall = let
+    allowedPorts = [
+      9993 25565 22 42000 42001
+    ];
 
+    allowedPortRanges = [
+      { from = 1714; to = 1764; } # kde connect
+    ];
 
+  in {
+    allowedTCPPorts = allowedPorts;
+    allowedUDPPorts = allowedPorts;
+    allowedTCPPortRanges = allowedPortRanges;
+    allowedUDPPortRanges = allowedPortRanges;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

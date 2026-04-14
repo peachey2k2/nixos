@@ -4,11 +4,7 @@ source nushell.nu
 source cmds.nu
 
 use lib/todo.nu *
-
-if "IS_SHELL_INITIALIZED" in $env == false {
-  $env.IS_SHELL_INITIALIZED = true;
-  source opener.nu
-}
+use lib/cheatsheets/mod.nu *
 
 if not ("DISPLAY" in $env) and (tty) == "/dev/tty1" {
   try {
@@ -19,3 +15,7 @@ if not ("DISPLAY" in $env) and (tty) == "/dev/tty1" {
   exec Hyprland
 }
 
+if not ((tty) =~ "/dev/tty") and "IS_NUSHELL_INITIALIZED" in $env == false {
+  $env.IS_NUSHELL_INITIALIZED = true;
+  source opener.nu
+}
