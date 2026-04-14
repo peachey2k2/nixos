@@ -83,7 +83,7 @@ rec {
         inherit system;
         config = {
           allowUnfree = true;
-          allowBroken = true;
+          # allowBroken = true;
         };
       };
     in {
@@ -125,7 +125,6 @@ rec {
                 zen-browser = inputs.zen-browser.packages.${system}.default;
                 caelestia-shell = inputs.caelestia-shell.packages.${system}.with-cli;
                 caelestia-cli = inputs.caelestia-cli.packages.${system}.with-shell;
-                ghostty = inputs.ghostty.packages.${system}.default;
                 _0fetch = inputs._0fetch.packages.${system}.default;
 
                 # loopspinner = pkgs.callPackage /home/pe/development/loopspinner { };

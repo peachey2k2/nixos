@@ -20,31 +20,34 @@ def todo-undone-items [] {
 }
 
 def todo-mark-done [line: int] {
-  let file_lines = (open --raw (todo-file) | lines)
-  let updated = (
-    $file_lines
-    | enumerate
-    | each {|row|
-      if ($row.index + 1) == $line {
-        $row.item | str replace -r '^- \[ \] ' '- [x] '
-      } else {
-        $row.item
-      }
-    }
+  let file_lines = open --raw (todo-file) | lines
+  let updated = $file_lines
+    | update ($line - 1) ($file_lines
+      | get ($line - 1)
+      | str replace -r '^- \[ \] ' '- [x] '
+    )
     | str join (char nl)
-  )
 
-  $"($updated)\n" | save (todo-file)
+  $"($updated)\n" | save -a (todo-file)
+}
+
+def todo-mark-delete [line: int] {
+  let updated = open --raw (todo-file)
+    | lines
+    | drop nth ($line - 1)
+    | str join (char nl)
+
+  $"($updated)\n" | save -a (todo-file)
 }
 
 def todo-confirm-finished [item: string] {
   let answer = try {
-    ["yes", "no"] | input list $"Finished implementing: [($item)]?"
+    ["yes", "no", "delete"] | input list -f $"Finished implementing: [($item)]?"
   } catch {
-    return false
+    return "no"
   }
 
-  $answer == "yes"
+  $answer
 }
 
 def --env todo-work-item [item: record] {
@@ -55,11 +58,16 @@ def --env todo-work-item [item: record] {
   nu
   hide-env TODO_ITEM
 
-  if (todo-confirm-finished $item.text) {
-    todo-mark-done $item.line
-    print "Marked as done."
-  } else {
-    print "Kept as undone."
+  let answer = (todo-confirm-finished $item.text)
+
+  match $answer {
+    "yes" => {
+      todo-mark-done $item.line
+    },
+    "delete" => {
+      todo-mark-delete $item.line      
+    },
+    _ => {},
   }
 }
 
@@ -90,7 +98,7 @@ def todo-add-items-from-editor [] {
   }
 
   let formatted = ($new_items | each {|l| $"- [ ] ($l)"} | str join (char nl))
-  $"($formatted)\n" | save --append (todo-file)
+  $"($formatted)\n" | save -a (todo-file)
 
   $new_items
   | enumerate

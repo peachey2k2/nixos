@@ -8,7 +8,12 @@ let
   ];
   replacements = with pkgs; {
     editor = "hx";
+
     monaspace = monaspace;
+    noto_cjk = noto-fonts-cjk-sans;
+    twemoji = twemoji-color-font;
+    symbols_nerd_font = nerd-fonts.symbols-only;
+
     nu_scripts = nu_scripts;
   };
 
@@ -57,7 +62,7 @@ in {
     } ''
       mkdir -p $out/config
       ${lib.concatMapStrings (file: ''
-        targetPath="$out/config/${lib.escapeShellArg file.name}"
+        targetPath="$out/config/${file.name}"
         mkdir -p "$(dirname "$targetPath")"
         ln -sfT "${file.value}" "$targetPath"
       '') (processEntry configDir "directory")}

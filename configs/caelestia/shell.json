@@ -366,7 +366,7 @@
             "configLoaded": true,
             "dndChanged": true,
             "gameModeChanged": true,
-            "kbLayoutChanged": true,
+            "kbLayoutChanged": false,
             "numLockChanged": true,
             "vpnChanged": true,
             "nowPlaying": false
