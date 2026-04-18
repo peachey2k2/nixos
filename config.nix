@@ -11,7 +11,7 @@ let
 
     monaspace = monaspace;
     noto_cjk = noto-fonts-cjk-sans;
-    twemoji = twemoji-color-font;
+    twemoji = twitter-color-emoji;
     symbols_nerd_font = nerd-fonts.symbols-only;
 
     nu_scripts = nu_scripts;

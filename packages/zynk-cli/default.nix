@@ -6,7 +6,7 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "zynk-cli";
-  version = "1.0.0";
+  version = "1.1.0";
 
   src = fetchurl {
     url = "https://zynk.it/downloads/latest/linux/cli/x86";

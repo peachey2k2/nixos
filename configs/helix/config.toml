@@ -30,6 +30,10 @@ nbsp = "all"
 [editor.whitespace.characters]
 nbsp = "x"
 
+[editor.indent-guides]
+render = true
+character = "▏"
+
 # [editor.inline-diagnostics]
 # cursor-line = "warning" 
 # other-lines = "error"
@@ -37,8 +41,8 @@ nbsp = "x"
 [editor.soft-wrap]
 enable = true
 
-# [editor.smart-tab]
-# supersede-menu = true
+[editor.smart-tab]
+enable = false # still no clue what smart tab actually does
 
 [keys.normal]
 "C-left" = "move_prev_word_start"

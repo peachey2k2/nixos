@@ -1,8 +1,10 @@
-use jj.nu [jj-cheatsheet]
+use jj.nu
+use systemd-timers.nu
 
 def all-cheatsheets [] {
   [
-    (jj-cheatsheet)
+    (jj cheatsheet)
+    (systemd-timers cheatsheet)
   ]
 }
 
