@@ -22,12 +22,12 @@ c.font = wezterm.font_with_fallback({
 c.font_size = 11
 
 -- heard this helps with startup speed but it might be just placebo
+c.font_locator="ConfigDirsOnly"
 c.font_dirs = {
   "@monaspace@/share/fonts/opentype",
   "@noto_cjk@/share/fonts/opentype",
   "@twemoji@/share/fonts/truetype",
 }
-c.font_locator="ConfigDirsOnly"
 
 c.window_background_opacity = 0.8
 c.window_content_alignment = {

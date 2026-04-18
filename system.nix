@@ -235,7 +235,7 @@ in {
     enableDefaultPackages = true;
 
     packages = with pkgs; [
-      twemoji-color-font # TODO: fix the fucking emojis
+      twitter-color-emoji # TODO: fix the fucking emojis
       corefonts
       miracode
       monaspace
@@ -246,9 +246,9 @@ in {
     fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = "Monaspace Krypton";
-        emoji = "Twitter Color Emoji";
-      }
+        monospace = ["Monaspace Krypton"];
+        emoji = ["Twitter Color Emoji"];
+      };
     };
   };
 

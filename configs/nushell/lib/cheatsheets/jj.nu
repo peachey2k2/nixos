@@ -1,4 +1,4 @@
-export def jj-cheatsheet [] {
+export def cheatsheet [] {
   {
     command: "jj"
     aliases: ["jj", "jujutsu"]

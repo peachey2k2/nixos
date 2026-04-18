@@ -54,10 +54,10 @@ rec {
     fenix.url = "github:nix-community/fenix/monthly";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    caelestia-shell.url = "github:caelestia-dots/shell";
+    caelestia-shell.url = "github:caelestia-dots/shell?rev=aa2b08dd45963dc9558de94dbff5e1615e347d02";
     caelestia-shell.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    caelestia-cli.url = "github:caelestia-dots/cli";
+    caelestia-cli.url = "github:caelestia-dots/cli?rev=b4b26ab5d50dd56ec7c5c64fa125b6d8da75b702";
     caelestia-cli.inputs.nixpkgs.follows = "nixpkgs-unstable";
     caelestia-cli.inputs.caelestia-shell.follows = "caelestia-shell";
 
@@ -76,6 +76,7 @@ rec {
   }:
     let
       username = "pe";
+      hostname = "chey";
       homeDir = "/home/" + username;
       system = "x86_64-linux";
 
@@ -87,14 +88,14 @@ rec {
         };
       };
     in {
-      nixosConfigurations.chey = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
 
         modules = let
           system = pkgs.stdenv.hostPlatform.system;
         in [
           determinate.nixosModules.default
-          
+
           (
             import ./system.nix {
               user = username;
@@ -121,7 +122,7 @@ rec {
                 zynk-cli = pkgs.callPackage ./packages/zynk-cli/default.nix {};
                 jai = pkgs.callPackage ./packages/jai/default.nix {};
                 jails = pkgs.callPackage ./packages/jails/default.nix {};
-                
+
                 zen-browser = inputs.zen-browser.packages.${system}.default;
                 caelestia-shell = inputs.caelestia-shell.packages.${system}.with-cli;
                 caelestia-cli = inputs.caelestia-cli.packages.${system}.with-shell;
