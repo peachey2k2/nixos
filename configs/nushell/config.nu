@@ -12,7 +12,7 @@ if not ("DISPLAY" in $env) and (tty) == "/dev/tty1" {
     $env.NVIDIA_GPU_ENABLED = "1"
   } catch {}
 
-  exec Hyprland
+  exec start-hyprland
 }
 
 if not ((tty) =~ "/dev/tty") and "IS_NUSHELL_INITIALIZED" in $env == false {

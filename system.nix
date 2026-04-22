@@ -235,7 +235,7 @@ in {
     enableDefaultPackages = true;
 
     packages = with pkgs; [
-      twitter-color-emoji # TODO: fix the fucking emojis
+      twitter-color-emoji
       corefonts
       miracode
       monaspace

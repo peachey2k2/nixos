@@ -17,10 +17,34 @@ export def cheatsheet [] {
       {task: "Create user timer file path", command: "~/.config/systemd/user/<name>.timer", note: "Pair with matching <name>.service"}
       {task: "Create system timer file path", command: "/etc/systemd/system/<name>.timer", note: "System-wide service account or root"}
       {task: "Catch up after downtime", command: "Persistent=true", note: "Add in [Timer] to run missed events"}
-      {task: "NixOS: every 15 minutes", command: "systemd.timers.\"cache-prune\" = { wantedBy = [\"timers.target\"]; timerConfig = { OnCalendar = \"*:0/15\"; Unit = \"cache-prune.service\"; Persistent = true; }; };", note: "Add matching systemd.services.\"cache-prune\""}
-      {task: "NixOS: boot + every hour", command: "systemd.timers.\"sync-job\".timerConfig = { OnBootSec = \"5m\"; OnUnitActiveSec = \"1h\"; Unit = \"sync-job.service\"; };", note: "Useful for recurring sync jobs"}
-      {task: "NixOS: daily with jitter", command: "systemd.timers.\"db-backup\".timerConfig = { OnCalendar = \"03:00\"; RandomizedDelaySec = \"30m\"; Persistent = true; Unit = \"db-backup.service\"; };", note: "Avoids thundering herd across hosts"}
-      {task: "NixOS: oneshot service pair", command: "systemd.services.\"db-backup\" = { script = ''/run/current-system/sw/bin/pg_dump ...''; serviceConfig = { Type = \"oneshot\"; User = \"postgres\"; }; };", note: "Timer triggers this service unit"}
+      {task: "NixOS: every 15 minutes", command: "systemd.timers.\"cache-prune\" = {
+  wantedBy = [\"timers.target\"];
+  timerConfig = {
+    OnCalendar = \"*:0/15\";
+    Unit = \"cache-prune.service\";
+    Persistent = true;
+  };
+};", note: "Add matching systemd.services.\"cache-prune\""}
+      {task: "NixOS: boot + every hour", command: "systemd.timers.\"sync-job\".timerConfig = {
+  OnBootSec = \"5m\";
+  OnUnitActiveSec = \"1h\";
+  Unit = \"sync-job.service\";
+};", note: "Useful for recurring sync jobs"}
+      {task: "NixOS: daily with jitter", command: "systemd.timers.\"db-backup\".timerConfig = {
+  OnCalendar = \"03:00\";
+  RandomizedDelaySec = \"30m\";
+  Persistent = true;
+  Unit = \"db-backup.service\";
+};", note: "Avoids thundering herd across hosts"}
+      {task: "NixOS: oneshot service pair", command: "systemd.services.\"db-backup\" = {
+  script = ''
+    /run/current-system/sw/bin/pg_dump ...
+  '';
+  serviceConfig = {
+    Type = \"oneshot\";
+    User = \"postgres\";
+  };
+};", note: "Timer triggers this service unit"}
     ]
   }
 }
