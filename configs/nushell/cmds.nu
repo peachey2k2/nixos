@@ -16,22 +16,22 @@ def --wrapped "nix develop" [...args] {
 alias duf = duf --only-mp /,/home --output mountpoint,size,avail,usage
 
 # clear all .backup files to prevent conflicts on config replaces
-alias "%clear-backups" = /home/pe/nixos/scripts/clear-backups.sh          
+alias "!clear-backups" = /home/pe/nixos/scripts/clear-backups.sh          
 
 # rebuild all config files in nixos/configs
-alias "%config-reload" = /home/pe/nixos/scripts/config-reload.sh          
+alias "!config-reload" = /home/pe/nixos/scripts/config-reload.sh          
 
 # edit the system flake
-alias "%edit"          = hx /home/pe/nixos/flake.nix -w /home/pe/nixos    
+alias "!edit"          = hx /home/pe/nixos/flake.nix -w /home/pe/nixos    
 
 # list all store paths for the current system derivation
-alias "%list"          = nix-store -q --requisites /run/current-system/sw 
+alias "!list"          = nix-store -q --requisites /run/current-system/sw 
 
 # calls `tail` on script logs
-alias "%logs"          = tail /home/pe/nixos/log.txt                      
+alias "!logs"          = tail /home/pe/nixos/log.txt                      
 
 # rebuild the system derivation
-alias "%rebuild"       = /home/pe/nixos/scripts/rebuild.sh                
+alias "!rebuild"       = /home/pe/nixos/scripts/rebuild.sh                
 
 # its the fortify warning bullshit on -o0
 # ~@amaanq
@@ -50,7 +50,7 @@ def --wrapped sudo [...rest] {
   run0 ...$rest
 }
 
-def --wrapped "%env" [...rest] {
+def --wrapped "!env" [...rest] {
   NIXPKGS_ALLOW_UNFREE=1 NIXPKGS_ALLOW_INSECURE=1 nix shell --impure ...(
     $rest | each {|x|
       if not (
@@ -67,7 +67,7 @@ def --wrapped "%env" [...rest] {
     $env.NIX_SHELL_DEPTH = (($env.NIX_SHELL_DEPTH | into int) + 1)";
 }
 
-def "%devel" [...rest] {
+def "!devel" [...rest] {
   let proj = try {
     (ls /home/pe/development) ++ (ls /home/pe/git) | where type == "dir" | get name | input list -f
   } catch { return }

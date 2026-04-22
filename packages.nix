@@ -88,6 +88,7 @@ pkgs: with pkgs; [
   (qdiskinfo.override { themeBundle = qdiskinfo.themeBundles.aoi; })
   renderdoc
   ripgrep
+  rose-pine-hyprcursor
   # rusic
   rust-analyzer-nightly
   satty

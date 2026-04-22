@@ -8,12 +8,16 @@ def all-cheatsheets [] {
   ]
 }
 
+def "nu-complete-help-topics" [] {
+  all-cheatsheets | each {|sheet| $sheet.aliases } | flatten | uniq | sort
+}
+
 def print-available-cheatsheets [sheets] {
   print "Available cheatsheets:"
   for sheet in $sheets {
     print $"  ($sheet.command) - ($sheet.title)"
   }
-  print "Use `%help <cmd>` to view one."
+  print "Use `!help <cmd>` to view one."
 }
 
 def render-cheatsheet [sheet] {
@@ -24,7 +28,7 @@ def render-cheatsheet [sheet] {
   $sheet.rows
 }
 
-export def "%help" [cmd?: string] {
+export def "!help" [cmd?: string@nu-complete-help-topics] {
   let sheets = (all-cheatsheets)
   let topic = (($cmd | default "") | str downcase | str trim)
 

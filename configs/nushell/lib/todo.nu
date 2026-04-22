@@ -28,7 +28,7 @@ def todo-mark-done [line: int] {
     )
     | str join (char nl)
 
-  $"($updated)\n" | save -a (todo-file)
+  $"($updated)\n" | save -f (todo-file)
 }
 
 def todo-mark-delete [line: int] {
@@ -37,7 +37,7 @@ def todo-mark-delete [line: int] {
     | drop nth ($line - 1)
     | str join (char nl)
 
-  $"($updated)\n" | save -a (todo-file)
+  $"($updated)\n" | save -f (todo-file)
 }
 
 def todo-confirm-finished [item: string] {
@@ -94,7 +94,7 @@ def todo-add-items-from-editor [] {
   }
 
   if not ((todo-file) | path exists) {
-    "" | save (todo-file)
+    "" | save -f (todo-file)
   }
 
   let formatted = ($new_items | each {|l| $"- [ ] ($l)"} | str join (char nl))
@@ -110,11 +110,11 @@ def todo-add-items-from-editor [] {
   }
 }
 
-export def "%todo add" [] {
+export def "!todo add" [] {
   todo-add-items-from-editor | ignore
 }
 
-export def "%todo pick" [] {
+export def "!todo pick" [] {
   let undone = (todo-undone-items)
 
   if ($undone | is-empty) {
@@ -131,7 +131,7 @@ export def "%todo pick" [] {
   todo-work-item $selected
 }
 
-export def "%todo random" [] {
+export def "!todo random" [] {
   let undone = (todo-undone-items)
 
   if ($undone | is-empty) {
@@ -144,7 +144,7 @@ export def "%todo random" [] {
   todo-work-item $selected
 }
 
-export def "%todo imm" [] {
+export def "!todo imm" [] {
   let created = (todo-add-items-from-editor)
 
   if ($created | is-empty) {

@@ -11,12 +11,12 @@ Here is my entire NixOS system.
 There are some aliases I added to enhance my workflow:
 | alias | description |
 |---|---|
-|`%rebuild`|rebuilds the system|
-|`%edit`|opens the system flake on an editor|
-|`%config-reload`|updates all configs|
-|`%list`|list all installed packages|
-|`%clear-backups`|brings up a prompt to remove the old instances of every replaced config|
-|`%devel`|brings up a fuzzy finder to select between my projects|
-|`%env`|opens a Nix shell with desired package(s) in PATH|
-|`%logs`|prints out the last 10 lines of `nixos/log.txt`|
+|`!rebuild`|rebuilds the system|
+|`!edit`|opens the system flake on an editor|
+|`!config-reload`|updates all configs|
+|`!list`|list all installed packages|
+|`!clear-backups`|brings up a prompt to remove the old instances of every replaced config|
+|`!devel`|brings up a fuzzy finder to select between my projects|
+|`!env`|opens a Nix shell with desired package(s) in PATH|
+|`!logs`|prints out the last 10 lines of `nixos/log.txt`|
 
