@@ -20,6 +20,7 @@ pkgs: with pkgs; [
   cpu-x
   dosbox-x
   duf
+  easyeffects
   ed
   edb
   emote
@@ -37,6 +38,7 @@ pkgs: with pkgs; [
   gnome-keyring
   gnumake
   gparted
+  grayjay
   gtkwave
   hexdump
   hyperfine
@@ -49,6 +51,7 @@ pkgs: with pkgs; [
   jujutsu
   kdePackages.kdeconnect-kde
   kdePackages.kdenlive
+  kdePackages.okular
   kdePackages.qtdeclarative
   krita
   lenovo-legion
@@ -62,6 +65,7 @@ pkgs: with pkgs; [
   microfetch
   mpv
   neovim
+  nethack
   networkmanagerapplet
   nil
   nim
@@ -78,7 +82,7 @@ pkgs: with pkgs; [
   omnisharp-roslyn
   pavucontrol
   php
-  picom
+  # pi-coding-agent
   prismlauncher
   protonvpn-gui
   python312Packages.python-lsp-server
@@ -89,6 +93,7 @@ pkgs: with pkgs; [
   renderdoc
   ripgrep
   rose-pine-hyprcursor
+  run0-sudo-shim
   # rusic
   rust-analyzer-nightly
   satty
