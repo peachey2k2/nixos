@@ -30,10 +30,10 @@ in {
       efi.canTouchEfiVariables = true;
     };
 
-    # windows
-    supportedFilesystems = [ "ntfs" ];
+    kernelPackages = pkgs.unstable.linuxPackages_latest;
 
     kernelModules = [ "v4l2loopback" "lenovo-legion-module" ];
+
 
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback # https://nixos.wiki/wiki/OBS_Studio
@@ -44,6 +44,9 @@ in {
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
       options legion_laptop force=1
     '';
+
+    # windows
+    supportedFilesystems = [ "ntfs" ];
   };
 
   networking = {
@@ -51,10 +54,8 @@ in {
     networkmanager.enable = true;
   };
 
-  # Set your time zone.
   time.timeZone = "Europe/Istanbul";
 
-  # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -71,7 +72,7 @@ in {
 
     inputMethod = {
       enable = true;
-      enabled = "fcitx5";
+      type = "fcitx5";
       fcitx5 = {
         waylandFrontend = true;
         addons = with pkgs; [
@@ -153,9 +154,14 @@ in {
       package = pkgs.unstable.polkit;
       
       extraConfig = /* js */ ''
-        // this is so run0 doesn't keep asking for auth (but it doesn't work and i have no clue why)
+        // this is so run0 doesn't keep asking for auth
         polkit.addRule(function(action, subject) {
-          if (action.id == "org.freedesktop.systemd1.manage-units" && subject.isInGroup("wheel")) {
+          if (
+            subject.isInGroup("wheel") && (
+              action.id.indexOf("org.freedesktop.systemd1.") == 0 ||
+              action.id == "org.freedesktop.policykit.exec"
+            )
+          ) {
             return polkit.Result.AUTH_KEEP;
           }
         });

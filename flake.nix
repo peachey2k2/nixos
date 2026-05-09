@@ -44,6 +44,7 @@ rec {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
     nixpkgs-unstable.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/*";
+    # nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
 
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
@@ -63,6 +64,12 @@ rec {
 
     _0fetch.url = "github:peachey2k2/0fetch";
     _0fetch.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    # coding-agents.url = "github:kissgyorgy/coding-agents";
+    # coding-agents.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    run0-sudo-shim.url = "github:lordgrimmauld/run0-sudo-shim";
+    run0-sudo-shim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -80,13 +87,16 @@ rec {
       homeDir = "/home/" + username;
       system = "x86_64-linux";
 
+      nixpkgsConfig = {
+        allowUnfree = true;
+        # allowBroken = true;
+      };
+
       pkgs = import nixpkgs {
         inherit system;
-        config = {
-          allowUnfree = true;
-          # allowBroken = true;
-        };
+        config = nixpkgsConfig;
       };
+
     in {
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -104,29 +114,32 @@ rec {
           )
 
           {
-            nixpkgs.config = {
-              allowUnfree = true;
-              allowBroken = true;
-            };
+            nixpkgs.config = nixpkgsConfig;
 
             nixpkgs.overlays = [
               nur.overlays.default
 
               inputs.fenix.overlays.default
+              inputs.run0-sudo-shim.overlays.default
 
               (final: prev: {
-                unstable = nixpkgs-unstable.legacyPackages.${system};
+                unstable = import nixpkgs-unstable {
+                  inherit system;
+                  config = nixpkgsConfig;
+                };
 
                 svlangserver = pkgs.callPackage ./packages/svlangserver/default.nix {};
                 marked = pkgs.callPackage ./packages/marked/default.nix {};
                 zynk-cli = pkgs.callPackage ./packages/zynk-cli/default.nix {};
                 jai = pkgs.callPackage ./packages/jai/default.nix {};
                 jails = pkgs.callPackage ./packages/jails/default.nix {};
+                nethack = pkgs.callPackage ./packages/nethack/default.nix {};
 
                 zen-browser = inputs.zen-browser.packages.${system}.default;
                 caelestia-shell = inputs.caelestia-shell.packages.${system}.with-cli;
                 caelestia-cli = inputs.caelestia-cli.packages.${system}.with-shell;
                 _0fetch = inputs._0fetch.packages.${system}.default;
+                # pi-coding-agent = inputs.coding-agents.packages.${system}.pi-coding-agent;
 
                 # loopspinner = pkgs.callPackage /home/pe/development/loopspinner { };
               })

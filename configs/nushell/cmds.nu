@@ -16,38 +16,36 @@ def --wrapped "nix develop" [...args] {
 alias duf = duf --only-mp /,/home --output mountpoint,size,avail,usage
 
 # clear all .backup files to prevent conflicts on config replaces
-alias "!clear-backups" = /home/pe/nixos/scripts/clear-backups.sh          
+alias "!clear-backups" = /home/pe/nixos/scripts/clear-backups.sh
 
 # rebuild all config files in nixos/configs
-alias "!config-reload" = /home/pe/nixos/scripts/config-reload.sh          
+alias "!config-reload" = /home/pe/nixos/scripts/config-reload.sh
 
 # edit the system flake
-alias "!edit"          = hx /home/pe/nixos/flake.nix -w /home/pe/nixos    
+alias "!edit"          = hx /home/pe/nixos/flake.nix -w /home/pe/nixos
 
 # list all store paths for the current system derivation
-alias "!list"          = nix-store -q --requisites /run/current-system/sw 
+alias "!list"          = nix-store -q --requisites /run/current-system/sw
 
 # calls `tail` on script logs
-alias "!logs"          = tail /home/pe/nixos/log.txt                      
+alias "!logs"          = tail /home/pe/nixos/log.txt
 
 # rebuild the system derivation
-alias "!rebuild"       = /home/pe/nixos/scripts/rebuild.sh                
+alias "!rebuild"       = /home/pe/nixos/scripts/rebuild.sh
 
 # its the fortify warning bullshit on -o0
 # ~@amaanq
-$env.NIX_HARDENING_ENABLE = ($env.NIX_HARDENING_ENABLE? | default '' | split row ' ' | where { $in !~ 'fortify' } | str join ' ') 
+$env.NIX_HARDENING_ENABLE = ($env.NIX_HARDENING_ENABLE? | default '' | split row ' ' | where { $in !~ 'fortify' } | str join ' ')
 
 def --wrapped run0 [...rest] {
   (^run0
+    --background=
     --setenv=TERMINFO=($env.TERMINFO?)
     --setenv=STARSHIP_CONFIG=($env.HOME)/.config/starship.toml
+    --setenv=SHELL_DEPTH=(($env.SHELL_DEPTH | into int) + 1)
+    --setenv=NIX_SHELL_DEPTH=(($env.NIX_SHELL_DEPTH | into int) + 1)
+    --setenv=IS_NUSHELL_INITIALIZED=1
     ...$rest)
-}
-
-def --wrapped sudo [...rest] {
-  print "use run0 instead!!!! initiating 5 sec wait of shame"
-  sleep 5sec
-  run0 ...$rest
 }
 
 def --wrapped "!env" [...rest] {
@@ -55,6 +53,7 @@ def --wrapped "!env" [...rest] {
     $rest | each {|x|
       if not (
         ($x | str contains "#") or
+        ($x | str contains ":") or
         ($x | str starts-with "-")
       ) {
         "nixpkgs#" ++ $x
@@ -149,4 +148,3 @@ $env.RUST_BACKTRACE = 1
 
 
 alias nduf = /home/pe/development/disk-size/nduf
-
