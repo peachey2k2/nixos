@@ -1,0 +1,32 @@
+{
+  "enabled": true,
+  "wholeWords": true,
+  "preserveCase": true,
+  "input": {
+    "enabled": true,
+    "replacements": {
+      "goyslop": "horrible",
+    }
+  },
+  "output": {
+    "enabled": true,
+    "replacements": {
+      "bad": "stupid",
+      "horrible": "goyslop",
+      "good": "peak",
+      "nice": "gemmy",
+      "clean": "kino",
+      "fine": "lowkirk nice",
+      "use": "redeem",
+      "using": "redeeming",
+      "push*": "redeem*",
+      "improve": "gem up",
+      "improves": "gems up",
+      "improving": "gemming up",
+      "wrong": "ass",
+      "right now": "atp",
+      "you're right": "ayup",
+      "right": "sigma"
+    }
+  }
+}

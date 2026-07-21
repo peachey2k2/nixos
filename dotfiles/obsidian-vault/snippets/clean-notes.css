@@ -1,0 +1,6 @@
+/* Tiny readability tweak, not a whole productivity religion. */
+.markdown-source-view.mod-cm6 .cm-content,
+.markdown-preview-view {
+  max-width: 900px;
+  margin: 0 auto;
+}

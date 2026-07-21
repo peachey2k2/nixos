@@ -1,0 +1,50 @@
+# tack pins. edit by hand or with tack add / rm / alias
+# nix reads pins.lock.json; this file drives tack update
+
+[shorturls]
+gh = "github:{path}"
+
+[tack]
+recomposable = true
+
+[inputs.nixpkgs]
+url = "gh:peachey2k2/nixpkgs-weekly"
+
+[inputs.tack]
+url = "gh:manic-systems/tack"
+follows = { nixpkgs = "nixpkgs" }
+
+[inputs.flake-parts]
+url = "gh:hercules-ci/flake-parts"
+
+[inputs.nur]
+url = "gh:nix-community/NUR"
+follows = { nixpkgs = "nixpkgs" }
+
+[inputs.zen-browser]
+url = "gh:crashim03/zen-browser-flake"
+follows = { nixpkgs = "nixpkgs" }
+
+[inputs.fenix]
+url = "gh:nix-community/fenix/monthly"
+follows = { nixpkgs = "nixpkgs" }
+
+[inputs._0fetch]
+url = "gh:peachey2k2/0fetch"
+follows = { nixpkgs = "nixpkgs" }
+
+[inputs.llm-agents]
+url = "gh:numtide/llm-agents.nix"
+follows = { nixpkgs = "nixpkgs" }
+
+[inputs.run0-sudo-shim]
+url = "gh:lordgrimmauld/run0-sudo-shim"
+follows = { nixpkgs = "nixpkgs" }
+
+[inputs.comfyui]
+url = "gh:utensils/comfyui-nix"
+follows = { nixpkgs = "nixpkgs" }
+
+[inputs.nilshell]
+url = "path:../Projects/nilshell"
+follows = { nixpkgs = "nixpkgs" }

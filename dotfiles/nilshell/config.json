@@ -1,0 +1,86 @@
+{
+  "bar": {
+    "height": 24,
+    "radius": 0,
+    "itemSpacing": 3,
+    "pillPadding": 6,
+    "popupRadius": 16
+  },
+  "tray": {
+    "visibleIcons": ["CopyQ", "Alarm Clock"],
+    "maxVisibleIcons": 0,
+    "overflowIcon": "▾"
+  },
+  "notifications": {
+    "icon": "󱄅",
+    "activeIcon": "󱄅",
+    "controlsPopupMs": 1200,
+    "historyMaxHeight": 640,
+    "historyListMaxHeight": 340,
+    "sliderAnimationMs": 160
+  },
+  "colors": {
+    "bg": "#aa090913",
+    "surface": "#aa11111b",
+    "surfaceHover": "#bb1a1a28",
+    "border": "#66404055",
+    "text": "#e7e9ff",
+    "muted": "#a6adc8",
+    "accent": "#8aadf4",
+    "green": "#a6da95",
+    "yellow": "#eed49f",
+    "red": "#ed8796"
+  },
+  "dashboard": {
+    "width": 820,
+    "maxHeight": 0,
+    "columns": 5,
+    "rowHeight": 120,
+    "resources": [
+      { "type": "cpu", "label": "CPU", "icon": "󰍛", "color": "#8aadf4" },
+      { "type": "memory", "label": "RAM", "icon": "󰘚", "color": "#a6da95" }
+    ],
+    "weather": {
+      "location": "Istanbul",
+      "units": "metric",
+      "interval": 900000
+    },
+    "terminal": {
+      "fontFamily": "Monaspace Krypton NF",
+      "symbolFontFamily": "Symbols Nerd Font",
+      "brailleFontFamily": "DejaVu Sans",
+      "fontSize": 12,
+      "cellWidth": 8,
+      "lineHeight": 15,
+      "foreground": "#cdd6f4",
+      "cardBackground": "#cc11111b",
+      "border": "#66585b70",
+      "accent": "#89b4fa",
+      "ansiColors": [
+        "#45475a", "#f38ba8", "#a6e3a1", "#f9e2af",
+        "#89b4fa", "#f5c2e7", "#94e2d5", "#bac2de",
+        "#585b70", "#f38ba8", "#a6e3a1", "#f9e2af",
+        "#89b4fa", "#f5c2e7", "#94e2d5", "#a6adc8"
+      ]
+    },
+    "widgets": [
+      { "type": "calendar",
+        "row": 0, "column": 0, "rowSpan": 2, "columnSpan": 2 },
+      { "type": "command", "command": ["0fetch"], "terminal": true, "interval": 60000,
+        "row": 0, "column": 2, "rowSpan": 2, "columnSpan": 3 },
+      { "type": "media",
+        "row": 2, "column": 0, "rowSpan": 1, "columnSpan": 2 },
+      { "type": "resources",
+        "row": 2, "column": 4, "rowSpan": 1, "columnSpan": 1 },
+      { "type": "weather",
+        "row": 2, "column": 2, "rowSpan": 1, "columnSpan": 2 },
+      { "type": "buttons",
+        "buttons": [
+          { "label": "Lid Sleep", "icon": "󰒲",
+            "command": ["sh", "-c", "sh $HOME/.config/nilshell/toggle-lid-sleep.sh"],
+            "initCommand": ["sh", "-c", "sh $HOME/.config/nilshell/toggle-lid-sleep.sh status"] }
+        ],
+        "row": 3, "column": 0, "rowSpan": 1, "columnSpan": 5 }
+    ]
+  }
+}

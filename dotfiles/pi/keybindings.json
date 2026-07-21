@@ -1,0 +1,5 @@
+{
+  "app.thinking.cycle": [],
+  "app.session.deleteNoninvasive": [],
+  "tui.editor.deleteWordBackward": ["ctrl+w", "alt+backspace", "ctrl+backspace"]
+}

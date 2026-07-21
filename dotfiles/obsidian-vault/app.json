@@ -1,0 +1,9 @@
+{
+  "showInlineTitle": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "Inbox",
+  "attachmentFolderPath": "Attachments",
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "livePreview": true
+}

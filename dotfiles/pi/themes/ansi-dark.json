@@ -1,0 +1,78 @@
+{
+	"$schema": "https://raw.githubusercontent.com/badlogic/pi-mono/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
+	"name": "ansi-dark",
+	"vars": {
+		"red": 9,
+		"green": 10,
+		"yellow": 11,
+		"blue": 12,
+		"magenta": 13,
+		"cyan": 14,
+		"white": 7,
+		"gray": 250
+	},
+	"colors": {
+		"accent": "cyan",
+		"border": "blue",
+		"borderAccent": "cyan",
+		"borderMuted": "gray",
+		"success": "green",
+		"error": "red",
+		"warning": "yellow",
+		"muted": "white",
+		"dim": "gray",
+		"text": "",
+		"thinkingText": 244,
+
+		"selectedBg": "#2b2b2b",
+		"userMessageBg": "#26324a",
+		"userMessageText": "",
+		"customMessageBg": "#303030",
+		"customMessageText": "",
+		"customMessageLabel": "magenta",
+		"toolPendingBg": "#262626",
+		"toolSuccessBg": "#1f3b28",
+		"toolErrorBg": "#4a2528",
+		"toolTitle": "cyan",
+		"toolOutput": "white",
+
+		"mdHeading": "yellow",
+		"mdLink": "blue",
+		"mdLinkUrl": "gray",
+		"mdCode": "cyan",
+		"mdCodeBlock": "green",
+		"mdCodeBlockBorder": "gray",
+		"mdQuote": "gray",
+		"mdQuoteBorder": "gray",
+		"mdHr": "gray",
+		"mdListBullet": "cyan",
+
+		"toolDiffAdded": "green",
+		"toolDiffRemoved": "red",
+		"toolDiffContext": 250,
+
+		"syntaxComment": 250,
+		"syntaxKeyword": "blue",
+		"syntaxFunction": "yellow",
+		"syntaxVariable": "cyan",
+		"syntaxString": "green",
+		"syntaxNumber": "magenta",
+		"syntaxType": 6,
+		"syntaxOperator": "",
+		"syntaxPunctuation": "",
+
+		"thinkingOff": 250,
+		"thinkingMinimal": "white",
+		"thinkingLow": 4,
+		"thinkingMedium": "blue",
+		"thinkingHigh": 5,
+		"thinkingXhigh": "magenta",
+
+		"bashMode": "#ff9e64"
+	},
+	"export": {
+		"pageBg": "#181818",
+		"cardBg": "#1e1e1e",
+		"infoBg": "#2a2a1e"
+	}
+}
