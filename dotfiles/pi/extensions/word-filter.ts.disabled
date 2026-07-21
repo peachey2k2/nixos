@@ -1,0 +1,168 @@
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+type Replacement = { from: string; to: string };
+type FilterConfig = { enabled?: boolean; replacements?: Record<string, string> | Replacement[] };
+type Config = {
+  enabled?: boolean;
+  wholeWords?: boolean;
+  preserveCase?: boolean;
+
+  // Backward-compatible input filter config.
+  replacements?: Record<string, string> | Replacement[];
+
+  input?: FilterConfig;
+  output?: FilterConfig;
+};
+
+type LoadedConfig = Required<Pick<Config, "enabled" | "wholeWords" | "preserveCase">> & {
+  input: { enabled: boolean; replacements: Replacement[] };
+  output: { enabled: boolean; replacements: Replacement[] };
+};
+
+const CONFIG_PATH = join(dirname(fileURLToPath(import.meta.url)), "word-filter.json");
+
+function escapeRegExp(text: string) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function normalizeReplacements(replacements: FilterConfig["replacements"]): Replacement[] {
+  if (!replacements) return [];
+  if (Array.isArray(replacements)) return replacements.filter((r) => r.from);
+  return Object.entries(replacements).map(([from, to]) => ({ from, to }));
+}
+
+function loadConfig(): LoadedConfig {
+  try {
+    const parsed = JSON.parse(readFileSync(CONFIG_PATH, "utf8")) as Config;
+    return {
+      enabled: parsed.enabled ?? true,
+      wholeWords: parsed.wholeWords ?? true,
+      preserveCase: parsed.preserveCase ?? true,
+      input: {
+        enabled: parsed.input?.enabled ?? true,
+        replacements: normalizeReplacements(parsed.input?.replacements ?? parsed.replacements),
+      },
+      output: {
+        enabled: parsed.output?.enabled ?? true,
+        replacements: normalizeReplacements(parsed.output?.replacements),
+      },
+    };
+  } catch {
+    return {
+      enabled: true,
+      wholeWords: true,
+      preserveCase: true,
+      input: { enabled: true, replacements: [] },
+      output: { enabled: true, replacements: [] },
+    };
+  }
+}
+
+function matchCase(original: string, replacement: string) {
+  if (!replacement) return replacement;
+
+  const lowerReplacement = replacement.toLowerCase();
+  const first = original[0];
+  if (first && first === first.toUpperCase() && first !== first.toLowerCase()) {
+    return lowerReplacement[0].toUpperCase() + lowerReplacement.slice(1);
+  }
+
+  return lowerReplacement;
+}
+
+function replaceWords(text: string, replacements: Replacement[], config: LoadedConfig) {
+  let result = text;
+  let count = 0;
+
+  for (const { from, to } of replacements) {
+    if (!from) continue;
+
+    const isPrefixMatch = from.endsWith("*");
+    const fromBase = isPrefixMatch ? from.slice(0, -1) : from;
+    const toKeepsSuffix = isPrefixMatch && to.endsWith("*");
+    const toBase = toKeepsSuffix ? to.slice(0, -1) : to;
+    if (!fromBase) continue;
+
+    const escaped = escapeRegExp(fromBase);
+    const wordStart = config.wholeWords ? `(?<![\\p{L}\\p{N}_])` : "";
+    const wordEnd = config.wholeWords && !isPrefixMatch ? `(?![\\p{L}\\p{N}_])` : "";
+    const suffix = isPrefixMatch ? `([\\p{L}\\p{N}_]*)` : "";
+    const pattern = `${wordStart}${escaped}${suffix}${wordEnd}`;
+    const flags = "giu";
+
+    result = result.replace(new RegExp(pattern, flags), (match, matchedSuffix = "") => {
+      count += 1;
+      const replacement = toKeepsSuffix ? `${toBase}${matchedSuffix}` : toBase;
+      return config.preserveCase ? matchCase(match, replacement) : replacement;
+    });
+  }
+
+  return { text: result, count };
+}
+
+function filterTextBlocks(content: any, replacements: Replacement[], config: LoadedConfig) {
+  if (typeof content === "string") {
+    const replaced = replaceWords(content, replacements, config);
+    return { content: replaced.text, count: replaced.count };
+  }
+
+  if (!Array.isArray(content)) return { content, count: 0 };
+
+  let count = 0;
+  const filtered = content.map((block: any) => {
+    if (block?.type !== "text" || typeof block.text !== "string") return block;
+    const replaced = replaceWords(block.text, replacements, config);
+    count += replaced.count;
+    return replaced.count > 0 ? { ...block, text: replaced.text } : block;
+  });
+
+  return { content: filtered, count };
+}
+
+export default function (pi: ExtensionAPI) {
+  // Important: input filtering is done in `context`, not `input`.
+  // That means your original typed text remains visible in Pi's message history,
+  // while the model receives the filtered copy.
+  pi.on("context", async (event) => {
+    const config = loadConfig();
+    if (!config.enabled || !config.input.enabled || config.input.replacements.length === 0) return;
+
+    let changed = false;
+    const messages = event.messages.map((message: any) => {
+      if (message.role !== "user") return message;
+      const filtered = filterTextBlocks(message.content, config.input.replacements, config);
+      if (filtered.count === 0) return message;
+      changed = true;
+      return { ...message, content: filtered.content };
+    });
+
+    return changed ? { messages } : undefined;
+  });
+
+  // Output filtering changes only assistant text blocks and does not emit extra notices.
+  pi.on("message_end", async (event) => {
+    if (event.message.role !== "assistant") return;
+
+    const config = loadConfig();
+    if (!config.enabled || !config.output.enabled || config.output.replacements.length === 0) return;
+
+    const filtered = filterTextBlocks((event.message as any).content, config.output.replacements, config);
+    if (filtered.count === 0) return;
+
+    return { message: { ...event.message, content: filtered.content } };
+  });
+
+  pi.registerCommand("word-filter", {
+    description: "Show word filter status and config path",
+    handler: async (_args, ctx) => {
+      const config = loadConfig();
+      ctx.ui.notify(
+        `Word filter ${config.enabled ? "enabled" : "disabled"}; input: ${config.input.replacements.length}, output: ${config.output.replacements.length}. Config: ${CONFIG_PATH}`,
+        "info",
+      );
+    },
+  });
+}

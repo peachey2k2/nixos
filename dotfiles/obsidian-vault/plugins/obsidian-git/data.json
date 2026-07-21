@@ -1,0 +1,13 @@
+{
+  "commitMessage": "vault backup: {{date}}",
+  "autoSaveInterval": 10,
+  "autoPushInterval": 0,
+  "autoPullInterval": 0,
+  "disablePush": false,
+  "pullBeforePush": true,
+  "showStatusBar": true,
+  "showBranchStatusBar": true,
+  "lineAuthor": {
+    "show": false
+  }
+}

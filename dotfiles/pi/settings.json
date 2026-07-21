@@ -1,0 +1,35 @@
+{
+  "lastChangelogVersion": "99999.0.0",
+  "collapseChangelog": true,
+  "quietStartup": true,
+  "hideThinkingBlock": false,
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.6-sol",
+  "defaultThinkingLevel": "medium",
+  "theme": "ansi-dark",
+  "packages": [
+    "npm:@narumitw/pi-codex-usage",
+    "npm:pi-btw",
+    "npm:@narumitw/pi-firecrawl",
+    "npm:pi-tool-display"
+  ],
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 8192,
+    "keepRecentTokens": 24000
+  },
+  "branchSummary": {
+    "reserveTokens": 8192
+  },
+  "retry": {
+    "enabled": true,
+    "maxRetries": 2,
+    "baseDelayMs": 2000,
+    "provider": {
+      "timeoutMs": 1800000,
+      "maxRetries": 0,
+      "maxRetryDelayMs": 60000
+    }
+  },
+  "httpIdleTimeoutMs": 0
+}

@@ -1,179 +1,110 @@
-rec {
-  description = "six seven";
-
-  # TODO: move these to somewhere else (idk rn since config.nix already exists)
-  nixConfig = {
-    experimental-features = [
-      "flakes"         # duh
-      "nix-command"    # duh
-      "pipe-operators" # Gives access to <| and |>, Prior works like $ in Haskell, latter is the same as in Elixir.
-      "cgroups"        # https://wiki.archlinux.org/title/Cgroups
-    ];
-
-    extra-substituters = [
-      "https://cache.nixos.org/"
-      "https://nix-community.cachix.org"
-      "https://cache.iog.io"
-      "https://cuda-maintainers.cachix.org"
-      "https://nixpkgs-unfree.cachix.org"
-      "https://install.determinate.systems"
-    ];
-
-    extra-trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPiCe+467rJVel7/TrsBQQQTfvs5cBUOQ="
-      "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nqlt0="
-      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
-    ];
-
-    accept-flake-config      = true;
-    builders-use-substitutes = true;
-    flake-registry           = "";
-    http-connections         = 50;
-    max-substitution-jobs    = 32;
-    lazy-trees               = true; # determinate
-    show-trace               = true;
-    trusted-users            = [ "root" "@build" "@wheel" "@admin" ];
-    use-cgroups              = true;
-    warn-dirty               = false;
-  };
-
-  inputs = {
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
-    nixpkgs-unstable.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/*";
-    # nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
-
-    nur.url = "github:nix-community/NUR";
-    nur.inputs.nixpkgs.follows = "nixpkgs";
-
-    zen-browser.url = "github:crashim03/zen-browser-flake";
-    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
-
-    fenix.url = "github:nix-community/fenix/monthly";
-    fenix.inputs.nixpkgs.follows = "nixpkgs";
-
-    caelestia-shell.url = "github:caelestia-dots/shell?rev=aa2b08dd45963dc9558de94dbff5e1615e347d02";
-    caelestia-shell.inputs.nixpkgs.follows = "nixpkgs-unstable";
-
-    caelestia-cli.url = "github:caelestia-dots/cli?rev=b4b26ab5d50dd56ec7c5c64fa125b6d8da75b702";
-    caelestia-cli.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    caelestia-cli.inputs.caelestia-shell.follows = "caelestia-shell";
-
-    _0fetch.url = "github:peachey2k2/0fetch";
-    _0fetch.inputs.nixpkgs.follows = "nixpkgs-unstable";
-
-    # coding-agents.url = "github:kissgyorgy/coding-agents";
-    # coding-agents.inputs.nixpkgs.follows = "nixpkgs-unstable";
-
-    run0-sudo-shim.url = "github:lordgrimmauld/run0-sudo-shim";
-    run0-sudo-shim.inputs.nixpkgs.follows = "nixpkgs";
-  };
-
-  outputs = inputs @ {
-    self,
-    determinate,
-    nixpkgs,
-    nixpkgs-unstable,
-    # nixpkgs-master,
-    nur,
-    ...
-  }:
+{
+  outputs =
+    { self, ... }@args:
     let
-      username = "pe";
-      hostname = "chey";
-      homeDir = "/home/" + username;
-      system = "x86_64-linux";
+      # We use tack to manage the input pins.
+      # https://github.com/manic-systems/tack
+      inputs = (import ./.tack) {
+        overrides = args.tackOverrides or { };
+      };
+
+      nixConfig = import ./nix-config.nix;
 
       nixpkgsConfig = {
         allowUnfree = true;
-        # allowBroken = true;
       };
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config = nixpkgsConfig;
-      };
+      hosts = import ./hosts;
 
-    in {
-      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-        inherit system;
+      flakePartsInputs = args // inputs;
 
-        modules = let
-          system = pkgs.stdenv.hostPlatform.system;
-        in [
-          determinate.nixosModules.default
-
-          (
-            import ./system.nix {
-              user = username;
-              inherit nixConfig;
-            }
-          )
-
-          {
-            nixpkgs.config = nixpkgsConfig;
-
-            nixpkgs.overlays = [
-              nur.overlays.default
-
-              inputs.fenix.overlays.default
-              inputs.run0-sudo-shim.overlays.default
-
-              (final: prev: {
-                unstable = import nixpkgs-unstable {
-                  inherit system;
-                  config = nixpkgsConfig;
-                };
-
-                svlangserver = pkgs.callPackage ./packages/svlangserver/default.nix {};
-                marked = pkgs.callPackage ./packages/marked/default.nix {};
-                zynk-cli = pkgs.callPackage ./packages/zynk-cli/default.nix {};
-                jai = pkgs.callPackage ./packages/jai/default.nix {};
-                jails = pkgs.callPackage ./packages/jails/default.nix {};
-                nethack = pkgs.callPackage ./packages/nethack/default.nix {};
-
-                zen-browser = inputs.zen-browser.packages.${system}.default;
-                caelestia-shell = inputs.caelestia-shell.packages.${system}.with-cli;
-                caelestia-cli = inputs.caelestia-cli.packages.${system}.with-shell;
-                _0fetch = inputs._0fetch.packages.${system}.default;
-                # pi-coding-agent = inputs.coding-agents.packages.${system}.pi-coding-agent;
-
-                # loopspinner = pkgs.callPackage /home/pe/development/loopspinner { };
-              })
-            ];
-          }
-        ];
-      };
-
-      packages.${system} = {
-        generated-configs = (import ./config.nix {inherit pkgs;}).run {};
-      };
-
-      apps.${system} = {
-        generate-configs = {
-          type = "app";
-          program = 
-            let
-              configs = self.packages.${system}.generated-configs;
-              script = pkgs.writeShellScriptBin "install-configs" ''
-                # sneaky gc root
-                mkdir -p "$HOME/.local/state"
-                "${pkgs.nix}/bin/nix-store" \
-                  --add-root "$HOME/.local/state/latest-configs" \
-                  --realise "${configs}"
-
-                echo "Installing config files to ~/.config"
-                mkdir -p "$HOME/.config"
-
-                cp -r --no-preserve=mode "${configs}/config/"* "$HOME/.config/"
-                echo "Done!"
-              '';
-            in
-              "${script}/bin/install-configs"; 
+      overlaysFor = system:
+        import ./overlays {
+          inherit inputs system nixpkgsConfig;
         };
+
+      mkHost = hostname: host:
+        let
+          system = host.system;
+          username = "me";
+          homeDirectory = "/home/${username}";
+          modules = host.modules;
+        in
+        inputs.nixpkgs.lib.nixosSystem {
+          inherit system;
+
+          specialArgs = {
+            inherit
+              inputs
+              system
+              username
+              hostname
+              homeDirectory
+              nixConfig
+              nixpkgsConfig
+              ;
+          };
+
+          modules = [
+            {
+              nixpkgs.config = nixpkgsConfig;
+              nixpkgs.overlays = overlaysFor system;
+            }
+          ]
+          ++ modules;
+        };
+    in
+    inputs.flake-parts.lib.mkFlake { inputs = flakePartsInputs; } {
+      systems = [ "x86_64-linux" ];
+
+      perSystem =
+        { system, ... }:
+        let
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+            config = nixpkgsConfig;
+            overlays = overlaysFor system;
+          };
+
+          generatedConfigs = (import ./config-generator.nix { inherit pkgs; }).run { };
+
+          installConfigs = pkgs.writeShellApplication {
+            name = "generate-configs";
+            runtimeInputs = [
+              pkgs.coreutils
+              pkgs.nix
+            ];
+            text = ''
+              mkdir -p "$HOME/.local/state"
+              nix-store \
+                --add-root "$HOME/.local/state/latest-configs" \
+                --realise "${generatedConfigs}"
+
+              echo "Installing config files to ~/.config"
+              mkdir -p "$HOME/.config"
+              cp -r --no-preserve=mode "${generatedConfigs}/config/"* "$HOME/.config/"
+              echo "Done!"
+            '';
+          };
+        in
+        {
+          formatter = pkgs.nixfmt-rfc-style;
+
+          packages = {
+            generated-configs = generatedConfigs;
+            generate-configs = installConfigs;
+          };
+
+          apps = {
+            generate-configs = {
+              type = "app";
+              program = "${installConfigs}/bin/generate-configs";
+            };
+          };
+        };
+
+      flake = {
+        nixosConfigurations = builtins.mapAttrs mkHost hosts;
       };
     };
 }

@@ -1,0 +1,17 @@
+{
+  "daily": {
+    "enabled": true,
+    "format": "YYYY-MM-DD",
+    "folder": "Daily",
+    "template": "Templates/Daily"
+  },
+  "weekly": {
+    "enabled": true,
+    "format": "gggg-[W]ww",
+    "folder": "Weekly",
+    "template": "Templates/Weekly"
+  },
+  "monthly": {
+    "enabled": false
+  }
+}

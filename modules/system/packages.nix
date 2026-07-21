@@ -1,0 +1,162 @@
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
+
+with pkgs;
+[
+  libnotify
+  zcode
+  ollama-cuda
+  antigravity-cli
+  ryubing
+  _0fetch
+  acpi
+  alarm-clock-applet
+  alsa-utils
+  android-studio
+  anki
+  adwaita-icon-theme
+  arc-icon-theme
+  aseprite
+  bc
+  brightnessctl
+  btop
+  carapace
+  clang
+  cloc
+  cmake
+  copyq
+  cpu-x
+  dosbox-x
+  duf
+  easyeffects
+  ed
+  edb
+  emote
+  fasm
+  fd
+  feh
+  (fenix.complete.withComponents ["cargo" "rustc" "rust-src"])
+  (flameshot.override { enableWlrSupport = true; })
+  freeoffice
+  fzf
+  gcc
+  gdb
+  # ghostty
+  git
+  gnumake
+  gparted
+  grayjay
+  gtkwave
+  hexdump
+  hyperfine
+  hyprpolkitagent
+  iverilog
+  # jai
+  # jails
+  jdk17_headless
+  jq
+  jujutsu
+  kdePackages.kdeconnect-kde
+  kdePackages.kdenlive
+  kdePackages.okular
+  kdePackages.qtdeclarative
+  krita
+  lenovo-legion
+  lf
+  # loopspinner
+  love
+  luajit
+  lua-language-server
+  man-pages
+  marksman
+  microfetch
+  mpv
+  neovim
+  nethack
+  networkmanagerapplet
+  nil
+  nim
+  nimble
+  ninja
+  nodejs
+  nur.repos.forkprince.helium-nightly
+  nu_scripts
+  nwg-look
+  ocamlPackages.sexp
+  odin
+  ols
+  omnisharp-roslyn
+  obsidian
+  pavucontrol
+  php
+  pi
+  prismlauncher
+  proton-vpn
+  python312Packages.python-lsp-server
+  python3Minimal
+  qbe
+  qbittorrent
+  (qdiskinfo.override { themeBundle = qdiskinfo.themeBundles.aoi; })
+  radicle-node
+  renderdoc
+  replace
+  ripgrep
+  run0-sudo-shim
+  # rusic
+  rust-analyzer-nightly
+  satty
+  sillytavern
+  starship
+  svlangserver
+  swaybg
+  sway-contrib.grimshot
+  inputs.tack.packages.${system}.default
+  tokei
+  typescript-language-server
+  unrar
+  codex
+  godot
+  steelix
+  llvmPackages_20.clang-tools
+  nushell
+  opencode
+  wezterm
+  ghostty
+  zls
+  zulu25
+  unzip
+  vimix-gtk-themes
+  virtiofsd
+  vlc
+  vscode
+  nilshell
+  wayvnc
+  weechat
+  wget
+  wgsl-analyzer
+  winetricks
+  # wineWowPackages.stable
+  # wineWowPackages.waylandFull
+  wl-clipboard
+  wl-clip-persist
+  wofi
+  xarchiver
+  xdg-desktop-portal-gnome
+  xdg-desktop-portal-gtk
+  xdg-utils
+  thunar
+  xfce4-terminal
+  xhost
+  xwayland-satellite
+  yazi
+  zathura
+  zen-browser
+  zerotierone
+  zfxtop
+  zig
+  zynk-cli
+]

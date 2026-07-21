@@ -1,0 +1,90 @@
+{
+  "_0fetch": {
+    "type": "github",
+    "owner": "peachey2k2",
+    "repo": "0fetch",
+    "rev": "bdaff78768bf312c5946a9f160b4c230f7f4ec14",
+    "narHash": "sha256-K5QOFeBYxRC/ksSIcyQZZgZJfHt2vvCCYm/HPiIGY4Y=",
+    "lastModified": 1775736081
+  },
+  "comfyui": {
+    "type": "github",
+    "owner": "utensils",
+    "repo": "comfyui-nix",
+    "rev": "1db5d5c617c8ff181e2198c13acbe792f543021e",
+    "narHash": "sha256-vFzDZv2vQ6/c6LNwVerTmjv/V9eDAbzcE9NHSkd04Ok=",
+    "lastModified": 1784347483
+  },
+  "fenix": {
+    "type": "github",
+    "owner": "nix-community",
+    "repo": "fenix",
+    "rev": "16810aa8f4ad89ca480b1513774e8b6f485fe368",
+    "narHash": "sha256-GHrsl1+ysDFgmDQtQSqWS7TiYD2Q58VlwLvnf1+crJM=",
+    "lastModified": 1782900513
+  },
+  "flake-parts": {
+    "type": "github",
+    "owner": "hercules-ci",
+    "repo": "flake-parts",
+    "rev": "17c9d6cdfc60c64f4ee8d306f9bc0b4ccb51481e",
+    "narHash": "sha256-vp6Y/Grm98ESt6ceOkWiHWyZRDV3J1RID4w+6NWK9yA=",
+    "lastModified": 1782949081
+  },
+  "llm-agents": {
+    "type": "github",
+    "owner": "numtide",
+    "repo": "llm-agents.nix",
+    "rev": "ea931455da8f4cd5ff555932037ae5af58bdda96",
+    "narHash": "sha256-qGTwRtdoOGclosxljxXqNJk2ahuXDDAqzs41IzlhlsY=",
+    "lastModified": 1784476260
+  },
+  "nilshell": {
+    "type": "path",
+    "path": "/home/me/Projects/nilshell",
+    "lastModified": 1784288029,
+    "mtimeNanos": 1784288029520425228,
+    "treeSize": 429654,
+    "treeEntries": 353
+  },
+  "nixpkgs": {
+    "type": "github",
+    "owner": "peachey2k2",
+    "repo": "nixpkgs-weekly",
+    "rev": "c347bcdf2657175a76f93d58bd81d1e3c7e36807",
+    "narHash": "sha256-IXyk77bp+FyqjoeGJKRHYv/vbN+9JP+lTdfyOSaL/9A=",
+    "lastModified": 1783934484
+  },
+  "nur": {
+    "type": "github",
+    "owner": "nix-community",
+    "repo": "NUR",
+    "rev": "4a2a9dd754f8a388df36b03df844bfa258224ca0",
+    "narHash": "sha256-MakPXZ5DXOS3q25eukGTj81Q5zScd+uLmNBwrwGtcc4=",
+    "lastModified": 1784485997
+  },
+  "run0-sudo-shim": {
+    "type": "github",
+    "owner": "lordgrimmauld",
+    "repo": "run0-sudo-shim",
+    "rev": "9fa985ddb9dc7f4d66aa7bfc3bc3188e4aa1d727",
+    "narHash": "sha256-J/I7VPXpOwNtEk9H+lbZVT+xJYBsSKgnMlwzlVIJSWk=",
+    "lastModified": 1782890834
+  },
+  "tack": {
+    "type": "github",
+    "owner": "manic-systems",
+    "repo": "tack",
+    "rev": "e177aaa81375394be33ebc383c15773c47941980",
+    "narHash": "sha256-eUzdato8njCzt5TqvFaUePkUOtOkM1Lu5JfbzoT0NiU=",
+    "lastModified": 1784415866
+  },
+  "zen-browser": {
+    "type": "github",
+    "owner": "crashim03",
+    "repo": "zen-browser-flake",
+    "rev": "e1c03e60102261504126e60a5ab25c68e236fa45",
+    "narHash": "sha256-8n98cUEkvhbVavj1PgAHI6C4gFl6RCfRI8qDUpNxnn4=",
+    "lastModified": 1762474092
+  }
+}
