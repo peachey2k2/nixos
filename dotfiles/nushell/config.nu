@@ -2,6 +2,7 @@ use std/clip
 
 source nushell.nu
 source cmds.nu
+source keybinds.nu
 
 source-env (if ("/etc/secrets.nu" | path exists) { "/etc/secrets.nu" } else { null })
 

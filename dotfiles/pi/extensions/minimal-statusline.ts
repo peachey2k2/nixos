@@ -22,8 +22,8 @@ function modelLabel(ctx: ExtensionContext): string {
 
 function contextLabel(ctx: ExtensionContext): string {
   const usage = ctx.getContextUsage();
-  if (usage?.percent === null || usage?.percent === undefined) return "ctx=?";
-  return `ctx=${Math.round(usage.percent)}%`;
+  if (usage?.percent === null || usage?.percent === undefined) return "?% ctx";
+  return `${Math.round(usage.percent)}% ctx`;
 }
 
 function modeLabel(statuses: ReadonlyMap<string, string>, pi: ExtensionAPI): string {
@@ -37,21 +37,25 @@ function modeLabel(statuses: ReadonlyMap<string, string>, pi: ExtensionAPI): str
   return "ad-hoc";
 }
 
-function codexLabel(statuses: ReadonlyMap<string, string>): string | undefined {
+function codexLabels(statuses: ReadonlyMap<string, string>): {
+  fiveHour?: string;
+  weekly?: string;
+  unavailable?: string;
+} {
   const status = statuses.get(CODEX_STATUS_KEY);
-  if (!status) return undefined;
+  if (!status) return {};
 
   const fiveHour = status.match(/(\d+)%\s+5h/i)?.[1];
   const weekly = status.match(/(\d+)%\s+wk/i)?.[1];
-  const windows = [
-    fiveHour ? `5h=${fiveHour}%` : undefined,
-    weekly ? `w=${weekly}%` : undefined,
-  ].filter((window): window is string => Boolean(window));
-  if (windows.length > 0) return windows.join(" ");
+  if (fiveHour || weekly) {
+    return {
+      fiveHour: fiveHour ? `${fiveHour}% 5h` : undefined,
+      weekly: weekly ? `${weekly}% wk` : undefined,
+    };
+  }
 
-  if (/checking/i.test(status)) return "codex=?";
-  if (/error|unavailable/i.test(status)) return "codex=?";
-  return undefined;
+  if (/checking|error|unavailable/i.test(status)) return { unavailable: "codex=?" };
+  return {};
 }
 
 export default function minimalStatusline(pi: ExtensionAPI) {
@@ -81,15 +85,28 @@ export default function minimalStatusline(pi: ExtensionAPI) {
         invalidate() {},
         render(width: number): string[] {
           const statuses = footerData.getExtensionStatuses();
+          const mode = modeLabel(statuses, pi);
+          const coloredMode = mode === "readonly"
+            ? theme.fg("warning", mode)
+            : mode === "ad-hoc"
+              ? theme.fg("error", mode)
+              : theme.fg("accent", mode);
+          const modelAndVariant = [
+            theme.fg("accent", modelLabel(ctx)),
+            theme.fg("warning", pi.getThinkingLevel()),
+          ].join(theme.fg("dim", ":"));
+          const codex = codexLabels(statuses);
           const parts = [
-            modeLabel(statuses, pi),
-            `${modelLabel(ctx)}:${pi.getThinkingLevel()}`,
-            contextLabel(ctx),
-            `$${cachedSessionCost.toFixed(2)}`,
-            codexLabel(statuses),
+            coloredMode,
+            modelAndVariant,
+            theme.fg("success", contextLabel(ctx)),
+            theme.fg("syntaxNumber", `$${cachedSessionCost.toFixed(2)}`),
+            codex.fiveHour ? theme.fg("syntaxKeyword", codex.fiveHour) : undefined,
+            codex.weekly ? theme.fg("customMessageLabel", codex.weekly) : undefined,
+            codex.unavailable ? theme.fg("dim", codex.unavailable) : undefined,
           ].filter((part): part is string => Boolean(part));
 
-          const line = theme.fg("dim", parts.join(" • "));
+          const line = parts.join(theme.fg("dim", " • "));
           return ["", truncateToWidth(line, Math.max(0, width), "")];
         },
       };

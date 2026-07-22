@@ -33,5 +33,17 @@
     antigravity-cli = inputs.llm-agents.packages.${system}.antigravity-cli;
     comfyui = inputs.comfyui.packages.${system}.cuda;
     nilshell = inputs.nilshell.packages.${system}.default;
+    # Nixpkgs builds Steelix's newer queries against Helix's older grammar lock.
+    # Keep the Steel-enabled binary, but use Helix's internally consistent runtime.
+    steelix = final.symlinkJoin {
+      name = "steelix-fixed-runtime";
+      paths = [ prev.steelix ];
+      nativeBuildInputs = [ final.makeWrapper ];
+      postBuild = ''
+        rm $out/bin/hx
+        makeWrapper $out/bin/.hx-wrapped $out/bin/hx \
+          --set HELIX_RUNTIME "${prev.helix.runtime}"
+      '';
+    };
   })
 ]

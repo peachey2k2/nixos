@@ -600,7 +600,7 @@ export default function uiOverhaul(pi: ExtensionAPI) {
         x: "xhigh",
         ultra: "max",
       };
-      const displayLevel = (level: ThinkingLevel): string => level === "max" ? "ultra" : level;
+      const displayLevel = (level: ThinkingLevel): string => level;
       const normalize = (value: string): ThinkingLevel | undefined => {
         const key = value.trim().toLowerCase().replace(/ \(current\)$/u, "");
         return (allLevels as readonly string[]).includes(key) ? key as ThinkingLevel : aliases[key];

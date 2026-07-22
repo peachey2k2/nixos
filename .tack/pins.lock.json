@@ -11,9 +11,9 @@
     "type": "github",
     "owner": "utensils",
     "repo": "comfyui-nix",
-    "rev": "1db5d5c617c8ff181e2198c13acbe792f543021e",
-    "narHash": "sha256-vFzDZv2vQ6/c6LNwVerTmjv/V9eDAbzcE9NHSkd04Ok=",
-    "lastModified": 1784347483
+    "rev": "068803a26235f0c43a93d1f9c3d75a22564e9ba7",
+    "narHash": "sha256-QnpjSwatSWXLpNylUgx8DkQ05Johc4mbPboISPWcY40=",
+    "lastModified": 1784566540
   },
   "fenix": {
     "type": "github",
@@ -35,33 +35,33 @@
     "type": "github",
     "owner": "numtide",
     "repo": "llm-agents.nix",
-    "rev": "ea931455da8f4cd5ff555932037ae5af58bdda96",
-    "narHash": "sha256-qGTwRtdoOGclosxljxXqNJk2ahuXDDAqzs41IzlhlsY=",
-    "lastModified": 1784476260
+    "rev": "6c650f7597e3f212395e4fdba754bf6537cc2298",
+    "narHash": "sha256-cS5Rv01brbs95/a5NrNCxKLqMZWkFnRRZXdmz2NZnQs=",
+    "lastModified": 1784702368
   },
   "nilshell": {
     "type": "path",
     "path": "/home/me/Projects/nilshell",
-    "lastModified": 1784288029,
-    "mtimeNanos": 1784288029520425228,
-    "treeSize": 429654,
+    "lastModified": 1784533103,
+    "mtimeNanos": 1784533103346647062,
+    "treeSize": 429527,
     "treeEntries": 353
   },
   "nixpkgs": {
     "type": "github",
     "owner": "peachey2k2",
     "repo": "nixpkgs-weekly",
-    "rev": "c347bcdf2657175a76f93d58bd81d1e3c7e36807",
-    "narHash": "sha256-IXyk77bp+FyqjoeGJKRHYv/vbN+9JP+lTdfyOSaL/9A=",
-    "lastModified": 1783934484
+    "rev": "4e44472af5f3db74b5337dbc44a9bbad866a79ce",
+    "narHash": "sha256-MWDu4GW2mjUE+MysROjPQmHt8A/SdIaB1Fv7diKIgFc=",
+    "lastModified": 1784537622
   },
   "nur": {
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "4a2a9dd754f8a388df36b03df844bfa258224ca0",
-    "narHash": "sha256-MakPXZ5DXOS3q25eukGTj81Q5zScd+uLmNBwrwGtcc4=",
-    "lastModified": 1784485997
+    "rev": "20e139a477759cc11d9278636976c064e5ec0313",
+    "narHash": "sha256-edoS8gXBvcK7aP1Se7MhzfAQWW0XrxQSdKIaw7EfcSU=",
+    "lastModified": 1784717513
   },
   "run0-sudo-shim": {
     "type": "github",
