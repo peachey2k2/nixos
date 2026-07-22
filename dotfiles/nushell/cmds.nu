@@ -5,6 +5,7 @@ def --wrapped "pi" [...args] {
   let pi_dir = ($env.HOME | path join ".config" "pi")
   with-env {
     PI_NERD_FONTS: "1",
+    PI_OFFLINE: "1",
     PI_CODING_AGENT_DIR: $pi_dir,
     PI_EXTENSION_CONFIG_DIR: $pi_dir
   } { ^pi ...$args }
@@ -124,7 +125,7 @@ def "nix-autopush-hook" [] {
   cd $dir
   git add .
 
-  let today = (date now | format date "%d-%m-%Y")
+  let today = (date now | format date "%d-%m-%Y %H:%M")
   let last_message = (try { git log --max-count 1 --pretty=%B | lines | last | str trim } catch { "" })
 
   if $last_message != $today {
@@ -219,43 +220,6 @@ def --wrapped "!run" [...rest] {
   NIXPKGS_ALLOW_UNFREE=1 NIXPKGS_ALLOW_INSECURE=1 nix run --impure ...$args
 }
 
-$env.config.keybindings ++= [{
-  name: unfreeze
-  modifier: control
-  keycode: char_z
-  mode: [emacs, vi_insert, vi_normal]
-  event: {
-    send: executehostcommand,
-    cmd: "job unfreeze"
-  }
-}]
-
-# `nu-highlight` with default colors
-#
-# Custom themes can produce a lot more ansi color codes and make the output
-# exceed discord's character limits
-def nu-highlight-default [] {
-  let input = $in
-  $env.config.color_config = {}
-  $input | nu-highlight
-}
-
-# Copy the current commandline, add syntax highlighting, wrap it in a
-# markdown code block, copy that to the system clipboard.
-#
-# Perfect for sharing code snippets on Discord.
-def "nu-keybind commandline-copy" []: nothing -> nothing {
-  commandline
-  | nu-highlight-default
-  | [
-    "```ansi"
-    $in
-    "```"
-  ]
-  | str join (char nl)
-  | clip copy --ansi
-}
-
 def --env y [...args] {
   let tmp = (mktemp -t "yazi-cwd.XXXXXX")
   ^yazi ...$args --cwd-file $tmp
@@ -265,19 +229,6 @@ def --env y [...args] {
   }
   rm -fp $tmp
 }
-
-$env.config.keybindings ++= [
-  {
-    name: copy_color_commandline
-    modifier: control_alt
-    keycode: char_c
-    mode: [ emacs vi_insert vi_normal ]
-    event: {
-      send: executehostcommand
-      cmd: 'nu-keybind commandline-copy'
-    }
-  }
-]
 
 $env.RUST_BACKTRACE = 1
 
