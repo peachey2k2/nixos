@@ -59,17 +59,17 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "c38f25566993716171cf0f50874c41fe94602820",
-    "narHash": "sha256-GANjsBnOjh++LALtdJjiuhsSFYXBmeeupx162Zz5/HE=",
-    "lastModified": 1784792763
+    "rev": "00df976a26ef6fc1393130aa429f8945c602429b",
+    "narHash": "sha256-oSM+R4ASbsFDoJkxoo4zpoFRMS5XBnI3b/+RypJ2DZ4=",
+    "lastModified": 1784795754
   },
   "reborder": {
     "type": "path",
     "path": "/home/me/Projects/reborder",
-    "lastModified": 1784792914,
-    "mtimeNanos": 1784792914694793199,
-    "treeSize": 354386,
-    "treeEntries": 148
+    "lastModified": 1784795671,
+    "mtimeNanos": 1784795671695571285,
+    "treeSize": 457703,
+    "treeEntries": 178
   },
   "run0-sudo-shim": {
     "type": "github",
