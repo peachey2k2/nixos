@@ -150,6 +150,10 @@ def "nix-autopush-hook" [] {
 # ~@amaanq
 $env.NIX_HARDENING_ENABLE = ($env.NIX_HARDENING_ENABLE? | default '' | split row ' ' | where { $in !~ 'fortify' } | str join ' ')
 
+def --wrapped sudo [...rest] {
+  sudo --run0-extra-arg --background= ...$rest
+}
+
 def --wrapped run0 [...rest] {
   let pass_env = ('--env' in $rest)
   let rest = ($rest | where { $in != '--env' })
