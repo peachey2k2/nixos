@@ -65,6 +65,8 @@
     {
       description = "Hidden agent-owned Wayland compositor";
       wantedBy = [ "default.target" ];
+      # Launched clients need the same applications available as the desktop session.
+      path = [ config.system.path ];
       serviceConfig = {
         Type = "exec";
         ExecStart = "${package}/bin/reborder --width 1280 --height 720 --control %t/reborder.sock";

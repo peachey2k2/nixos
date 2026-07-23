@@ -45,6 +45,7 @@ interface ControlResponse {
 
 const MAX_RESPONSE_BYTES = 1024 * 1024;
 const MAX_TYPED_BYTES = 100 * 1024;
+const MAX_CLIPBOARD_BYTES = 128 * 1024;
 const CONTROL_TIMEOUT_MS = 30_000;
 const BTN_LEFT = 0x110;
 const BTN_RIGHT = 0x111;
@@ -215,12 +216,6 @@ function selectWindow(groups: WindowGroup[], name: string, instance?: number): {
     throw new Error(`Instance ${selectedInstance} is unavailable for ${JSON.stringify(group.name)}`);
   }
   return { name: group.name, instance: selectedInstance, window: group.windows[selectedInstance - 1]! };
-}
-
-async function ensureWindow(id: number, signal?: AbortSignal): Promise<ReborderWindow> {
-  const window = (await getWindows(signal)).find((candidate) => candidate.id === id);
-  if (!window) throw new Error(`Reborder window ${id} closed`);
-  return window;
 }
 
 function pngDimensions(data: Buffer): { width: number; height: number } {
@@ -445,6 +440,28 @@ async function typeText(text: unknown, signal?: AbortSignal): Promise<void> {
   await sendControl({ op: "type_text", text, source: "agent" }, signal);
 }
 
+async function readClipboard(mimeType?: string, signal?: AbortSignal) {
+  const value = await sendControl({ op: "clipboard_read", mime_type: mimeType }, signal);
+  if (!isRecord(value) || typeof value.text !== "string" || typeof value.mime_type !== "string") {
+    throw new Error("reborder returned invalid clipboard contents");
+  }
+  return {
+    text: value.text,
+    mimeType: value.mime_type,
+    bytes: typeof value.bytes === "number" ? value.bytes : textByteLength(value.text),
+  };
+}
+
+async function writeClipboard(text: unknown, signal?: AbortSignal) {
+  if (typeof text !== "string") throw new Error("clipboard text must be a string");
+  const bytes = textByteLength(text);
+  if (bytes > MAX_CLIPBOARD_BYTES) {
+    throw new Error(`clipboard text is limited to ${MAX_CLIPBOARD_BYTES} UTF-8 bytes`);
+  }
+  await sendControl({ op: "clipboard_write", text }, signal);
+  return bytes;
+}
+
 const ActionType = StringEnum([
   "click",
   "double_click",
@@ -489,21 +506,23 @@ type Interaction = {
 async function performInteraction(
   selected: { name: string; instance: number; window: ReborderWindow },
   actions: Interaction[],
-  screenshotAfter: boolean,
   signal?: AbortSignal,
 ) {
   if (actions.length === 0) throw new Error("At least one interaction action is required");
   if (actions.length > 50) throw new Error("A window_interact call is limited to 50 actions");
   await sendControl({ op: "focus", id: selected.window.id }, signal);
-  const needsPointer = actions.some((action) => ["click", "double_click", "move", "drag"].includes(action.type));
-  const initial = needsPointer ? await captureWindow(selected.window, signal) : undefined;
-  const pointer = initial
-    ? { width: initial.width, height: initial.height, originX: initial.originX, originY: initial.originY }
-    : undefined;
+  const initial = await captureWindow(selected.window, signal);
+  const pointer = {
+    width: initial.width,
+    height: initial.height,
+    originX: initial.originX,
+    originY: initial.originY,
+  };
 
+  let completedActions = 0;
   for (const action of actions) {
     if (signal?.aborted) throw new Error("Cancelled");
-    await ensureWindow(selected.window.id, signal);
+    if (!(await getWindows(signal)).some((window) => window.id === selected.window.id)) break;
 
     switch (action.type) {
       case "move":
@@ -570,18 +589,19 @@ async function performInteraction(
       default:
         throw new Error(`Unsupported interaction action ${JSON.stringify(action.type)}`);
     }
+    completedActions += 1;
   }
 
-  const finalWindow = await ensureWindow(selected.window.id, signal);
-  const screenshot = screenshotAfter ? await captureWindow(finalWindow, signal) : undefined;
-  const summary = `Completed ${actions.length} action${actions.length === 1 ? "" : "s"} on ${selected.name} (instance ${selected.instance}).`;
-  const content = screenshot
-    ? imageContent(selected.name, selected.instance, screenshot)
-    : [{ type: "text" as const, text: summary }];
+  const finalWindow = (await getWindows(signal)).find((window) => window.id === selected.window.id);
+  const screenshot = finalWindow ? await captureWindow(finalWindow, signal) : initial;
+  const summary = `Completed ${completedActions} action${completedActions === 1 ? "" : "s"} on ${selected.name} (instance ${selected.instance}).`;
+  const content = imageContent(selected.name, selected.instance, screenshot);
   content[0] = {
     type: "text" as const,
-    text: screenshot ? `${summary}\n\nResult screenshot: ${screenshot.width}x${screenshot.height}.` : summary,
-  } as (typeof content)[0];
+    text: finalWindow
+      ? `${summary}\n\nResult screenshot: ${screenshot.width}x${screenshot.height}.`
+      : `${summary}\n\nThe window closed; showing its last pre-interaction screenshot at ${screenshot.width}x${screenshot.height}.`,
+  };
 
   return {
     content,
@@ -589,7 +609,7 @@ async function performInteraction(
       name: selected.name,
       instance: selected.instance,
       id: selected.window.id,
-      actionCount: actions.length,
+      actionCount: completedActions,
       screenshot: screenshot ? { width: screenshot.width, height: screenshot.height } : undefined,
     },
   };
@@ -625,6 +645,48 @@ export default function windowControl(pi: ExtensionAPI) {
       } catch (error) {
         ctx.ui.notify(String(error), "error");
       }
+    },
+  });
+
+  pi.registerTool({
+    name: "clipboard_read",
+    label: "Read Reborder Clipboard",
+    description:
+      "Read text from the clipboard inside the hidden Reborder session. This returns clipboard contents copied by applications running in Reborder, not the user's desktop clipboard.",
+    promptSnippet: "Read text copied inside the agent-owned hidden compositor",
+    parameters: Type.Object({
+      mimeType: Type.Optional(Type.String({ description: "Specific offered text MIME type; omit to choose UTF-8 text automatically" })),
+    }),
+    async execute(_toolCallId, params, signal) {
+      const clipboard = await readClipboard(params.mimeType, signal);
+      return {
+        content: [{ type: "text" as const, text: clipboard.text }],
+        details: clipboard,
+      };
+    },
+    renderCall(_args, theme) {
+      return new Text(theme.fg("toolTitle", theme.bold("clipboard_read")), 0, 0);
+    },
+  });
+
+  pi.registerTool({
+    name: "clipboard_write",
+    label: "Write Reborder Clipboard",
+    description:
+      "Replace the text clipboard inside the hidden Reborder session so applications there can paste it. This does not modify the user's desktop clipboard.",
+    promptSnippet: "Write text to the agent-owned hidden compositor clipboard",
+    parameters: Type.Object({
+      text: Type.String({ description: "UTF-8 text to place on the Reborder clipboard", maxLength: MAX_CLIPBOARD_BYTES }),
+    }),
+    async execute(_toolCallId, params, signal) {
+      const bytes = await writeClipboard(params.text, signal);
+      return {
+        content: [{ type: "text" as const, text: `Wrote ${bytes} UTF-8 byte${bytes === 1 ? "" : "s"} to the Reborder clipboard.` }],
+        details: { bytes },
+      };
+    },
+    renderCall(_args, theme) {
+      return new Text(theme.fg("toolTitle", theme.bold("clipboard_write")), 0, 0);
     },
   });
 
@@ -700,7 +762,7 @@ export default function windowControl(pi: ExtensionAPI) {
     name: "window_interact",
     label: "Interact with Reborder Window",
     description:
-      "Interact directly with a hidden reborder window by alias. Supports mouse movement, clicks, dragging, scrolling, US-keymap text, key chords, and waits. Coordinates come from window_observe. Actions are serialized and return a fresh PNG by default.",
+      "Interact directly with a hidden reborder window by alias. Supports mouse movement, clicks, dragging, scrolling, US-keymap text, key chords, and waits. Coordinates come from window_observe. Actions are serialized and always return a window PNG.",
     promptSnippet: "Control windows through reborder's private protocol without desktop focus or shell automation",
     promptGuidelines: [
       "Use window_interact only with aliases returned by window_list, and base mouse coordinates on the latest window_observe or window_interact image.",
@@ -709,12 +771,11 @@ export default function windowControl(pi: ExtensionAPI) {
       name: Type.String({ description: "Window alias from window_list" }),
       instance: Type.Optional(Type.Integer({ minimum: 1, description: "1-based instance when an alias has multiple windows" })),
       actions: Type.Array(InteractionAction, { minItems: 1, maxItems: 50 }),
-      screenshotAfter: Type.Optional(Type.Boolean({ description: "Return a fresh screenshot after all actions (default true)" })),
     }),
     async execute(_toolCallId, params, signal) {
       return await withInteractionLock(async () => {
         const selected = selectWindow(groupWindows(await getWindows(signal)), params.name, params.instance);
-        return await performInteraction(selected, params.actions, params.screenshotAfter ?? true, signal);
+        return await performInteraction(selected, params.actions, signal);
       });
     },
     renderCall(args, theme) {

@@ -31,5 +31,8 @@
       "maxRetryDelayMs": 60000
     }
   },
-  "httpIdleTimeoutMs": 0
+  "httpIdleTimeoutMs": 0,
+  "terminal": {
+    "imageWidthCells": 80
+  }
 }
