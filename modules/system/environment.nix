@@ -1,10 +1,12 @@
 {
   config,
   pkgs,
+  inputs,
+  system,
   homeDirectory,
   username,
   ...
-}@inputs:
+}@moduleArgs:
 
 {
   services = {
@@ -56,6 +58,23 @@
     powerOnBoot = true;
   };
 
+  systemd.user.services.reborder =
+    let
+      package = inputs.reborder.packages.${system}.default;
+    in
+    {
+      description = "Hidden agent-owned Wayland compositor";
+      wantedBy = [ "default.target" ];
+      serviceConfig = {
+        Type = "exec";
+        ExecStart = "${package}/bin/reborder --width 1280 --height 720 --control %t/reborder.sock";
+        ExecStop = "${package}/bin/reborderctl --control %t/reborder.sock shutdown";
+        Restart = "on-failure";
+        RestartSec = "2s";
+        TimeoutStopSec = "5s";
+      };
+    };
+
   programs = {
     nix-ld.enable = true;
     steam.enable = true;
@@ -106,6 +125,11 @@
       package = pkgs.wireshark;
       usbmon.enable = true;
     };
+
+    ydotool = {
+      enable = true;
+      group = "users";
+    };
   };
 
   virtualisation = {
@@ -140,7 +164,7 @@
     systemPackages = [
       config.boot.kernelPackages.perf
     ]
-    ++ import ./packages.nix inputs
-    ++ map (x: pkgs.makeDesktopItem x) (import ./desktop-extra.nix inputs);
+    ++ import ./packages.nix moduleArgs
+    ++ map (x: pkgs.makeDesktopItem x) (import ./desktop-extra.nix moduleArgs);
   };
 }

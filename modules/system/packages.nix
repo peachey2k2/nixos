@@ -39,7 +39,11 @@ with pkgs;
   fasm
   fd
   feh
-  (fenix.complete.withComponents ["cargo" "rustc" "rust-src"])
+  (fenix.complete.withComponents [
+    "cargo"
+    "rustc"
+    "rust-src"
+  ])
   (flameshot.override { enableWlrSupport = true; })
   freeoffice
   fzf
@@ -115,6 +119,7 @@ with pkgs;
   swaybg
   sway-contrib.grimshot
   inputs.tack.packages.${system}.default
+  inputs.reborder.packages.${system}.default
   tokei
   typescript-language-server
   unrar
@@ -139,6 +144,8 @@ with pkgs;
   wget
   wgsl-analyzer
   winetricks
+  wlrctl
+  wtype
   # wineWowPackages.stable
   # wineWowPackages.waylandFull
   wl-clipboard

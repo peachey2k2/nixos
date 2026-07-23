@@ -4,7 +4,7 @@
   "commandName": "mode",
   "flagName": "mode",
   "cycleShortcut": "shift+tab",
-  "defaultTools": ["read", "bash", "edit", "write", "web_search", "web_fetch"],
+  "defaultTools": ["read", "bash", "edit", "write", "web_search", "web_fetch", "window_*"],
   "presets": {
     "ad-hoc": {
       "tools": ["web_*", "firecrawl_*"],

@@ -4,7 +4,7 @@ import { join } from "node:path";
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import type { KeyId } from "@earendil-works/pi-tui";
 
-type ThinkingLevel = "off" | "minimal" | "low" | "medium" | "high" | "xhigh";
+type ThinkingLevel = "off" | "minimal" | "low" | "medium" | "high" | "xhigh" | "max";
 type Preset = {
   provider?: string;
   model?: string;
@@ -64,12 +64,13 @@ function presetOrder(presets: Record<string, Preset>) {
   return Object.keys(presets).sort();
 }
 
-function lastState(ctx: ExtensionContext): string | undefined {
+function lastState(ctx: ExtensionContext): string | null | undefined {
   const entry = ctx.sessionManager
     .getEntries()
     .filter((item: { type: string; customType?: string }) => item.type === "custom" && item.customType === STATE_ENTRY)
-    .at(-1) as { data?: { name?: string } } | undefined;
-  return entry?.data?.name;
+    .at(-1) as { data?: { name?: string | null } } | undefined;
+  if (!entry?.data || !("name" in entry.data)) return undefined;
+  return entry.data.name ?? null;
 }
 
 export default function modePreset(pi: ExtensionAPI) {
@@ -88,8 +89,8 @@ export default function modePreset(pi: ExtensionAPI) {
     original = { model: ctx.model, thinkingLevel: pi.getThinkingLevel(), tools: pi.getActiveTools() };
   }
 
-  async function apply(name: string, preset: Preset, ctx: ExtensionContext) {
-    snapshot(ctx);
+  async function apply(name: string, preset: Preset, ctx: ExtensionContext, persist = true) {
+    if (persist) snapshot(ctx);
     if (preset.provider && preset.model) {
       const model = ctx.modelRegistry.find(preset.provider, preset.model);
       if (model) await pi.setModel(model);
@@ -106,10 +107,11 @@ export default function modePreset(pi: ExtensionAPI) {
     }
     activeName = name;
     activePreset = preset;
+    if (persist) pi.appendEntry(STATE_ENTRY, { name });
     publish(ctx);
   }
 
-  async function clear(ctx: ExtensionContext) {
+  async function clear(ctx: ExtensionContext, persist = true) {
     activeName = undefined;
     activePreset = undefined;
     if (original?.model) await pi.setModel(original.model);
@@ -121,6 +123,7 @@ export default function modePreset(pi: ExtensionAPI) {
       return [...valid].filter((name) => name.startsWith(prefix)).sort();
     });
     pi.setActiveTools(original?.tools ?? [...new Set(expandedDefaults.filter((tool) => valid.has(tool)))]);
+    if (persist) pi.appendEntry(STATE_ENTRY, { name: null });
     publish(ctx);
   }
 
@@ -166,17 +169,29 @@ export default function modePreset(pi: ExtensionAPI) {
     },
   });
 
-  pi.on("session_start", async (_event, ctx) => {
+  pi.on("session_start", async (event, ctx) => {
     config = readConfig();
     const flag = pi.getFlag(config.flagName);
     if (typeof flag === "string" && flag) await activate(flag, ctx);
     else {
       const restored = lastState(ctx);
-      if (restored && config.presets[restored]) {
-        activeName = restored;
-        activePreset = config.presets[restored];
+      const activeTools = new Set(pi.getActiveTools());
+      const looksNormal = activeTools.has("bash") || activeTools.has("edit") || activeTools.has("write");
+      if (event.reason === "reload" && looksNormal) {
+        activeName = undefined;
+        activePreset = undefined;
+        if (restored !== null) pi.appendEntry(STATE_ENTRY, { name: null });
+        publish(ctx);
+        return;
       }
-      publish(ctx);
+
+      if (typeof restored === "string" && config.presets[restored]) {
+        await apply(restored, config.presets[restored], ctx, false);
+      } else if (restored === null) {
+        await clear(ctx, false);
+      } else {
+        publish(ctx);
+      }
     }
   });
 
@@ -204,7 +219,4 @@ export default function modePreset(pi: ExtensionAPI) {
     }
   });
 
-  pi.on("turn_start", async () => {
-    if (activeName) pi.appendEntry(STATE_ENTRY, { name: activeName });
-  });
 }
