@@ -48,3 +48,7 @@ follows = { nixpkgs = "nixpkgs" }
 [inputs.nilshell]
 url = "path:../Projects/nilshell"
 follows = { nixpkgs = "nixpkgs" }
+
+[inputs.reborder]
+url = "path:../Projects/reborder"
+follows = { nixpkgs = "nixpkgs" }

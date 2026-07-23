@@ -35,9 +35,9 @@
     "type": "github",
     "owner": "numtide",
     "repo": "llm-agents.nix",
-    "rev": "6c650f7597e3f212395e4fdba754bf6537cc2298",
-    "narHash": "sha256-cS5Rv01brbs95/a5NrNCxKLqMZWkFnRRZXdmz2NZnQs=",
-    "lastModified": 1784702368
+    "rev": "de9fa923ea0ebed9093f758468d7ed7c5da09739",
+    "narHash": "sha256-woSpbXXGmy1zUnetetY6WiVdXz0WFGAsxHgCc+87oqU=",
+    "lastModified": 1784790164
   },
   "nilshell": {
     "type": "path",
@@ -59,9 +59,17 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "20e139a477759cc11d9278636976c064e5ec0313",
-    "narHash": "sha256-edoS8gXBvcK7aP1Se7MhzfAQWW0XrxQSdKIaw7EfcSU=",
-    "lastModified": 1784717513
+    "rev": "c38f25566993716171cf0f50874c41fe94602820",
+    "narHash": "sha256-GANjsBnOjh++LALtdJjiuhsSFYXBmeeupx162Zz5/HE=",
+    "lastModified": 1784792763
+  },
+  "reborder": {
+    "type": "path",
+    "path": "/home/me/Projects/reborder",
+    "lastModified": 1784792914,
+    "mtimeNanos": 1784792914694793199,
+    "treeSize": 354386,
+    "treeEntries": 148
   },
   "run0-sudo-shim": {
     "type": "github",
@@ -75,9 +83,9 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "tack",
-    "rev": "e177aaa81375394be33ebc383c15773c47941980",
-    "narHash": "sha256-eUzdato8njCzt5TqvFaUePkUOtOkM1Lu5JfbzoT0NiU=",
-    "lastModified": 1784415866
+    "rev": "671d4a7b61908adfce207349748fc59d655064a5",
+    "narHash": "sha256-sKO6dunSEgZAE1kMse8c/TUtwz5foklTJlTL9lYDgSo=",
+    "lastModified": 1784784543
   },
   "zen-browser": {
     "type": "github",
