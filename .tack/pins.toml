@@ -52,3 +52,7 @@ follows = { nixpkgs = "nixpkgs" }
 [inputs.reborder]
 url = "path:../Projects/reborder"
 follows = { nixpkgs = "nixpkgs" }
+
+[inputs.pi-alternate]
+url = "gh:cope-hq/pi-alternate"
+type = "fetch"

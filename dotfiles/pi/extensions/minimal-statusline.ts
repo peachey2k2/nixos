@@ -3,6 +3,7 @@ import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-a
 import { truncateToWidth } from "@earendil-works/pi-tui";
 
 const CODEX_STATUS_KEY = "codex-usage";
+const GOAL_STATUS_KEY = "goal";
 const PRESET_STATUS_KEY = "preset";
 const ANSI_PATTERN = /[\u001B\u009B][[\]()#;?]*(?:(?:(?:[a-zA-Z\d]*(?:;[a-zA-Z\d]*)*)?\u0007)|(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-nq-uy=><~]))/g;
 
@@ -96,8 +97,10 @@ export default function minimalStatusline(pi: ExtensionAPI) {
             theme.fg("warning", pi.getThinkingLevel()),
           ].join(theme.fg("dim", ":"));
           const codex = codexLabels(statuses);
+          const goal = statuses.get(GOAL_STATUS_KEY)?.replace(ANSI_PATTERN, "");
           const parts = [
             coloredMode,
+            goal ? theme.fg("syntaxKeyword", goal) : undefined,
             modelAndVariant,
             theme.fg("success", contextLabel(ctx)),
             theme.fg("syntaxNumber", `$${cachedSessionCost.toFixed(2)}`),
