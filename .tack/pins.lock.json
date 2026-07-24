@@ -35,9 +35,9 @@
     "type": "github",
     "owner": "numtide",
     "repo": "llm-agents.nix",
-    "rev": "de9fa923ea0ebed9093f758468d7ed7c5da09739",
-    "narHash": "sha256-woSpbXXGmy1zUnetetY6WiVdXz0WFGAsxHgCc+87oqU=",
-    "lastModified": 1784790164
+    "rev": "4c66ff584343f103f53abd5a938629affb3d1397",
+    "narHash": "sha256-dXRaodsFvJdCAo0ojbv0+M3KgpsHRXHXNVFFgF/0nIk=",
+    "lastModified": 1784875145
   },
   "nilshell": {
     "type": "path",
@@ -59,15 +59,23 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "00df976a26ef6fc1393130aa429f8945c602429b",
-    "narHash": "sha256-oSM+R4ASbsFDoJkxoo4zpoFRMS5XBnI3b/+RypJ2DZ4=",
-    "lastModified": 1784795754
+    "rev": "835cef4726e01dc7cd0327acb30a0f0f554654b2",
+    "narHash": "sha256-kXzTo9lXW5Bczm3tM6XBjcL6wa+j0XYGRi6PeedMnzY=",
+    "lastModified": 1784875446
+  },
+  "pi-alternate": {
+    "type": "github",
+    "owner": "cope-hq",
+    "repo": "pi-alternate",
+    "rev": "25bb37cc78fb94f683da5cd9a34c4ec24bc70e35",
+    "narHash": "sha256-k6iwEg/Rqtoi2yJ3RhaqejDT/CN9nNXeXI8AqqQ6+6o=",
+    "lastModified": 1784875595
   },
   "reborder": {
     "type": "path",
     "path": "/home/me/Projects/reborder",
-    "lastModified": 1784805748,
-    "mtimeNanos": 1784805748436670685,
+    "lastModified": 1784876206,
+    "mtimeNanos": 1784876206475837178,
     "treeSize": 688477,
     "treeEntries": 298
   },
