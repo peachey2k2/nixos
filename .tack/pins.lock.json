@@ -7,6 +7,12 @@
     "narHash": "sha256-K5QOFeBYxRC/ksSIcyQZZgZJfHt2vvCCYm/HPiIGY4Y=",
     "lastModified": 1775736081
   },
+  "beer": {
+    "type": "tarball",
+    "url": "https://git.notashelf.dev/notashelf/beer/archive/f52a4011ab82c3808b303c3aa38bead11d5c6d8f.tar.gz",
+    "narHash": "sha256-VY6/JnBB1hGEcysWAwydLGaR2jfSNuXmYwg/IWcc13M=",
+    "lastModified": 0
+  },
   "comfyui": {
     "type": "github",
     "owner": "utensils",
@@ -35,9 +41,9 @@
     "type": "github",
     "owner": "numtide",
     "repo": "llm-agents.nix",
-    "rev": "f9a30d16da12fcf83886b66d3df9b1b8c168a3f7",
-    "narHash": "sha256-Y270/EgraTJpT4uI84YJKpcqOcVFJwDBZpHYT4Ydtpw=",
-    "lastModified": 1784877872
+    "rev": "ead3c2314d18105886042b5db82abc90139014b0",
+    "narHash": "sha256-y1000irmMqN7Zrv+ULDcg05y4LSS/QptoPNw4OoPl5w=",
+    "lastModified": 1784983905
   },
   "nilshell": {
     "type": "path",
@@ -59,9 +65,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "f97ca99eea73b7864af52ea3e1be44faed297afb",
-    "narHash": "sha256-eaDXEnR6NLG3p+WM+4YZVe8bwi8DbLQDNGH7Z4JLXUA=",
-    "lastModified": 1784897478
+    "rev": "a52c751910b20a9ca8f6a70192c7667ef658a384",
+    "narHash": "sha256-CxOnGEbUw87KAGZSQ/99j3/HxtlbgOaNwId/r21l5sM=",
+    "lastModified": 1784984969
   },
   "pi-alternate": {
     "type": "github",

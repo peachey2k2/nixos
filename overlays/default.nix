@@ -35,6 +35,8 @@
     antigravity-cli = inputs.llm-agents.packages.${system}.antigravity-cli;
     comfyui = inputs.comfyui.packages.${system}.cuda;
     nilshell = inputs.nilshell.packages.${system}.default;
+    beer = inputs.beer.packages.${system}.default;
+
     # Nixpkgs builds Steelix's newer queries against Helix's older grammar lock.
     # Keep the Steel-enabled binary, but use Helix's internally consistent runtime.
     steelix = final.symlinkJoin {
