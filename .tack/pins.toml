@@ -32,9 +32,6 @@ url = "gh:nix-community/fenix/monthly"
 [inputs._0fetch]
 url = "gh:peachey2k2/0fetch"
 
-[inputs.llm-agents]
-url = "gh:numtide/llm-agents.nix"
-
 [inputs.run0-sudo-shim]
 url = "gh:lordgrimmauld/run0-sudo-shim"
 

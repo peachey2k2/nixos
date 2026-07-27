@@ -1,0 +1,10 @@
+# Match the Catppuccin Mocha theme and transparency used by Ghostty.
+[colors]
+alpha                = 0.8
+background           = "#1e1e2e"
+foreground           = "#cdd6f4"
+cursor               = "#0077bb"
+selection-background = "#585b70"
+selection-foreground = "#cdd6f4"
+regular = [ "#45475a", "#f38ba8", "#a6e3a1", "#f9e2af", "#89b4fa", "#f5c2e7", "#94e2d5", "#a6adc8" ]
+bright  = [ "#585b70", "#f37799", "#89d88b", "#ebd391", "#74a8fc", "#f2aede", "#6bd7ca", "#bac2de" ]
