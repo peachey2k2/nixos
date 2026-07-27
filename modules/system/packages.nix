@@ -10,7 +10,6 @@ with pkgs;
   libnotify
   zcode
   ollama-cuda
-  antigravity-cli
   ryubing
   _0fetch
   acpi

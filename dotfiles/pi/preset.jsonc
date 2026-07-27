@@ -1,7 +1,7 @@
 {
   // Reimplements the old opencode agents as pi presets.
-  // Usage: pi --mode ad-hoc, pi --mode readonly, or /mode in interactive mode.
-  "commandName": "mode",
+  // Shift+Tab cycles normal, ad-hoc, and readonly presets.
+  "commandName": false,
   "flagName": "mode",
   "cycleShortcut": "shift+tab",
   "defaultTools": ["read", "bash", "edit", "write", "web_search", "web_fetch", "window_*"],

@@ -13,7 +13,7 @@ type Preset = {
   instructions?: string;
 };
 type Config = {
-  commandName?: string;
+  commandName?: string | false;
   flagName?: string;
   cycleShortcut?: KeyId | false;
   defaultTools?: string[];
@@ -49,7 +49,7 @@ function readConfig(): Required<Config> {
   try {
     const parsed = JSON.parse(stripJsonComments(readFileSync(file, "utf8"))) as Config;
     return {
-      commandName: parsed.commandName || fallback.commandName,
+      commandName: parsed.commandName === false ? false : (parsed.commandName || fallback.commandName),
       flagName: parsed.flagName || fallback.flagName,
       cycleShortcut: parsed.cycleShortcut === false ? false : (parsed.cycleShortcut || fallback.cycleShortcut),
       defaultTools: Array.isArray(parsed.defaultTools) ? parsed.defaultTools : fallback.defaultTools,
@@ -157,17 +157,19 @@ export default function modePreset(pi: ExtensionAPI) {
     });
   }
 
-  pi.registerCommand(config.commandName, {
-    description: "Switch mode preset",
-    handler: async (args, ctx) => {
-      config = readConfig();
-      const arg = args.trim();
-      if (arg) return choose(arg, ctx);
-      const names = presetOrder(config.presets);
-      const selected = await ctx.ui.select("Select mode", ["(none)", ...names.map((name) => name === activeName ? `${name} (active)` : name)]);
-      await choose(selected, ctx);
-    },
-  });
+  if (config.commandName) {
+    pi.registerCommand(config.commandName, {
+      description: "Switch mode preset",
+      handler: async (args, ctx) => {
+        config = readConfig();
+        const arg = args.trim();
+        if (arg) return choose(arg, ctx);
+        const names = presetOrder(config.presets);
+        const selected = await ctx.ui.select("Select mode", ["(none)", ...names.map((name) => name === activeName ? `${name} (active)` : name)]);
+        await choose(selected, ctx);
+      },
+    });
+  }
 
   pi.on("session_start", async (event, ctx) => {
     config = readConfig();

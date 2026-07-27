@@ -172,6 +172,7 @@ spawn-at-startup "thunar" "--daemon"
 spawn-at-startup "easyeffects" "-w"
 spawn-at-startup "loopspinner" "-d"
 spawn-at-startup "fcitx5" "-d"
+spawn-at-startup "beer" "--server"
 spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
 spawn-sh-at-startup "xhost +SI:localuser:root"
 
@@ -210,7 +211,7 @@ animations {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+T hotkey-overlay-title="Terminal" { spawn "ghostty"; }
+    Mod+T hotkey-overlay-title="Terminal" { spawn "beer"; }
     Mod+R hotkey-overlay-title="Launcher" { spawn "wofi" "--show" "drun"; }
     Mod+E hotkey-overlay-title="Files" { spawn "thunar"; }
     Mod+W hotkey-overlay-title="Browser" { spawn "helium"; }

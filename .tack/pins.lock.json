@@ -37,21 +37,13 @@
     "narHash": "sha256-vp6Y/Grm98ESt6ceOkWiHWyZRDV3J1RID4w+6NWK9yA=",
     "lastModified": 1782949081
   },
-  "llm-agents": {
-    "type": "github",
-    "owner": "numtide",
-    "repo": "llm-agents.nix",
-    "rev": "ead3c2314d18105886042b5db82abc90139014b0",
-    "narHash": "sha256-y1000irmMqN7Zrv+ULDcg05y4LSS/QptoPNw4OoPl5w=",
-    "lastModified": 1784983905
-  },
   "nilshell": {
     "type": "path",
     "path": "/home/me/Projects/nilshell",
-    "lastModified": 1784533103,
-    "mtimeNanos": 1784533103346647062,
-    "treeSize": 429527,
-    "treeEntries": 353
+    "lastModified": 1785006160,
+    "mtimeNanos": 1785006160159387671,
+    "treeSize": 446965,
+    "treeEntries": 373
   },
   "nixpkgs": {
     "type": "github",
@@ -65,9 +57,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "a52c751910b20a9ca8f6a70192c7667ef658a384",
-    "narHash": "sha256-CxOnGEbUw87KAGZSQ/99j3/HxtlbgOaNwId/r21l5sM=",
-    "lastModified": 1784984969
+    "rev": "1b18acacc21e32e4950510bb66c218eafdea15b8",
+    "narHash": "sha256-w7Mcwg5E4DC1ILoEtGlBciZuzSflRdcVohH16Fr7/Qo=",
+    "lastModified": 1785135663
   },
   "pi-alternate": {
     "type": "github",

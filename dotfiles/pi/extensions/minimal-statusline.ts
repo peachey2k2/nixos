@@ -62,9 +62,18 @@ function codexLabels(statuses: ReadonlyMap<string, string>): {
 export default function minimalStatusline(pi: ExtensionAPI) {
   let requestRender: (() => void) | undefined;
   let cachedSessionCost = 0;
+  let lastCostRefresh = 0;
 
   function renderNow() {
     requestRender?.();
+  }
+
+  function refreshCost(ctx: ExtensionContext, force = false) {
+    const now = Date.now();
+    if (!force && now - lastCostRefresh < 250) return;
+    lastCostRefresh = now;
+    cachedSessionCost = sessionCost(ctx);
+    renderNow();
   }
 
   function install(ctx: ExtensionContext) {
@@ -110,7 +119,7 @@ export default function minimalStatusline(pi: ExtensionAPI) {
           ].filter((part): part is string => Boolean(part));
 
           const line = parts.join(theme.fg("dim", " • "));
-          return ["", truncateToWidth(line, Math.max(0, width), "")];
+          return [truncateToWidth(line, Math.max(0, width), "")];
         },
       };
     });
@@ -123,8 +132,9 @@ export default function minimalStatusline(pi: ExtensionAPI) {
   });
 
   pi.on("agent_start", async () => renderNow());
-  pi.on("agent_end", async () => renderNow());
-  pi.on("message_end", async () => renderNow());
+  pi.on("message_update", async (_event, ctx) => refreshCost(ctx));
+  pi.on("agent_end", async (_event, ctx) => refreshCost(ctx, true));
+  pi.on("message_end", async (_event, ctx) => refreshCost(ctx, true));
   pi.on("model_select", async () => renderNow());
   pi.on("thinking_level_select", async () => renderNow());
   pi.on("tool_execution_start", async () => renderNow());

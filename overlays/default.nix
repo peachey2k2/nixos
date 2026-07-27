@@ -32,7 +32,6 @@
     pi = final.callPackage ../packages/pi-alternate {
       src = inputs.pi-alternate;
     };
-    antigravity-cli = inputs.llm-agents.packages.${system}.antigravity-cli;
     comfyui = inputs.comfyui.packages.${system}.cuda;
     nilshell = inputs.nilshell.packages.${system}.default;
     beer = inputs.beer.packages.${system}.default;
