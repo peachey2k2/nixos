@@ -9,8 +9,8 @@
   },
   "beer": {
     "type": "tarball",
-    "url": "https://git.notashelf.dev/notashelf/beer/archive/f52a4011ab82c3808b303c3aa38bead11d5c6d8f.tar.gz",
-    "narHash": "sha256-VY6/JnBB1hGEcysWAwydLGaR2jfSNuXmYwg/IWcc13M=",
+    "url": "https://git.notashelf.dev/notashelf/beer/archive/9834a59ee4a3dfdddeb4235c3d87b13eded00345.tar.gz",
+    "narHash": "sha256-BOpS1Sx+uSjtObEay710HvbgAx/Cyk+56blXYHN1LnY=",
     "lastModified": 0
   },
   "comfyui": {
@@ -40,26 +40,26 @@
   "nilshell": {
     "type": "path",
     "path": "/home/me/Projects/nilshell",
-    "lastModified": 1785006160,
-    "mtimeNanos": 1785006160159387671,
-    "treeSize": 446965,
-    "treeEntries": 373
+    "lastModified": 1785144159,
+    "mtimeNanos": 1785144159451674266,
+    "treeSize": 463343,
+    "treeEntries": 389
   },
   "nixpkgs": {
     "type": "github",
     "owner": "peachey2k2",
     "repo": "nixpkgs-weekly",
-    "rev": "4e44472af5f3db74b5337dbc44a9bbad866a79ce",
-    "narHash": "sha256-MWDu4GW2mjUE+MysROjPQmHt8A/SdIaB1Fv7diKIgFc=",
-    "lastModified": 1784537622
+    "rev": "4365e00c7cec13fb6d16b11638d9c76ae84f9bb7",
+    "narHash": "sha256-Lfa78gokJmS2cjaJWQ97kBQmCZFyxUBXeHXRzmM7Pcg=",
+    "lastModified": 1785145583
   },
   "nur": {
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "1b18acacc21e32e4950510bb66c218eafdea15b8",
-    "narHash": "sha256-w7Mcwg5E4DC1ILoEtGlBciZuzSflRdcVohH16Fr7/Qo=",
-    "lastModified": 1785135663
+    "rev": "ecd63ab15138dffd1d81c2f9f47c981c56260f71",
+    "narHash": "sha256-ZWfIWmgGyAYpul90QhjW1gudgz0WeMSxcpFipbaLpJk=",
+    "lastModified": 1785227134
   },
   "pi-alternate": {
     "type": "github",

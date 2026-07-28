@@ -50,5 +50,5 @@ type = "fetch"
 
 [inputs.beer]
 # url = "git+https://git.notashelf.dev/notashelf/beer.git"
-url = "https://git.notashelf.dev/notashelf/beer/archive/f52a4011ab82c3808b303c3aa38bead11d5c6d8f.tar.gz"
+url = "https://git.notashelf.dev/notashelf/beer/archive/9834a59ee4a3dfdddeb4235c3d87b13eded00345.tar.gz"
 

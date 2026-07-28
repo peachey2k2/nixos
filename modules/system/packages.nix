@@ -7,9 +7,9 @@
 
 with pkgs;
 [
+  zap
   libnotify
-  zcode
-  ollama-cuda
+  # ollama-cuda
   ryubing
   _0fetch
   acpi
@@ -121,6 +121,7 @@ with pkgs;
   inputs.tack.packages.${system}.default
   inputs.reborder.packages.${system}.default
   tokei
+  tmux
   typescript-language-server
   unrar
   codex

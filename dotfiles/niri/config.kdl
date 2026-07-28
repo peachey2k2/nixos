@@ -32,6 +32,7 @@ environment {
     SDL_IM_MODULE "fcitx"
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT "1"
     QT_QPA_PLATFORM "wayland;xcb"
+    _JAVA_AWT_WM_NONREPARENTING "1" // cuz swing apps
 }
 
 cursor {
