@@ -57,9 +57,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "ecd63ab15138dffd1d81c2f9f47c981c56260f71",
-    "narHash": "sha256-ZWfIWmgGyAYpul90QhjW1gudgz0WeMSxcpFipbaLpJk=",
-    "lastModified": 1785227134
+    "rev": "d5c94c768f3605477356f076636110756b30d788",
+    "narHash": "sha256-5pUvdznNpo+oJcqKmvhfda66Z3V5S8Z3rVnAURfuskM=",
+    "lastModified": 1785227557
   },
   "pi-alternate": {
     "type": "github",
