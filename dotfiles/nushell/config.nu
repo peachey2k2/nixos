@@ -18,10 +18,16 @@ if not ("DISPLAY" in $env) and (tty) == "/dev/tty1" {
 
   # niri gets stuck in a loop calling itself unless we do this to
   # lock it out of reloading the nushell config
-  SHELL=sh sh -c "niri-session"
+  exec niri-session -l
 }
 
 if not ((tty) =~ "/dev/tty") and "IS_NUSHELL_INITIALIZED" in $env == false {
   $env.IS_NUSHELL_INITIALIZED = true;
   source opener.nu
+}
+
+# Beer has no native tabs, so use tmux windows as its tab bar. The TERM check
+# keeps other terminals unchanged and prevents nesting inside tmux panes.
+if ($env.TERM? | default "") == "beer" and ($env.TMUX? | default "") == "" {
+  exec tmux new-session -A -s main
 }

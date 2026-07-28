@@ -157,6 +157,7 @@
       XDG_CONFIG_HOME = "${homeDirectory}/.config";
       EDITOR = "hx";
       VISUAL = "hx";
+      SHELL = "${pkgs.nushell}/bin/nu";
     };
 
     shells = [

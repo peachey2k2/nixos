@@ -131,12 +131,28 @@ function diffLineBg(line: string, fallback: BgName, failed = false, colorDiff = 
   return fallback;
 }
 
+function isWrappedDiffContinuation(line: string): boolean {
+  const plain = line.replace(ANSI_PATTERN, "");
+  const divider = plain.search(/[│┃]/u);
+  return divider >= 0 && plain.slice(0, divider).trim() === "";
+}
+
 function rectangle(lines: string[], width: number, bg: BgName, heading: string, failed = false, colorDiff = false): string[] {
   const body = compactBoxLines(lines);
+  let previousDiffBg: BgName | undefined;
+  const renderedBody = body.map((line) => {
+    const lineBg = diffLineBg(line, bg, failed, colorDiff);
+    const isMarkedDiff = lineBg === "toolSuccessBg" || lineBg === "toolErrorBg";
+    const resolvedBg = colorDiff && !isMarkedDiff && isWrappedDiffContinuation(line) && previousDiffBg
+      ? previousDiffBg
+      : lineBg;
+    previousDiffBg = isMarkedDiff ? lineBg : isWrappedDiffContinuation(line) ? previousDiffBg : undefined;
+    return themedBg(line, width, resolvedBg);
+  });
   return [
     "",
     themedBg(` ${heading}`, width, failed ? "toolErrorBg" : bg),
-    ...body.map((line) => themedBg(line, width, diffLineBg(line, bg, failed, colorDiff))),
+    ...renderedBody,
   ];
 }
 

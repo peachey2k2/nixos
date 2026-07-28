@@ -77,16 +77,16 @@ export default function modePreset(pi: ExtensionAPI) {
   let config = readConfig();
   let activeName: string | undefined;
   let activePreset: Preset | undefined;
-  let original: { model: ExtensionContext["model"]; thinkingLevel: ThinkingLevel; tools: string[] } | undefined;
+  let original: { thinkingLevel: ThinkingLevel; tools: string[] } | undefined;
 
   function publish(ctx: ExtensionContext) {
     ctx.ui.setStatus("preset", activeName ? ctx.ui.theme.fg("accent", `preset:${activeName}`) : undefined);
     pi.events.emit(MODE_EVENT, { mode: activeName });
   }
 
-  function snapshot(ctx: ExtensionContext) {
+  function snapshot(_ctx: ExtensionContext) {
     if (original) return;
-    original = { model: ctx.model, thinkingLevel: pi.getThinkingLevel(), tools: pi.getActiveTools() };
+    original = { thinkingLevel: pi.getThinkingLevel(), tools: pi.getActiveTools() };
   }
 
   async function apply(name: string, preset: Preset, ctx: ExtensionContext, persist = true) {
@@ -114,7 +114,6 @@ export default function modePreset(pi: ExtensionAPI) {
   async function clear(ctx: ExtensionContext, persist = true) {
     activeName = undefined;
     activePreset = undefined;
-    if (original?.model) await pi.setModel(original.model);
     pi.setThinkingLevel(original?.thinkingLevel ?? pi.getThinkingLevel());
     const valid = new Set(pi.getAllTools().map((tool) => tool.name));
     const expandedDefaults = config.defaultTools.flatMap((tool) => {
