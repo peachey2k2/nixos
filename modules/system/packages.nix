@@ -100,7 +100,7 @@ with pkgs;
   pi
   prismlauncher
   proton-vpn
-  python312Packages.python-lsp-server
+  python314Packages.python-lsp-server
   python3Minimal
   qbe
   qbittorrent
