@@ -22,7 +22,7 @@
       extraGroups = [
         "networkmanager" # manage network connections
         "wheel" # run0 access
-        # "docker" # run Docker without sudo
+        "docker" # run Docker without run0
         "video" # access GPU/video devices
         "libvirtd" # manage local VMs
         "seat" # seat/session device access
