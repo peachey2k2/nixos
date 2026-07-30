@@ -11,6 +11,7 @@ bright  = [ "#585b70", "#f37799", "#89d88b", "#ebd391", "#74a8fc", "#f2aede", "#
 
 # Send distinct sequences for tmux's wezterm-like tab shortcuts.
 [text-bindings]
+"Shift+Enter" = "\\e[13;2u"
 "Ctrl+1" = "\\e[27;5;49~"
 "Ctrl+2" = "\\e[27;5;50~"
 "Ctrl+3" = "\\e[27;5;51~"
@@ -24,5 +25,7 @@ bright  = [ "#585b70", "#f37799", "#89d88b", "#ebd391", "#74a8fc", "#f2aede", "#
 "Ctrl+W" = "\\e[27;5;119~"
 "Ctrl+Tab" = "\\e[27;5;9~"
 "Ctrl+Shift+Tab" = "\\e[27;6;9~"
+# XKB reports Shift+Tab as ISO_Left_Tab; emit the terminal's standard back-tab.
+"Shift+Tab" = "\\e[Z"
 "Ctrl+PageUp" = "\\e[5;5~"
 "Ctrl+PageDown" = "\\e[6;5~"

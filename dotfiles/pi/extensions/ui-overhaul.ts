@@ -126,8 +126,11 @@ function diffLineBg(line: string, fallback: BgName, failed = false, colorDiff = 
   if (failed) return "toolErrorBg";
   if (!colorDiff) return fallback;
   const plain = line.replace(ANSI_PATTERN, "").trimStart();
-  if (/^(?:[│┃▌▐▏▎▍▊▉ ]*)\+/.test(plain) || /^\+\s*\d+[|#:\s]/.test(plain) || /^\s*\d+(?:#[A-Za-z0-9]+)?[|:]\s*\+/.test(plain) || /[|│┃]\s*\+/.test(plain)) return "toolSuccessBg";
-  if (/^(?:[│┃▌▐▏▎▍▊▉ ]*)-/.test(plain) || /^-\s*\d+[|#:\s]/.test(plain) || /^\s*\d+(?:#[A-Za-z0-9]+)?[|:]\s*-/.test(plain) || /[|│┃]\s*-/.test(plain)) return "toolErrorBg";
+  // In unified classic mode the change marker is immediately after the gutter
+  // divider. Do not skip whitespace here: a Markdown bullet in context content
+  // appears after that divider too, and must not turn the row into a removal.
+  if (/^(?:[│┃▌▐▏▎▍▊▉ ]*)\+/.test(plain) || /^\+\s*\d+[|#:\s]/.test(plain) || /^\s*\d+(?:#[A-Za-z0-9]+)?[|:]\+/.test(plain) || /[|│┃]\+/.test(plain)) return "toolSuccessBg";
+  if (/^(?:[│┃▌▐▏▎▍▊▉ ]*)-/.test(plain) || /^-\s*\d+[|#:\s]/.test(plain) || /^\s*\d+(?:#[A-Za-z0-9]+)?[|:]\-/.test(plain) || /[|│┃]-/.test(plain)) return "toolErrorBg";
   return fallback;
 }
 

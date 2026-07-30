@@ -3,7 +3,7 @@ theme = "catppuccin_mocha"
 [editor]
 line-number = "relative"
 cursorline = true
-rulers = [80]
+# rulers = [80]
 completion-timeout = 5
 # completion-replace = true
 auto-format = false
