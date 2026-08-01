@@ -25,25 +25,25 @@ c.font_rules = {
   {
     italic = true,
     intensity = 'Normal',
-    font = wezterm.font_with_fallback {
+    font = wezterm.font {
       family = 'Monaspace Radon',
-      italic = true,
+      style = 'Italic',
     },
   },
   -- Dim italic → Monaspace Radon
   {
     italic = true,
     intensity = 'Half',
-    font = wezterm.font_with_fallback {
+    font = wezterm.font {
       family = 'Monaspace Radon',
-      italic = true,
+      style = 'Italic',
     },
   },
   -- Bold (not italic) → Monaspace Argon
   {
     intensity = 'Bold',
     italic = false,
-    font = wezterm.font_with_fallback {
+    font = wezterm.font {
       family = 'Monaspace Argon',
       weight = 'Bold',
     },
@@ -52,10 +52,10 @@ c.font_rules = {
   {
     intensity = 'Bold',
     italic = true,
-    font = wezterm.font_with_fallback {
+    font = wezterm.font {
       family = 'Monaspace Argon',
       weight = 'Bold',
-      italic = true,
+      style = 'Italic',
     },
   },
 }

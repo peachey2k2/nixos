@@ -9,10 +9,17 @@
     "edit": true,
     "write": true
   },
+  "customToolOverrides": {
+    "firecrawl_scrape": { "kind": "generic", "outputMode": "summary" },
+    "firecrawl_crawl": { "kind": "generic", "outputMode": "summary" },
+    "firecrawl_crawl_status": { "kind": "generic", "outputMode": "summary" },
+    "firecrawl_map": { "kind": "generic", "outputMode": "summary" },
+    "firecrawl_search": { "kind": "generic", "outputMode": "summary" }
+  },
   "enableNativeUserMessageBox": false,
-  "readOutputMode": "hidden",
-  "searchOutputMode": "hidden",
-  "mcpOutputMode": "hidden",
+  "readOutputMode": "summary",
+  "searchOutputMode": "count",
+  "mcpOutputMode": "summary",
   "previewLines": 8,
   "expandedPreviewMaxLines": 4000,
   "bashOutputMode": "opencode",

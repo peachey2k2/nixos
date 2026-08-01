@@ -21,8 +21,6 @@ type Config = {
 };
 
 const DEFAULT_TOOLS = ["read", "bash", "edit", "write"];
-const READONLY_BLOCKED_TOOLS = new Set(["bash", "edit", "write"]);
-const AD_HOC_ALLOWED_TOOLS = new Set(["web_search", "web_fetch"]);
 const STATE_ENTRY = "mode-preset-state";
 const MODE_EVENT = "me:mode-changed";
 
@@ -202,20 +200,13 @@ export default function modePreset(pi: ExtensionAPI) {
   });
 
   pi.on("tool_call", async (event) => {
-    // Defense-in-depth: active tool selection is prompt/provider-facing, but this
-    // preflight guard enforces restrictive modes even if a model/provider still
-    // emits a hidden or stale disallowed tool call.
-    if (activeName === "readonly" && READONLY_BLOCKED_TOOLS.has(event.toolName)) {
+    // Defense-in-depth: enforce the active tools resolved from preset.jsonc,
+    // including wildcard entries such as firecrawl_*. This avoids duplicating
+    // tool permissions in code and stays correct when the JSON is changed.
+    if (activeName && !pi.getActiveTools().includes(event.toolName)) {
       return {
         block: true,
-        reason: `Readonly mode blocks the ${event.toolName} tool. Switch modes before modifying files or running commands.`,
-      };
-    }
-
-    if (activeName === "ad-hoc" && !AD_HOC_ALLOWED_TOOLS.has(event.toolName)) {
-      return {
-        block: true,
-        reason: `Ad-hoc mode only allows web_search and web_fetch. Switch modes before using ${event.toolName}.`,
+        reason: `${activeName} mode blocks the ${event.toolName} tool. Update preset.jsonc or switch modes.`,
       };
     }
   });
