@@ -37,7 +37,6 @@
     beer = inputs.beer.packages.${system}.default.overrideAttrs (old: {
       patches = (old.patches or [ ]) ++ [
         ../patches/beer-shift-tab.patch
-        ../patches/beer-line-repeat.patch
       ];
     });
 

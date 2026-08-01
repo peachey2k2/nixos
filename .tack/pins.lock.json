@@ -25,9 +25,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "fenix",
-    "rev": "16810aa8f4ad89ca480b1513774e8b6f485fe368",
-    "narHash": "sha256-GHrsl1+ysDFgmDQtQSqWS7TiYD2Q58VlwLvnf1+crJM=",
-    "lastModified": 1782900513
+    "rev": "e6dc05cac3bc08fc8b00cc1571a456a47d7ca782",
+    "narHash": "sha256-7HLoqxURizfu1Gs5Xg0OTwi9s9Ewh7JpBeE2xVoZHAU=",
+    "lastModified": 1785572837
   },
   "flake-parts": {
     "type": "github",
@@ -57,9 +57,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "cce2408845d0298ae0dcc42582c1d8b390de105c",
-    "narHash": "sha256-ZZoXKpTETeIU93xQOxleE27JWT1FcpF9pe1nSPrFbuw=",
-    "lastModified": 1785395064
+    "rev": "9f1e1e38152726ed95befe7e05e6b030dbc909dd",
+    "narHash": "sha256-1Hj1kp/eQF3UipNfzBxfC9mBprbdQehBTfbTpj2UdxU=",
+    "lastModified": 1785587630
   },
   "pi-alternate": {
     "type": "github",
