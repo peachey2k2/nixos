@@ -13,6 +13,14 @@
     "narHash": "sha256-BOpS1Sx+uSjtObEay710HvbgAx/Cyk+56blXYHN1LnY=",
     "lastModified": 0
   },
+  "blank": {
+    "type": "git",
+    "url": "file:///home/me/Projects/blank",
+    "ref": "refs/heads/rewrite/custom-renderer",
+    "rev": "ac2aa7d7838a3430f2b930a0fd7b2b7a8f98a049",
+    "narHash": "sha256-K12CtoCKpYrwLVynYCd9IHhCmmnLbfPFumorvbm92y4=",
+    "lastModified": 1785689518
+  },
   "comfyui": {
     "type": "github",
     "owner": "utensils",

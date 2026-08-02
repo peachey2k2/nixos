@@ -52,3 +52,6 @@ type = "fetch"
 # url = "git+https://git.notashelf.dev/notashelf/beer.git"
 url = "https://git.notashelf.dev/notashelf/beer/archive/9834a59ee4a3dfdddeb4235c3d87b13eded00345.tar.gz"
 
+[inputs.blank]
+url = "git+file:///home/me/Projects/blank?ref=refs/heads/rewrite/custom-renderer"
+

@@ -120,6 +120,7 @@ with pkgs;
   sway-contrib.grimshot
   inputs.tack.packages.${system}.default
   inputs.reborder.packages.${system}.default
+  inputs.blank.packages.${system}.default
   tokei
   tmux
   typescript-language-server
