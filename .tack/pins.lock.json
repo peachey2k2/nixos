@@ -41,9 +41,9 @@
     "type": "github",
     "owner": "hercules-ci",
     "repo": "flake-parts",
-    "rev": "17c9d6cdfc60c64f4ee8d306f9bc0b4ccb51481e",
-    "narHash": "sha256-vp6Y/Grm98ESt6ceOkWiHWyZRDV3J1RID4w+6NWK9yA=",
-    "lastModified": 1782949081
+    "rev": "427bf4bd9435fdf21321c8cc628c24efc14c0f7a",
+    "narHash": "sha256-4dtXQk/NMePegK/nWp5NSeuZKLATItOq61lpEvmXqGw=",
+    "lastModified": 1785627969
   },
   "nilshell": {
     "type": "path",
@@ -65,9 +65,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "9f1e1e38152726ed95befe7e05e6b030dbc909dd",
-    "narHash": "sha256-1Hj1kp/eQF3UipNfzBxfC9mBprbdQehBTfbTpj2UdxU=",
-    "lastModified": 1785587630
+    "rev": "0259f023e828100f1c390bf3d33cb0ced40f255a",
+    "narHash": "sha256-d0pqWRMolEqFfT8cswBG3b7puaQQjhaUmFBKjnicTkI=",
+    "lastModified": 1785692841
   },
   "pi-alternate": {
     "type": "github",
