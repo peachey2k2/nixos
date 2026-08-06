@@ -79,7 +79,8 @@ alias "!logs" = tail /home/me/nixos/log.txt
 
 # rebuild the system derivation
 def --wrapped "!rebuild" [
-  --no-push # Do not commit and push changes after a successful rebuild
+  --no-push
+  --no-update
   ...args
 ] {
   let dir = (nix-dir)
@@ -96,7 +97,7 @@ def --wrapped "!rebuild" [
     } catch { false }
   )
 
-  if $updated_today {
+  if $updated_today or $no_update {
     nh os switch $dir -H $host --accept-flake-config ...$args
   } else {
     sh -c "cd $NIX_DIR && tack update"
@@ -107,7 +108,7 @@ def --wrapped "!rebuild" [
   sort-packages
 
   if $result == 0 {
-    if not $updated_today {
+    if not ($updated_today or $no_update) {
       nix-log REBUILD "recreated flake.lock"
     }
     nix-log REBUILD "rebuild successful"

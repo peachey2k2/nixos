@@ -16,12 +16,12 @@ with pkgs;
   alarm-clock-applet
   alsa-utils
   android-studio
-  anki
+  anki-bin
   adwaita-icon-theme
   arc-icon-theme
   aseprite
   bc
-  beer
+  # beer
   brightnessctl
   btop
   carapace
@@ -136,7 +136,6 @@ with pkgs;
   zls
   zulu25
   unzip
-  vimix-gtk-themes
   virtiofsd
   vlc
   vscode
