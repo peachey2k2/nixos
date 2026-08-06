@@ -25,7 +25,9 @@ input {
 }
 
 environment {
-    GTK_THEME "Vimix-dark-doder:dark"
+    GTK_THEME "adw-gtk3-dark"
+    QT_STYLE_OVERRIDE "kvantum"
+    KVANTUM_THEME "KvGnomeDark"
     XMODIFIERS "@im=fcitx"
     GTK_IM_MODULE "fcitx"
     QT_IM_MODULE "fcitx"

@@ -152,7 +152,9 @@
     sessionVariables = {
       NIX_DIR = "${homeDirectory}/nixos";
       NIXOS_OZONE_WL = "1";
-      GTK_THEME = "Vimix-dark-doder:dark";
+      GTK_THEME = "adw-gtk3-dark";
+      QT_STYLE_OVERRIDE = "kvantum";
+      KVANTUM_THEME = "KvGnomeDark";
       NIX_SYSTEM_PATH = "${homeDirectory}/nixos";
       NIX_CONFIG_PATH = "${homeDirectory}/nixos/configs";
       XDG_CONFIG_HOME = "${homeDirectory}/.config";

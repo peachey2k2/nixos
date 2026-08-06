@@ -7,21 +7,27 @@
     "narHash": "sha256-K5QOFeBYxRC/ksSIcyQZZgZJfHt2vvCCYm/HPiIGY4Y=",
     "lastModified": 1775736081
   },
+  "beer": {
+    "type": "tarball",
+    "url": "https://git.notashelf.dev/notashelf/beer/archive/9834a59ee4a3dfdddeb4235c3d87b13eded00345.tar.gz",
+    "narHash": "sha256-BOpS1Sx+uSjtObEay710HvbgAx/Cyk+56blXYHN1LnY=",
+    "lastModified": 0
+  },
   "blank": {
     "type": "path",
     "path": "/home/me/Projects/blank",
-    "lastModified": 1785745441,
-    "mtimeNanos": 1785745441029500073,
-    "treeSize": 16461579895,
-    "treeEntries": 29868
+    "lastModified": 1785788016,
+    "mtimeNanos": 1785788016602129863,
+    "treeSize": 16754648803,
+    "treeEntries": 30640
   },
   "comfyui": {
     "type": "github",
     "owner": "utensils",
     "repo": "comfyui-nix",
-    "rev": "068803a26235f0c43a93d1f9c3d75a22564e9ba7",
-    "narHash": "sha256-QnpjSwatSWXLpNylUgx8DkQ05Johc4mbPboISPWcY40=",
-    "lastModified": 1784566540
+    "rev": "1f1abf022dfe9350dde7cd54e74c8f30293d640d",
+    "narHash": "sha256-GUPEjtGuYsGjd3ayo4GZTp6fZtju6LOza4WIOu3GRhE=",
+    "lastModified": 1785892222
   },
   "fenix": {
     "type": "github",
@@ -59,9 +65,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "a76b349db388f4d39f40f9429bc8e3a529a7d0c1",
-    "narHash": "sha256-+Cistda+sJoV0+T/hS2lN6P+N+qkQnx7QIFvnTTV5q8=",
-    "lastModified": 1785786769
+    "rev": "83452596ee2f5207b3dd2315e0d59eaeee0a206e",
+    "narHash": "sha256-/zGt33jqEMb+IVL/jgumet5mABrjy3yCTXANS5jGpjI=",
+    "lastModified": 1785955903
   },
   "pi-alternate": {
     "type": "github",
@@ -91,9 +97,9 @@
     "type": "github",
     "owner": "manic-systems",
     "repo": "tack",
-    "rev": "4790c31fe45a4b46625e7bc8f48e27521400c013",
-    "narHash": "sha256-1rg3fP4N6C0CeqJV/HPRcRNSiZZNITzOylbWJHTMkro=",
-    "lastModified": 1785748851
+    "rev": "62a67545adaf01b48d01ee73c0d16353ca68432e",
+    "narHash": "sha256-rTiX4SZ9Sjei3WzsW25nDTZweMRzA7ZunspkhDXkZfY=",
+    "lastModified": 1785878583
   },
   "zen-browser": {
     "type": "github",
