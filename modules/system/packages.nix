@@ -21,7 +21,7 @@ with pkgs;
   arc-icon-theme
   aseprite
   bc
-  # beer
+  beer
   brightnessctl
   btop
   carapace
@@ -136,6 +136,8 @@ with pkgs;
   zls
   zulu25
   unzip
+  adw-gtk3
+  qt6Packages.qtstyleplugin-kvantum
   virtiofsd
   vlc
   vscode

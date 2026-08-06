@@ -34,11 +34,7 @@
     };
     comfyui = inputs.comfyui.packages.${system}.cuda;
     nilshell = inputs.nilshell.packages.${system}.default;
-    # beer = inputs.beer.packages.${system}.default.overrideAttrs (old: {
-    #   patches = (old.patches or [ ]) ++ [
-    #     ../patches/beer-shift-tab.patch
-    #   ];
-    # });
+    beer = inputs.beer.packages.${system}.default;
 
     # Nixpkgs builds Steelix's newer queries against Helix's older grammar lock.
     # Keep the Steel-enabled binary, but use Helix's internally consistent runtime.
