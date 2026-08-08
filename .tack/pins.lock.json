@@ -16,10 +16,10 @@
   "blank": {
     "type": "path",
     "path": "/home/me/Projects/blank",
-    "lastModified": 1786019599,
-    "mtimeNanos": 1786019599336772722,
-    "treeSize": 17119998656,
-    "treeEntries": 31138
+    "lastModified": 1786202309,
+    "mtimeNanos": 1786202309523224002,
+    "treeSize": 17119594915,
+    "treeEntries": 31146
   },
   "comfyui": {
     "type": "github",
@@ -45,6 +45,14 @@
     "narHash": "sha256-4dtXQk/NMePegK/nWp5NSeuZKLATItOq61lpEvmXqGw=",
     "lastModified": 1785627969
   },
+  "kopuz": {
+    "type": "github",
+    "owner": "Kopuz-org",
+    "repo": "kopuz",
+    "rev": "0f8b35581d047697b5ae5a4e65fd8f47c7b04460",
+    "narHash": "sha256-qhr0Ky/5NmknADbc6+fMDUqyMAiJy9W882bUJ4M0md4=",
+    "lastModified": 1786126041
+  },
   "nilshell": {
     "type": "path",
     "path": "/home/me/Projects/nilshell",
@@ -65,9 +73,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "a8942a893b6e6542324827b57087b089120b9352",
-    "narHash": "sha256-6SZNboGV9L81ig3DoWEGo/f4UTFQC+5kYXDiN3paxac=",
-    "lastModified": 1786200462
+    "rev": "84b33a4cd6e261aaa9f1c2ae632f01e2ca3fc801",
+    "narHash": "sha256-FvG3atiyrL7lH5Yw4sIASzxlb04W8MK0C0+8zWQZn/M=",
+    "lastModified": 1786203086
   },
   "pi-alternate": {
     "type": "github",
