@@ -70,6 +70,7 @@ with pkgs;
   kdePackages.okular
   kdePackages.qtdeclarative
   krita
+  inputs.kopuz.packages.${system}.default
   lenovo-legion
   lf
   # loopspinner

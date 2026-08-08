@@ -13,6 +13,7 @@
     "https://cuda-maintainers.cachix.org"
     "https://nixpkgs-unfree.cachix.org"
     "https://cache.nixos-cuda.org"
+    "https://kopuz.cachix.org"
   ];
 
   extra-trusted-public-keys = [
@@ -22,6 +23,7 @@
     "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
     "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nqlt0="
     "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+    "kopuz.cachix.org-1:J2X3AnAYhKTJW5S3aCLoA1ckonQXVNZMQvhZA0YAufw="
   ];
 
   accept-flake-config = true;

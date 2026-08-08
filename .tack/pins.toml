@@ -55,3 +55,6 @@ url = "https://git.notashelf.dev/notashelf/beer/archive/9834a59ee4a3dfdddeb4235c
 [inputs.blank]
 url = "path:../Projects/blank"
 
+[inputs.kopuz]
+url = "github:Kopuz-org/kopuz"
+
