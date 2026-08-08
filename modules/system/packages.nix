@@ -7,6 +7,7 @@
 
 with pkgs;
 [
+  openutau
   zap
   libnotify
   # ollama-cuda
