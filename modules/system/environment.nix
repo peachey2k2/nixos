@@ -32,9 +32,13 @@
       systemCronJobs = [ ];
     };
 
-    getty = {
-      autologinUser = username;
-      autologinOnce = true;
+    greetd = {
+      enable = true;
+      useTextGreeter = true;
+      settings.default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --cmd ${pkgs.niri}/bin/niri-session";
+        user = "greeter";
+      };
     };
 
     openssh = {
@@ -83,8 +87,7 @@
     xfconf.enable = true;
 
     ssh = {
-      # GitHub SSH over port 22 is blocked/tarpitted on some enterprise networks.
-      # Route normal git@github.com remotes through GitHub's SSH-over-HTTPS endpoint.
+      # just covering ground, some enterprise firewalls may block port 22
       extraConfig = ''
         Host github.com
           HostName ssh.github.com

@@ -16,18 +16,18 @@
   "blank": {
     "type": "path",
     "path": "/home/me/Projects/blank",
-    "lastModified": 1785788016,
-    "mtimeNanos": 1785788016602129863,
-    "treeSize": 16754648803,
-    "treeEntries": 30640
+    "lastModified": 1786019599,
+    "mtimeNanos": 1786019599336772722,
+    "treeSize": 17119998656,
+    "treeEntries": 31138
   },
   "comfyui": {
     "type": "github",
     "owner": "utensils",
     "repo": "comfyui-nix",
-    "rev": "1f1abf022dfe9350dde7cd54e74c8f30293d640d",
-    "narHash": "sha256-GUPEjtGuYsGjd3ayo4GZTp6fZtju6LOza4WIOu3GRhE=",
-    "lastModified": 1785892222
+    "rev": "60cf396864c09e954f23b31c4637c2bb65ebe085",
+    "narHash": "sha256-sCmqCPCXjFAo2oVxswnjdiOkS6bgpNVDogsEOK9cCRA=",
+    "lastModified": 1785968480
   },
   "fenix": {
     "type": "github",
@@ -65,9 +65,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "83452596ee2f5207b3dd2315e0d59eaeee0a206e",
-    "narHash": "sha256-/zGt33jqEMb+IVL/jgumet5mABrjy3yCTXANS5jGpjI=",
-    "lastModified": 1785955903
+    "rev": "91ec7e74dea47d2b73f76750f26b7415228822dd",
+    "narHash": "sha256-pbNjYFEfa7Y78hXyyhDBi3mL3M+yprmd4zyUI46TkyU=",
+    "lastModified": 1786198666
   },
   "pi-alternate": {
     "type": "github",
