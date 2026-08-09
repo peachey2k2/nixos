@@ -44,13 +44,15 @@ url = "path:../Projects/nilshell"
 [inputs.reborder]
 url = "path:../Projects/reborder"
 
-[inputs.pi-alternate]
-url = "gh:cope-hq/pi-alternate"
-type = "fetch"
+[inputs.llm-agents]
+url = "gh:numtide/llm-agents.nix"
 
-[inputs.beer]
+# [inputs.pi-alternate]
+# url = "gh:cope-hq/pi-alternate"
+# type = "fetch"
+
+# [inputs.beer]
 # url = "git+https://git.notashelf.dev/notashelf/beer.git"
-url = "https://git.notashelf.dev/notashelf/beer/archive/9834a59ee4a3dfdddeb4235c3d87b13eded00345.tar.gz"
 
 [inputs.blank]
 url = "path:../Projects/blank"

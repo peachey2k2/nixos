@@ -115,7 +115,6 @@ in
       install -d -o ${username} -g users "${vault}" \
         "${vault}/Inbox" \
         "${vault}/Daily" \
-        "${vault}/Weekly" \
         "${vault}/Projects" \
         "${vault}/Reference" \
         "${vault}/Attachments" \
@@ -138,40 +137,6 @@ in
         done
       '') plugins}
 
-      ${writeIfMissing "${vault}/Home.md" ''
-        # Home
-
-        - [[Inbox/README|Inbox]] — dump first, organize later.
-        - [[Daily]] — daily notes live here.
-        - [[Weekly]] — weekly planning/review notes.
-        - [[Projects/README|Projects]] — active stuff.
-        - [[Reference/README|Reference]] — facts/docs you want to keep.
-
-        ## Useful plugin toys
-
-        - Dataview: query notes and metadata.
-        - Tasks: track `- [ ]` checkboxes with due dates.
-        - Calendar + Periodic Notes: daily/weekly note flow.
-        - Templater: stronger templates when the basic ones stop being enough.
-        - Git: optional vault backups once you initialize a repo.
-
-        Keep it boring. The vault wins when you write in it, not when you decorate it.
-      ''}
-      ${writeIfMissing "${vault}/Inbox/README.md" ''
-        # Inbox
-
-        Capture loose notes here. Move them when they become useful.
-      ''}
-      ${writeIfMissing "${vault}/Projects/README.md" ''
-        # Projects
-
-        One note per real project. Link related daily notes or references.
-      ''}
-      ${writeIfMissing "${vault}/Reference/README.md" ''
-        # Reference
-
-        Stable notes, docs, snippets, and things worth finding again.
-      ''}
       ${writeIfMissing "${vault}/Templates/Daily.md" ''
         # {{date:YYYY-MM-DD}}
 

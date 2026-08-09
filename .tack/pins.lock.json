@@ -7,12 +7,6 @@
     "narHash": "sha256-K5QOFeBYxRC/ksSIcyQZZgZJfHt2vvCCYm/HPiIGY4Y=",
     "lastModified": 1775736081
   },
-  "beer": {
-    "type": "tarball",
-    "url": "https://git.notashelf.dev/notashelf/beer/archive/9834a59ee4a3dfdddeb4235c3d87b13eded00345.tar.gz",
-    "narHash": "sha256-BOpS1Sx+uSjtObEay710HvbgAx/Cyk+56blXYHN1LnY=",
-    "lastModified": 0
-  },
   "blank": {
     "type": "path",
     "path": "/home/me/Projects/blank",
@@ -53,6 +47,14 @@
     "narHash": "sha256-qhr0Ky/5NmknADbc6+fMDUqyMAiJy9W882bUJ4M0md4=",
     "lastModified": 1786126041
   },
+  "llm-agents": {
+    "type": "github",
+    "owner": "numtide",
+    "repo": "llm-agents.nix",
+    "rev": "e08671662b367cd9cd298d7bf884b824fcf2233b",
+    "narHash": "sha256-Nr47WQlg6+I9Bk/GUKgWp8rAPze/eGM/BW85A3H0228=",
+    "lastModified": 1786300222
+  },
   "nilshell": {
     "type": "path",
     "path": "/home/me/Projects/nilshell",
@@ -73,17 +75,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "84b33a4cd6e261aaa9f1c2ae632f01e2ca3fc801",
-    "narHash": "sha256-FvG3atiyrL7lH5Yw4sIASzxlb04W8MK0C0+8zWQZn/M=",
-    "lastModified": 1786203086
-  },
-  "pi-alternate": {
-    "type": "github",
-    "owner": "cope-hq",
-    "repo": "pi-alternate",
-    "rev": "d37980869c0fd51384615f7a9e28305d3755946f",
-    "narHash": "sha256-az7WGBcA0Hr6QEjd3Fa6d+3q5uscEQXYFZXpvxRSPe8=",
-    "lastModified": 1784897770
+    "rev": "483f1564f9ad75a1591bbf11d592339729be31f3",
+    "narHash": "sha256-XtYDZlGAj5jmepag+C5KM6AqJkr2L0DrIAWDKBeaGNA=",
+    "lastModified": 1786300301
   },
   "reborder": {
     "type": "path",

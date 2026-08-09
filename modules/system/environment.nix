@@ -35,9 +35,12 @@
     greetd = {
       enable = true;
       useTextGreeter = true;
-      settings.default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --cmd ${pkgs.niri}/bin/niri-session";
-        user = "greeter";
+      settings = rec {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --cmd ${pkgs.niri}/bin/niri-session";
+          user = "me";
+        };
+        initial_session = default_session;
       };
     };
 
