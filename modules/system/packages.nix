@@ -22,7 +22,6 @@ with pkgs;
   arc-icon-theme
   aseprite
   bc
-  beer
   brightnessctl
   btop
   carapace

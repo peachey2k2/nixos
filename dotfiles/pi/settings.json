@@ -7,6 +7,7 @@
   "defaultModel": "gpt-5.6-terra",
   "defaultThinkingLevel": "medium",
   "theme": "ansi-dark",
+  "tuiMode": "fullscreen",
   "packages": [
     "npm:@narumitw/pi-codex-usage",
     "npm:pi-btw",
