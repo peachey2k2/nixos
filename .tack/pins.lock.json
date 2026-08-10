@@ -43,17 +43,17 @@
     "type": "github",
     "owner": "Kopuz-org",
     "repo": "kopuz",
-    "rev": "0f8b35581d047697b5ae5a4e65fd8f47c7b04460",
-    "narHash": "sha256-qhr0Ky/5NmknADbc6+fMDUqyMAiJy9W882bUJ4M0md4=",
-    "lastModified": 1786126041
+    "rev": "047ab2275d39bffb9c388e900af7b788ff533a74",
+    "narHash": "sha256-fx+2Vwo3ydyEaZNCBJToo3iSSLdr1qJEyP79zSVcEIE=",
+    "lastModified": 1786306855
   },
   "llm-agents": {
     "type": "github",
     "owner": "numtide",
     "repo": "llm-agents.nix",
-    "rev": "e08671662b367cd9cd298d7bf884b824fcf2233b",
-    "narHash": "sha256-Nr47WQlg6+I9Bk/GUKgWp8rAPze/eGM/BW85A3H0228=",
-    "lastModified": 1786300222
+    "rev": "33656317a15ef8171dc2efbbdefd5f7b092b57b9",
+    "narHash": "sha256-UG8v0D6MCJs7TCpdpAOLKus+IHktnt4MlV19kFLZQ2w=",
+    "lastModified": 1786337855
   },
   "nilshell": {
     "type": "path",
@@ -67,17 +67,17 @@
     "type": "github",
     "owner": "peachey2k2",
     "repo": "nixpkgs-weekly",
-    "rev": "09bb8015cc535ee0f21f47d76d739885972359f8",
-    "narHash": "sha256-j/YVwl1AesWdCw4Mjx167qjgtTAhp9m8gxWSTGzo6hM=",
-    "lastModified": 1785749919
+    "rev": "c5b268c776506ab24296f2f467ff239a19afe96d",
+    "narHash": "sha256-cztKsYOWNOKYhC3LClxMJ26XINvjlMIVF/TfgoGycX0=",
+    "lastModified": 1786346826
   },
   "nur": {
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "483f1564f9ad75a1591bbf11d592339729be31f3",
-    "narHash": "sha256-XtYDZlGAj5jmepag+C5KM6AqJkr2L0DrIAWDKBeaGNA=",
-    "lastModified": 1786300301
+    "rev": "e3c9ed8196804756760b9f44d499dff0a37e710e",
+    "narHash": "sha256-cOgBftljjSsBJg1FY0z6820fvhHbVqmve1fM4F1GvJA=",
+    "lastModified": 1786350183
   },
   "reborder": {
     "type": "path",
