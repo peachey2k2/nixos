@@ -47,10 +47,6 @@ url = "path:../Projects/reborder"
 [inputs.llm-agents]
 url = "gh:numtide/llm-agents.nix"
 
-# [inputs.pi-alternate]
-# url = "gh:cope-hq/pi-alternate"
-# type = "fetch"
-
 # [inputs.beer]
 # url = "git+https://git.notashelf.dev/notashelf/beer.git"
 
@@ -59,4 +55,7 @@ url = "path:../Projects/blank"
 
 [inputs.kopuz]
 url = "github:Kopuz-org/kopuz"
+
+[inputs.mesa]
+url = "github:peachey2k2/nixpkgs-weekly?rev=4365e00c7cec13fb6d16b11638d9c76ae84f9bb7"
 

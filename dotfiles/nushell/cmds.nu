@@ -32,7 +32,7 @@ def nix-dir [] {
 def nix-log [tag: string, message: string] {
   let log_file = ((nix-dir) | path join log.txt)
   mkdir ($log_file | path dirname)
-  $"(date now | format date '%d-%m-%Y %H:%M') [($tag)] ($message)" | save --append $log_file
+  $"(date now | format date '%d-%m-%Y %H:%M') [($tag)] ($message)(char newline)" | save --append $log_file
 }
 
 def "sort-packages" [] {

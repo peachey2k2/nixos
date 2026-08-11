@@ -1,9 +1,28 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  system,
+  nixpkgsConfig,
+  ...
+}:
 
+let
+  # Mesa 26.2.0 hangs the Alder Lake i915 OpenGL context. Keep the graphics
+  # driver set on the last known-good nixpkgs revision until upstream #16066
+  # is fixed: https://gitlab.freedesktop.org/mesa/mesa/-/work_items/16066
+  mesaPkgs = import inputs.mesa {
+    inherit system;
+    config = nixpkgsConfig;
+  };
+in
 {
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
+    package = mesaPkgs.mesa;
+    package32 = mesaPkgs.pkgsi686Linux.mesa;
   };
 
   # Load nvidia driver for Xorg and Wayland

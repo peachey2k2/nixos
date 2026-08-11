@@ -4,6 +4,10 @@ local a = wezterm.action
 
 c.enable_wayland = true
 
+-- -- OpenGL triggers repeated i915 GPU hangs on this system. Vulkan via WebGPU
+-- -- avoids the reset loop (and the resulting WirePlumber device churn).
+-- c.front_end = "WebGpu"
+
 c.color_scheme =
   -- "catppuccin-mocha"
   -- "Decaf (base16)"
