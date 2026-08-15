@@ -2,8 +2,8 @@ $env.NIX_SHELL_DEPTH = $env.NIX_SHELL_DEPTH? | default 0
 $env.SHELL_DEPTH = $env.SHELL_DEPTH? | default 0
 $env.config.show_banner = false
 
-$env.EDITOR = "@editor@"
-$env.VISUAL = "@editor@"
+$env.EDITOR = "hx"
+$env.VISUAL = $env.EDITOR
 $env.SHELL = (^which nu)
 
 # default `rm` to send to trash instead of deleting. `-p` bypasses.

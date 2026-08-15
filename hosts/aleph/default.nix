@@ -4,8 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ./nvidia.nix
-
-    ../../modules/system
   ];
 
   services.udev.extraRules = ''

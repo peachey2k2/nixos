@@ -50,6 +50,7 @@
               nixpkgs.config = nixpkgsConfig;
               nixpkgs.overlays = overlaysFor system;
             }
+            ./modules/system
           ]
           ++ modules;
         };
