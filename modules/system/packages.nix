@@ -150,8 +150,7 @@ with pkgs;
   winetricks
   wlrctl
   wtype
-  # wineWowPackages.stable
-  # wineWowPackages.waylandFull
+  wineWow64Packages.full
   wl-clipboard
   wl-clip-persist
   wofi

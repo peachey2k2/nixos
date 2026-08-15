@@ -11,7 +11,6 @@ let
   ];
 
   replacements = {
-    "@editor@" = "hx";
     "@monaspace@" = toString pkgs.monaspace;
     "@noto_cjk@" = toString pkgs.noto-fonts-cjk-sans;
     "@twemoji@" = toString pkgs.twitter-color-emoji;
