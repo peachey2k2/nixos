@@ -9,6 +9,7 @@ recomposable = true
 
 [all_follow]
 nixpkgs = "nixpkgs"
+nixpkgs-lib = "nixpkgs"
 
 [inputs.nixpkgs]
 url = "gh:peachey2k2/nixpkgs-weekly"

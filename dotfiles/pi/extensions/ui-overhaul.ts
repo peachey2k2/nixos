@@ -27,7 +27,6 @@ type PatchedPrototype = Record<PropertyKey, unknown> & { [PATCHED]?: boolean; [O
 type RenderCacheEntry = { width: number; lines: string[] };
 
 let userRenderCache = new WeakMap<object, RenderCacheEntry>();
-let assistantRenderCache = new WeakMap<object, RenderCacheEntry>();
 let toolRenderCache = new WeakMap<object, RenderCacheEntry>();
 
 const PATCHED = Symbol.for("me.pi.ui-overhaul.patched");
@@ -402,7 +401,6 @@ function restore(proto: PatchedPrototype) {
 
 function invalidateRenderCache(target: object) {
   userRenderCache.delete(target);
-  assistantRenderCache.delete(target);
   toolRenderCache.delete(target);
 }
 
@@ -451,10 +449,11 @@ function installMessagePatches() {
       decorateAssistantContent(this, displayMessage);
       return result;
     };
+    // Markdown updates its own render state when a streamed response is finalized.
+    // Caching this parent component can retain the intermediate rendering where a
+    // just-opened fence is plain text, even after the closing fence arrives.
     assistantProto.render = function patchedAssistantRender(this: Renderable & object, width: number): string[] {
-      return cachedRender(assistantRenderCache, this, width, () =>
-        (assistantProto[ORIGINALS]!.render as (this: Renderable, width: number) => string[]).call(this, width),
-      );
+      return (assistantProto[ORIGINALS]!.render as (this: Renderable, width: number) => string[]).call(this, width);
     };
   });
 
@@ -506,7 +505,6 @@ function restoreMessagePatches() {
   restore(AssistantMessageComponent.prototype as PatchedPrototype);
   restore(ToolExecutionComponent.prototype as PatchedPrototype);
   userRenderCache = new WeakMap<object, RenderCacheEntry>();
-  assistantRenderCache = new WeakMap<object, RenderCacheEntry>();
   toolRenderCache = new WeakMap<object, RenderCacheEntry>();
 }
 

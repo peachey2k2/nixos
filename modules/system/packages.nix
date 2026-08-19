@@ -7,6 +7,7 @@
 
 with pkgs;
 [
+  chatgpt
   openutau
   zap
   libnotify
@@ -30,7 +31,6 @@ with pkgs;
   cmake
   copyq
   cpu-x
-  dosbox-x
   duf
   easyeffects
   ed
