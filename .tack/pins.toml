@@ -8,7 +8,7 @@ gh = "github:{path}"
 recomposable = true
 
 [all_follow]
-nixpkgs = "nixpkgs"
+nixpkgs = ["nixpkgs-lib"]
 nixpkgs-lib = "nixpkgs"
 
 [inputs.nixpkgs]

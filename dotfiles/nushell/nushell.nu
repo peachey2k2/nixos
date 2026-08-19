@@ -4,7 +4,9 @@ $env.config.show_banner = false
 
 $env.EDITOR = "hx"
 $env.VISUAL = $env.EDITOR
-$env.SHELL = (^which nu)
+# Keep this path listed in /etc/shells; `which nu` resolves to a Nix store path,
+# which PAM rejects for privileged commands such as pkexec.
+$env.SHELL = "/run/current-system/sw/bin/nu"
 
 # default `rm` to send to trash instead of deleting. `-p` bypasses.
 $env.config.rm.always_trash = true
