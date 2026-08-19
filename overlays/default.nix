@@ -17,7 +17,6 @@
     jai = final.callPackage ../packages/jai { };
     jails = final.callPackage ../packages/jails { };
     nethack = final.callPackage ../packages/nethack { };
-    # nerdfonts-custom = final.callPackage ../packages/nerdfonts-custom { };
 
     freeoffice = prev.freeoffice.override {
       officeVersion = {
@@ -30,6 +29,7 @@
     zen-browser = inputs.zen-browser.packages.${system}.default;
     _0fetch = inputs._0fetch.packages.${system}.default;
     pi = inputs.llm-agents.packages.${system}.pi;
+    chatgpt = inputs.llm-agents.packages.${system}.chatgpt;
     comfyui = inputs.comfyui.packages.${system}.cuda;
     nilshell = inputs.nilshell.packages.${system}.default;
 

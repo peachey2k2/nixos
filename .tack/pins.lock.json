@@ -43,17 +43,17 @@
     "type": "github",
     "owner": "Kopuz-org",
     "repo": "kopuz",
-    "rev": "7400c096ae1d6eeb9f5f78abe88b9cb1fd17db2b",
-    "narHash": "sha256-r9u1CnHa+eC/iQnBepRpbHwLj97CRX+m+0cv7MBHbpM=",
-    "lastModified": 1786784527
+    "rev": "efdf304e24b65872311a160c2efeff5c6db082fe",
+    "narHash": "sha256-Ufon4RcO0Sg44qpdEwngod4z4MPrG4nv3QSS7hyQIU4=",
+    "lastModified": 1787082956
   },
   "llm-agents": {
     "type": "github",
     "owner": "numtide",
     "repo": "llm-agents.nix",
-    "rev": "b4a645976fff76ef94dd60b7d4f9deaa216f40bd",
-    "narHash": "sha256-PCWimmaAPzsjCMcruup2A047brH+on+ZFjg358qvn9o=",
-    "lastModified": 1786773797
+    "rev": "c4c6673c4c1ceb69d845fa665a714e1273d0acac",
+    "narHash": "sha256-LYHdEFpZ5Zx6VgKmbhG3SGEUUtV/zksg+YcZT3e9mHg=",
+    "lastModified": 1787114088
   },
   "mesa": {
     "type": "github",
@@ -75,17 +75,17 @@
     "type": "github",
     "owner": "peachey2k2",
     "repo": "nixpkgs-weekly",
-    "rev": "c5b268c776506ab24296f2f467ff239a19afe96d",
-    "narHash": "sha256-cztKsYOWNOKYhC3LClxMJ26XINvjlMIVF/TfgoGycX0=",
-    "lastModified": 1786346826
+    "rev": "0108e046fff145d9de7d0ccf4a630191b5707740",
+    "narHash": "sha256-NrdwR4SjejMShe1tmPmN9Jvh0ecTt5mviB2EWcATaeE=",
+    "lastModified": 1786949345
   },
   "nur": {
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "0fda88be265a8888cafcfede74ab9ee36aa33259",
-    "narHash": "sha256-ePgZpkaumOzhjtyPHeMO39XRvKXQwGEb4xY5NIAMTco=",
-    "lastModified": 1786799258
+    "rev": "071999e01ef8aca4962d2de6b850275c5a554eb7",
+    "narHash": "sha256-qPjn3+C2/BSVE8bzJGFCwIwx9yiU3o3+uEr2+36Z1vA=",
+    "lastModified": 1787134766
   },
   "reborder": {
     "type": "path",
