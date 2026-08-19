@@ -100,8 +100,8 @@ def --wrapped "!rebuild" [
   if $updated_today or $no_update {
     nh os switch $dir -H $host --accept-flake-config ...$args
   } else {
-    sh -c "cd $NIX_DIR && tack update"
-    nh os switch $dir -H $host --update --accept-flake-config --impure ...$args
+    sh -c "cd $NIX_DIR && tack update --exclude blank,nilshell,reborder"
+    nh os switch $dir -H $host --accept-flake-config --impure ...$args
   }
 
   let result = $env.LAST_EXIT_CODE
@@ -152,7 +152,7 @@ def "nix-autopush-hook" [] {
 $env.NIX_HARDENING_ENABLE = ($env.NIX_HARDENING_ENABLE? | default '' | split row ' ' | where { $in !~ 'fortify' } | str join ' ')
 
 def --wrapped sudo [...rest] {
-  sudo --run0-extra-arg --background= ...$rest
+  ^sudo --run0-extra-arg --background= ...$rest
 }
 
 def --wrapped run0 [...rest] {

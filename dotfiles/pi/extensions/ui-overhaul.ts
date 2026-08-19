@@ -353,14 +353,12 @@ class BorderlessPresetEditor extends CustomEditor {
       .map((line) => themedBg(` ${line.replace(BORDER_CHARS, " ")} `, width, bg));
     const completionLines = autocompleteLines.map((line) => padToWidth(` ${line.replace(BORDER_CHARS, " ")} `, width));
 
-    // Fullscreen Pi hard-codes a three-row minimum for editorContainer. Custom
-    // editors cannot override it: returning fewer rows merely moves transparent
-    // space to one side of the editor. Paint those mandatory rows with our box
-    // background so the editor remains contiguous with both transcript and
-    // footer while keeping the actual input on the bottom row.
-    const reservedRows = Math.max(0, 3 - inputLines.length - completionLines.length);
-    const boxFill = Array.from({ length: reservedRows }, () => themedBg("", width, bg));
-    this.lastLines = [...boxFill, ...inputLines, ...completionLines];
+    // Fullscreen Pi reserves three rows for the editor container and top-aligns
+    // a shorter custom editor. Whitespace (not empty strings, which Container
+    // drops) keeps the one-row input pinned immediately above the footer.
+    const leadingRows = Math.max(0, 3 - inputLines.length - completionLines.length);
+    const leadingFill = " ".repeat(width);
+    this.lastLines = [...Array<string>(leadingRows).fill(leadingFill), ...inputLines, ...completionLines];
     this.lastWidth = width;
     this.lastText = text;
     this.lastCursor = cursorKey;
