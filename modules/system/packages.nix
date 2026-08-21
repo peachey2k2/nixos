@@ -8,6 +8,7 @@
 with pkgs;
 [
   (llama-cpp.override { cudaSupport = true; })
+  t3code
   chatgpt
   openutau
   zap
