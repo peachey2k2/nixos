@@ -8,7 +8,6 @@
 with pkgs;
 [
   (llama-cpp.override { cudaSupport = true; })
-  t3code
   chatgpt
   openutau
   zap
@@ -121,9 +120,10 @@ with pkgs;
   svlangserver
   swaybg
   sway-contrib.grimshot
-  inputs.tack.packages.${system}.default
-  inputs.reborder.packages.${system}.default
-  inputs.blank.packages.${system}.default
+  tack
+  autolith
+  reborder
+  blank
   tokei
   tmux
   typescript-language-server
