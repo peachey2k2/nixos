@@ -14,6 +14,22 @@
     marked = final.callPackage ../packages/marked { };
     zynk-cli = final.callPackage ../packages/zynk-cli { };
     zcode = final.callPackage ../packages/zcode { };
+    # Autolith 0.39.1 requires SBCL 2.6.6; keep its runtime and Lisp
+    # package set aligned until upstream supports the newer nixpkgs SBCL.
+    autolith =
+      let
+        pkgs = final // {
+          sbcl = final.sbcl_2_6_6;
+          sbclPackages = final.sbcl_2_6_6.pkgs;
+        };
+      in
+      import "${inputs.autolith}/nix/package.nix" {
+        inherit pkgs;
+        src = inputs.autolith;
+      };
+    tack = inputs.tack.packages.${system}.default;
+    reborder = inputs.reborder.packages.${system}.default;
+    blank = inputs.blank.packages.${system}.default;
     jai = final.callPackage ../packages/jai { };
     jails = final.callPackage ../packages/jails { };
     nethack = final.callPackage ../packages/nethack { };

@@ -1,9 +1,10 @@
 {
   // Reimplements the old opencode agents as pi presets.
-  // Shift+Tab cycles normal, ad-hoc, and readonly presets.
-  "commandName": false,
+  // Ctrl+Alt+M cycles normal, ad-hoc, and readonly presets.
+  // Shift+Tab belongs to Pi's built-in thinking-level control.
+  "commandName": "mode",
   "flagName": "mode",
-  "cycleShortcut": "shift+tab",
+  "cycleShortcut": "ctrl+alt+m",
   "defaultTools": ["read", "bash", "edit", "write", "web_search", "web_fetch", "window_*"],
   "presets": {
     "ad-hoc": {

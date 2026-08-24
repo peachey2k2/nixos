@@ -135,8 +135,22 @@ export default function modePreset(pi: ExtensionAPI) {
 
   async function choose(selected: string | undefined, ctx: ExtensionContext) {
     if (!selected) return;
-    if (selected === "(none)") return clear(ctx);
-    return activate(selected.replace(/ \(active\)$/u, ""), ctx);
+    const name = selected.replace(/ \(active\)$/u, "");
+    // "normal" is a useful explicit alias for clearing a restrictive preset.
+    if (name === "(none)" || name === "normal") return clear(ctx);
+    return activate(name, ctx);
+  }
+
+  async function clearStaleRestrictivePreset(ctx: ExtensionContext) {
+    if (!activePreset) return;
+    const active = new Set(pi.getActiveTools());
+    // The status line treats these as normal-mode capabilities. If they are
+    // enabled outside this extension, leaving restrictive prompt instructions
+    // active would create exactly the UI/policy mismatch this extension avoids.
+    if (!["bash", "edit", "write"].some((tool) => active.has(tool))) return;
+
+    await clear(ctx);
+    ctx.ui.notify("Cleared the stale restrictive mode because normal tools are active.", "warning");
   }
 
   pi.registerFlag(config.flagName, { description: "Mode preset to use", type: "string" });
@@ -194,7 +208,8 @@ export default function modePreset(pi: ExtensionAPI) {
     }
   });
 
-  pi.on("before_agent_start", async (event) => {
+  pi.on("before_agent_start", async (event, ctx) => {
+    await clearStaleRestrictivePreset(ctx);
     if (!activePreset?.instructions) return;
     return { systemPrompt: `${event.systemPrompt}\n\n${activePreset.instructions}` };
   });
