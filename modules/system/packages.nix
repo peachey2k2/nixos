@@ -7,6 +7,7 @@
 
 with pkgs;
 [
+  fooyin
   (llama-cpp.override { cudaSupport = true; })
   chatgpt
   openutau
