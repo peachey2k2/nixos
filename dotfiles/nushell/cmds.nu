@@ -97,12 +97,11 @@ def --wrapped "!rebuild" [
     } catch { false }
   )
 
-  if $updated_today or $no_update {
-    nh os switch $dir -H $host --accept-flake-config ...$args
-  } else {
+  if not ($updated_today or $no_update) {
     sh -c "cd $NIX_DIR && tack update --exclude blank,nilshell,reborder"
-    nh os switch $dir -H $host --accept-flake-config --impure ...$args
   }
+
+  nh os switch $dir -H $host --accept-flake-config --impure ...$args
 
   let result = $env.LAST_EXIT_CODE
   sort-packages
