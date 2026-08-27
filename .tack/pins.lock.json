@@ -11,9 +11,9 @@
     "type": "github",
     "owner": "lambda-symbolics",
     "repo": "autolith",
-    "rev": "1984e1aacc5db92a71c0971b5f9f0407eebb57aa",
-    "narHash": "sha256-9y8HCTA6ZIeZPkkyBkqGx+nHoX3yKQufzckj3qYP2/g=",
-    "lastModified": 1787725662
+    "rev": "4a49cffa898242c69f000ca6f5b198f0229cc029",
+    "narHash": "sha256-MoQdnJWc95uKupj1u08C0QD7l0SD77R5WuiN6nKqCOc=",
+    "lastModified": 1787822996
   },
   "blank": {
     "type": "path",
@@ -59,9 +59,9 @@
     "type": "github",
     "owner": "numtide",
     "repo": "llm-agents.nix",
-    "rev": "76b78a399417964e9133aed0c0a9493616c3508e",
-    "narHash": "sha256-FLBOjXOSh2WvMG6id+ks018WQ7HiA4yPPlIagpTc0DM=",
-    "lastModified": 1787719661
+    "rev": "be0eff8f6e0dd4f0edb15e80be8fab107f4768fa",
+    "narHash": "sha256-xxPCzswSCZ63GYBfesxRJsWuj7Mk9YcAaHDb8X1tbjk=",
+    "lastModified": 1787814832
   },
   "mesa": {
     "type": "github",
@@ -91,9 +91,9 @@
     "type": "github",
     "owner": "nix-community",
     "repo": "NUR",
-    "rev": "d0fff589650748bba2e26942ec528f5b566b6749",
-    "narHash": "sha256-Vv5N2Zy20RDBvNxSh5qyOCOQM7JkbEpuXWKMQkFAJRI=",
-    "lastModified": 1787754136
+    "rev": "1da67c43cad7ecd9ba5be73a9cc34c16e4db92c9",
+    "narHash": "sha256-3CwTEw4RwncZtcIRg8gwJTJvp3/fxrmztBVvQn6LhTw=",
+    "lastModified": 1787826528
   },
   "reborder": {
     "type": "path",
