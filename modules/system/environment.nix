@@ -39,9 +39,10 @@
 
       settings = {
         vars.address-groups.HOME_NET = "192.168.1.0/24";
+        app-layer.protocols.modbus.enabled = "yes";
 
         pcap = [
-          { interface = "wlp0s9"; }
+          { interface = "wlp9s0"; }
         ];
 
         outputs = [
