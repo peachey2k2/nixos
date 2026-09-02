@@ -33,7 +33,6 @@
     jai = final.callPackage ../packages/jai { };
     jails = final.callPackage ../packages/jails { };
     nethack = final.callPackage ../packages/nethack { };
-
     freeoffice = prev.freeoffice.override {
       officeVersion = {
         edition = "2024";
@@ -41,6 +40,12 @@
         hash = "sha256-q5QUevkSxdh622ZMhwbO44HLJowpg0vwv9de7hdOUQQ=";
       };
     };
+
+    # Temporarily disabled: the upstream tokscale test suites are broken.
+    tokscale = prev.tokscale.overrideAttrs (_: {
+      doCheck = false;
+      doInstallCheck = false;
+    });
 
     zen-browser = inputs.zen-browser.packages.${system}.default;
     _0fetch = inputs._0fetch.packages.${system}.default;

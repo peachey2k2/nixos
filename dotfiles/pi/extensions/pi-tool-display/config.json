@@ -14,7 +14,7 @@
     "firecrawl_crawl": { "kind": "generic", "outputMode": "summary" },
     "firecrawl_crawl_status": { "kind": "generic", "outputMode": "summary" },
     "firecrawl_map": { "kind": "generic", "outputMode": "summary" },
-    "firecrawl_search": { "kind": "generic", "outputMode": "summary" }
+    "firecrawl_search": false
   },
   "enableNativeUserMessageBox": false,
   "readOutputMode": "summary",

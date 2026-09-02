@@ -3,7 +3,7 @@
   "collapseChangelog": true,
   "quietStartup": true,
   "hideThinkingBlock": false,
-  "defaultProvider": "openai-codex",
+  "defaultProvider": "slop",
   "defaultModel": "gpt-5.6-terra",
   "defaultThinkingLevel": "medium",
   "theme": "ansi-dark",

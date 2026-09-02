@@ -11,12 +11,13 @@ $env.SHELL = "/run/current-system/sw/bin/nu"
 # default `rm` to send to trash instead of deleting. `-p` bypasses.
 $env.config.rm.always_trash = true
 
-# basic vim bindings for commands
-$env.config.edit_mode = "vi"
+# basic helix bindings for commands
+$env.config.edit_mode = "helix"
 
 # make the cursor look sane
-$env.config.cursor_shape.vi_insert = "line"
-$env.config.cursor_shape.vi_normal = "block"
+$env.config.cursor_shape.helix_insert = "line"
+$env.config.cursor_shape.helix_normal = "block"
+$env.config.cursor_shape.helix_select = "block"
 
 # completion thingy
 $env.CARAPACE_BRIDGES = "inshellisense,carapace,zsh,fish,bash"

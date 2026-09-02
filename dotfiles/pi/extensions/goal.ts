@@ -308,10 +308,10 @@ export default function goalExtension(pi: ExtensionAPI) {
     evaluating = true;
     const myGeneration = generation;
     try {
-      const evaluatorModel =
-        ctx.model.provider === "openai-codex"
-          ? (ctx.modelRegistry.find("openai-codex", "gpt-5.4-mini") ?? ctx.model)
-          : ctx.model;
+      // Evaluate through the model that just completed the agent turn.  Replacing a
+      // Slop model with openai-codex requires unrelated credentials and pauses an
+      // otherwise working goal when Codex is not configured.
+      const evaluatorModel = ctx.model;
       const auth = await ctx.modelRegistry.getApiKeyAndHeaders(evaluatorModel);
       if (!auth.ok || !auth.apiKey) throw new Error(auth.ok ? "No API key available" : auth.error);
 
