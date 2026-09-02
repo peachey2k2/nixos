@@ -2,7 +2,7 @@ $env.config.keybindings ++= [{
   name: unfreeze
   modifier: control
   keycode: char_z
-  mode: [emacs, vi_insert, vi_normal]
+  mode: [emacs, vi_insert, vi_normal, helix_insert, helix_normal, helix_select]
   event: {
     send: executehostcommand,
     cmd: "job unfreeze"
@@ -40,7 +40,7 @@ $env.config.keybindings ++= [
     name: copy_color_commandline
     modifier: control_alt
     keycode: char_c
-    mode: [ emacs vi_insert vi_normal ]
+    mode: [ emacs vi_insert vi_normal helix_insert helix_normal helix_select ]
     event: {
       send: executehostcommand
       cmd: 'nu-keybind commandline-copy'

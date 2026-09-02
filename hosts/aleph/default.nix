@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./nvidia.nix
+    ../../modules/system/network-triage.nix
   ];
 
   services.udev.extraRules = ''

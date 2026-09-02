@@ -27,43 +27,6 @@
     gvfs.enable = true;
     gnome.gnome-keyring.enable = true;
 
-    suricata = {
-      enable = true;
-
-      enabledSources = [
-        "abuse.ch/sslbl-blacklist"
-        "abuse.ch/sslbl-c2"
-        "abuse.ch/sslbl-ja3"
-        "et/open"
-      ];
-
-      settings = {
-        vars.address-groups.HOME_NET = "192.168.1.0/24";
-        app-layer.protocols.modbus.enabled = "yes";
-
-        pcap = [
-          { interface = "wlp9s0"; }
-        ];
-
-        outputs = [
-          {
-            eve-log = {
-              enabled = true;
-              filetype = "regular";
-              filename = "eve.json";
-              community-id = true;
-              types = [
-                { alert = { }; }
-                { dns = { }; }
-                { tls = { }; }
-                { flow = { }; }
-              ];
-            };
-          }
-        ];
-      };
-    };
-
     cron = {
       enable = true;
       systemCronJobs = [ ];
