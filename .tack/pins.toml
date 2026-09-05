@@ -64,3 +64,9 @@ url = "github:peachey2k2/nixpkgs-weekly?rev=4365e00c7cec13fb6d16b11638d9c76ae84f
 [inputs.autolith]
 url = "gh:lambda-symbolics/autolith"
 
+[inputs.disko]
+url = "gh:nix-community/disko"
+
+[inputs.website]
+url = "gh:peachey2k2/peachey2k2.github.io"
+

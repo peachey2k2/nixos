@@ -21,314 +21,264 @@
         {
           "id": "gpt-5.6-sol",
           "reasoning": true,
-          "input": ["text", "image"],
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 272000
         },
         {
           "id": "gpt-5.6-terra",
           "reasoning": true,
-          "input": ["text", "image"],
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 272000
         },
         {
           "id": "gpt-5.6-luna",
           "reasoning": true,
-          "input": ["text", "image"],
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 272000
         },
         {
           "id": "gpt-daybreak-blue-latest",
           "reasoning": true,
-          "input": ["text", "image"],
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 272000
         },
         {
           "id": "gpt-5.5",
           "reasoning": true,
-          "input": ["text", "image"],
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 272000
         },
         {
           "id": "gpt-5.4",
           "reasoning": true,
-          "input": ["text", "image"],
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 272000
         },
         {
           "id": "gpt-5.4-mini",
           "reasoning": true,
-          "input": ["text", "image"],
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 272000
         },
         {
           "id": "gemini-flash-latest",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": false,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-flash-lite-latest",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-pro-latest",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-2.5-flash-lite",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-3-flash-preview",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-3.1-pro-preview",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-3.1-pro-preview-customtools",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-3.1-flash-lite-preview",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-3.1-flash-lite",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-3.5-flash",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-3.5-flash-lite",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-3.6-flash",
-          "api": "openai-completions"
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 65536
         },
         {
           "id": "gemini-3.7-flash",
-          "api": "openai-completions"
-        },
-        {
-          "id": "claude-fable-5",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "thinkingLevelMap": { "off": null, "xhigh": "xhigh", "max": "max" },
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 128000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "forceAdaptiveThinking": true, "supportsStrictTools": true }
-        },
-        {
-          "id": "claude-fable-5-1",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "thinkingLevelMap": { "off": null, "xhigh": "xhigh", "max": "max" },
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 128000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.251 (external, sdk-cli)",
-            "x-app": "cli"
-          },
-          "compat": { "forceAdaptiveThinking": true, "supportsStrictTools": true }
-        },
-        {
-          "id": "claude-haiku-4-5",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "input": ["text", "image"],
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": false,
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 200000,
-          "maxTokens": 64000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "supportsStrictTools": true }
+          "maxTokens": 65536
         },
         {
-          "id": "claude-haiku-4-5-20251001",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "input": ["text", "image"],
+          "id": "gemini-3.8-flash",
+          "api": "google-generative-ai",
+          "baseUrl": "https://slop.amaanq.com/v1beta",
+          "reasoning": false,
+          "input": [
+            "text",
+            "image"
+          ],
           "contextWindow": 200000,
-          "maxTokens": 64000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "supportsStrictTools": true }
+          "maxTokens": 65536
         },
         {
-          "id": "claude-opus-4-5",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
+          "id": "gpt-6-astra",
+          "api": "openai-responses",
           "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 200000,
-          "maxTokens": 64000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "supportsStrictTools": true }
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 272000,
+          "maxTokens": 128000
         },
         {
-          "id": "claude-opus-4-5-20251101",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
+          "id": "muse-spark-1.2-contributor-free",
+          "api": "openai-completions",
           "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 200000,
-          "maxTokens": 64000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "supportsStrictTools": true }
+          "input": [
+            "text"
+          ],
+          "contextWindow": 128000,
+          "maxTokens": 16384
         },
         {
-          "id": "claude-opus-4-6",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
+          "id": "muse-spark-1.3-contributor-free",
+          "api": "openai-completions",
           "reasoning": true,
-          "thinkingLevelMap": { "max": "max" },
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 128000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "forceAdaptiveThinking": true, "supportsStrictTools": true }
-        },
-        {
-          "id": "claude-opus-4-7",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "thinkingLevelMap": { "xhigh": "xhigh", "max": "max" },
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 128000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "forceAdaptiveThinking": true, "supportsStrictTools": true }
-        },
-        {
-          "id": "claude-opus-4-8",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "thinkingLevelMap": { "xhigh": "xhigh", "max": "max" },
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 128000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "forceAdaptiveThinking": true, "supportsStrictTools": true }
-        },
-        {
-          "id": "claude-opus-5",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "thinkingLevelMap": { "xhigh": "xhigh", "max": "max" },
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 128000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "forceAdaptiveThinking": true, "supportsStrictTools": true }
-        },
-        {
-          "id": "claude-sonnet-4-5",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 64000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "supportsStrictTools": true }
-        },
-        {
-          "id": "claude-sonnet-4-5-20250929",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 64000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "supportsStrictTools": true }
-        },
-        {
-          "id": "claude-sonnet-4-6",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "thinkingLevelMap": { "max": "max" },
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 128000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "forceAdaptiveThinking": true, "supportsStrictTools": true }
-        },
-        {
-          "id": "claude-sonnet-5",
-          "api": "anthropic-messages",
-          "baseUrl": "https://slop.amaanq.com",
-          "reasoning": true,
-          "thinkingLevelMap": { "xhigh": "xhigh", "max": "max" },
-          "input": ["text", "image"],
-          "contextWindow": 1000000,
-          "maxTokens": 128000,
-          "headers": {
-            "anthropic-beta": "claude-code-20250219",
-            "user-agent": "claude-cli/2.1.2 (external, cli)",
-            "x-app": "cli"
-          },
-          "compat": { "forceAdaptiveThinking": true, "supportsStrictTools": true }
+          "input": [
+            "text"
+          ],
+          "contextWindow": 128000,
+          "maxTokens": 16384
         }
       ]
     }

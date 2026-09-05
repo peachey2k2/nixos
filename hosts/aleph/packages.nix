@@ -117,29 +117,6 @@ with pkgs;
   # rusic
   rust-analyzer-nightly
   satty
-  (
-    let
-      rustToolchain = (fenix.fromToolchainName {
-        name = "nightly-2026-04-03";
-        sha256 = "sha256-WAg39aJqFUa71UYBIAPxIX9uriD11P6uGKAPNmxSNMo=";
-      }).withComponents [
-        "cargo"
-        "llvm-tools-preview"
-        "rust-src"
-        "rustc"
-        "rustc-dev"
-      ];
-    in
-    callPackage ../../packages/shrimply {
-      rustPlatform = makeRustPlatform {
-        cargo = rustToolchain;
-        rustc = rustToolchain;
-        # CUDA supports a narrower compiler range than the default stdenv.
-        # Keep Rust host linking and CUDA dependencies on the same toolchain.
-        stdenv = cudaPackages.backendStdenv;
-      };
-    }
-  )
   sillytavern
   starship
   svlangserver
