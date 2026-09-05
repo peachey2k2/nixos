@@ -12,6 +12,7 @@
     (modulesPath + "/profiles/qemu-guest.nix")
     ./disko.nix
     ./nginx.nix
+    ./blight.nix
   ];
 
   nix.settings = nixConfig;

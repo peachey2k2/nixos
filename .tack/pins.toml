@@ -70,3 +70,6 @@ url = "gh:nix-community/disko"
 [inputs.website]
 url = "gh:peachey2k2/peachey2k2.github.io"
 
+[inputs.blight]
+url = "git+ssh://git@github.com/cope-hq/blight"
+
