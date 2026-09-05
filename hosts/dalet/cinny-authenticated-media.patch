@@ -1,0 +1,36 @@
+diff --git a/src/index.tsx b/src/index.tsx
+index 6cc0ca3..22d18aa 100644
+--- a/src/index.tsx
++++ b/src/index.tsx
+@@ -35,6 +35,8 @@ if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register(swUrl).then(sendSessionToSW);
+   navigator.serviceWorker.ready.then(sendSessionToSW);
+ 
++  navigator.serviceWorker.addEventListener('controllerchange', sendSessionToSW);
++
+   navigator.serviceWorker.addEventListener('message', (ev) => {
+     const { type } = ev.data ?? {};
+ 
+diff --git a/src/sw-session.ts b/src/sw-session.ts
+index 4b2ec05..7988dc9 100644
+--- a/src/sw-session.ts
++++ b/src/sw-session.ts
+@@ -1,10 +1,11 @@
+ export function pushSessionToSW(baseUrl?: string, accessToken?: string) {
+   if (!('serviceWorker' in navigator)) return;
+-  if (!navigator.serviceWorker.controller) return;
+-
+-  navigator.serviceWorker.controller.postMessage({
+-    type: 'setSession',
+-    accessToken,
+-    baseUrl,
+-  });
++  const msg = { type: 'setSession', accessToken, baseUrl };
++  // On first load, the service worker can be active before it controls the page.
++  // Send the session to that worker rather than dropping the update.
++  if (navigator.serviceWorker.controller) {
++    navigator.serviceWorker.controller.postMessage(msg);
++  } else {
++    navigator.serviceWorker.ready.then((reg) => reg.active?.postMessage(msg)).catch(() => {});
++  }
+ }

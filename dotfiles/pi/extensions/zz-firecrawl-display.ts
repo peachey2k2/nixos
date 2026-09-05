@@ -6,37 +6,40 @@ type FirecrawlSearchResult = {
   links?: unknown;
 };
 
-type SearchDetails = {
-  data?: unknown;
-  web?: unknown;
-  results?: unknown;
-};
-
 function urlsFrom(value: unknown): string[] {
-  if (!Array.isArray(value)) return [];
-
   const urls = new Set<string>();
-  for (const item of value) {
-    if (typeof item === "string") urls.add(item);
-    else if (item && typeof item === "object") {
-      const result = item as FirecrawlSearchResult;
-      if (typeof result.url === "string") urls.add(result.url);
-      if (Array.isArray(result.links)) {
-        for (const link of result.links) if (typeof link === "string") urls.add(link);
-      }
+  const visit = (item: unknown) => {
+    if (typeof item === "string") {
+      if (/^https?:\/\//u.test(item)) urls.add(item);
+      return;
     }
-  }
+    if (!item || typeof item !== "object") return;
+    if (Array.isArray(item)) {
+      item.forEach(visit);
+      return;
+    }
+
+    const result = item as FirecrawlSearchResult & Record<string, unknown>;
+    if (typeof result.url === "string") urls.add(result.url);
+    // Firecrawl has returned both data: [{ url }] and data: { web: [{ url }] }
+    // across API versions; traverse result groups without displaying their metadata.
+    Object.values(result).forEach(visit);
+  };
+  visit(value);
   return [...urls];
 }
 
-function resultUrls(details: unknown): string[] {
-  if (!details || typeof details !== "object") return [];
-  const result = details as SearchDetails;
-  for (const candidate of [result.data, result.web, result.results]) {
-    const urls = urlsFrom(candidate);
-    if (urls.length > 0) return urls;
+function resultUrls(result: { details?: unknown; content?: Array<{ type?: string; text?: string }> }): string[] {
+  const direct = urlsFrom(result.details);
+  if (direct.length > 0) return direct;
+
+  const text = result.content?.find((part) => part.type === "text")?.text;
+  if (!text) return [];
+  try {
+    return urlsFrom(JSON.parse(text));
+  } catch {
+    return urlsFrom(text);
   }
-  return [];
 }
 
 export default function firecrawlDisplay(pi: ExtensionAPI) {
@@ -59,7 +62,7 @@ export default function firecrawlDisplay(pi: ExtensionAPI) {
         );
       },
       renderResult(result, _options, theme) {
-        const urls = resultUrls(result.details);
+        const urls = resultUrls(result);
         if (urls.length === 0) return new Text(theme.fg("muted", "No addresses returned"), 0, 0);
         return new Text(urls.map((url) => theme.fg("accent", url)).join("\n"), 0, 0);
       },

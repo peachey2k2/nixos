@@ -10,7 +10,7 @@
 
       nixConfig = import ./nix-config.nix;
 
-      nixpkgsConfig = {
+      desktopNixpkgsConfig = {
         allowUnfree = true;
       };
 
@@ -18,7 +18,7 @@
 
       flakePartsInputs = args // inputs;
 
-      overlaysFor = system:
+      overlaysFor = system: nixpkgsConfig:
         import ./overlays {
           inherit inputs system nixpkgsConfig;
         };
@@ -29,6 +29,8 @@
           username = "me";
           homeDirectory = "/home/${username}";
           modules = host.modules;
+          nixpkgsConfig = host.nixpkgsConfig or { };
+          overlays = if host.enableOverlays or false then overlaysFor system nixpkgsConfig else [ ];
         in
         inputs.nixpkgs.lib.nixosSystem {
           inherit system;
@@ -48,9 +50,8 @@
           modules = [
             {
               nixpkgs.config = nixpkgsConfig;
-              nixpkgs.overlays = overlaysFor system;
+              nixpkgs.overlays = overlays;
             }
-            ./modules/system
           ]
           ++ modules;
         };
@@ -63,8 +64,8 @@
         let
           pkgs = import inputs.nixpkgs {
             inherit system;
-            config = nixpkgsConfig;
-            overlays = overlaysFor system;
+            config = desktopNixpkgsConfig;
+            overlays = overlaysFor system desktopNixpkgsConfig;
           };
 
           generatedConfigs = (import ./config-generator.nix { inherit pkgs; }).run { };

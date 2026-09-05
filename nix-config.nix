@@ -14,6 +14,8 @@
     "https://nixpkgs-unfree.cachix.org"
     "https://cache.nixos-cuda.org"
     "https://kopuz.cachix.org"
+    "https://cache.tuwunel.chat"
+    "https://tuwunel.cachix.org"
   ];
 
   extra-trusted-public-keys = [
@@ -24,6 +26,8 @@
     "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nqlt0="
     "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
     "kopuz.cachix.org-1:J2X3AnAYhKTJW5S3aCLoA1ckonQXVNZMQvhZA0YAufw="
+    "cache.tuwunel.chat-1:ZafUaXiRMozDa9N2SWim6EdzH0EEjWjwfvlTxXvcjLA="
+    "tuwunel.cachix.org-1:VRecUeDcaPxtYDA6bnMF3snPM7VYX8K605z4uuG2nWc="
   ];
 
   accept-flake-config = true;
