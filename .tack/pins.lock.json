@@ -23,6 +23,14 @@
     "treeSize": 17233112595,
     "treeEntries": 31238
   },
+  "blight": {
+    "type": "git",
+    "url": "ssh://git@github.com/cope-hq/blight",
+    "ref": "HEAD",
+    "rev": "16cb2784c7650a6cf1a84ce36a665a743a98dfe8",
+    "narHash": "sha256-gxfxmhJ4gV+pTPqSPQpWZmPbPOoaYe2r51wSNwE8+rM=",
+    "lastModified": 1788604889
+  },
   "comfyui": {
     "type": "github",
     "owner": "utensils",

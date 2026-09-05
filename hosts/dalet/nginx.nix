@@ -33,6 +33,7 @@ in
     enable = true;
 
     settings.global = {
+      log = "debug";
       server_name = domain; # rtfm
 
       address = [ "127.0.0.1" ];
