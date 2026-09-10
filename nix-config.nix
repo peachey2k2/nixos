@@ -39,4 +39,6 @@
   trusted-users = [ "root" "@build" "@wheel" "@admin" ];
   use-cgroups = true;
   warn-dirty = false;
+  max-jobs = "auto";
+  cores = 0;
 }

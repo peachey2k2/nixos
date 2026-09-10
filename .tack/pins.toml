@@ -22,9 +22,6 @@ url = "gh:manic-systems/tack"
 [inputs.flake-parts]
 url = "gh:hercules-ci/flake-parts"
 
-[inputs.nur]
-url = "gh:nix-community/NUR"
-
 [inputs.zen-browser]
 url = "gh:crashim03/zen-browser-flake"
 
@@ -71,5 +68,9 @@ url = "gh:nix-community/disko"
 url = "gh:peachey2k2/peachey2k2.github.io"
 
 [inputs.blight]
-url = "git+ssh://git@github.com/cope-hq/blight"
+url = "path:../Projects/blight"
+
+[inputs.helium]
+url = "gh:amaanq/helium-flake"
+# url = "git+ssh://git@github.com/cope-hq/blight.git"
 

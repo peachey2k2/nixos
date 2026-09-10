@@ -217,7 +217,7 @@ binds {
     Mod+T hotkey-overlay-title="Terminal" { spawn "wezterm"; }
     Mod+R hotkey-overlay-title="Launcher" { spawn "wofi" "--show" "drun"; }
     Mod+E hotkey-overlay-title="Files" { spawn "thunar"; }
-    Mod+W hotkey-overlay-title="Browser" { spawn "helium"; }
+    Mod+W hotkey-overlay-title="Browser" { spawn "helium" "--password-store=basic"; }
     Mod+G hotkey-overlay-title="Emoji Picker" { spawn "emote"; }
     Mod+V hotkey-overlay-title="Clipboard" { spawn "copyq" "menu"; }
     Mod+A hotkey-overlay-title="Alarm" { spawn "alarm-clock-applet"; }
