@@ -5,7 +5,6 @@
 }:
 
 [
-  inputs.nur.overlays.default
   inputs.fenix.overlays.default
   inputs.run0-sudo-shim.overlays.default
 
@@ -48,6 +47,7 @@
     });
 
     zen-browser = inputs.zen-browser.packages.${system}.default;
+    helium = inputs.helium.packages.${system}.default;
     _0fetch = inputs._0fetch.packages.${system}.default;
     pi = inputs.llm-agents.packages.${system}.pi;
     chatgpt = inputs.llm-agents.packages.${system}.chatgpt;

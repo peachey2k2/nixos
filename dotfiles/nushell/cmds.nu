@@ -65,7 +65,7 @@ def "!clear-backups" [backup_dir?: path] {
 def --wrapped "!config-reload" [...args] {
   let dir = (nix-dir)
   git -C $dir add .
-  nix run $"($dir)#generate-configs" ...$args
+  nix run --offline --no-write-lock-file $"($dir)#generate-configs" ...$args
 }
 
 # edit the system flake

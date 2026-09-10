@@ -91,7 +91,7 @@ with pkgs;
   nimble
   ninja
   nodejs
-  nur.repos.forkprince.helium-nightly
+  helium
   nu_scripts
   nwg-look
   ocamlPackages.sexp
@@ -123,7 +123,7 @@ with pkgs;
   swaybg
   sway-contrib.grimshot
   tack
-  autolith
+  # autolith
   reborder
   blank
   tokei
