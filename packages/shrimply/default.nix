@@ -1,6 +1,8 @@
 {
   lib,
   rustPlatform,
+  makeRustPlatform,
+  fenix,
   autoAddDriverRunpath,
   autoPatchelfHook,
   fetchFromGitHub,
@@ -34,7 +36,30 @@
   vulkan-loader,
 }:
 
-rustPlatform.buildRustPackage (finalAttrs: {
+let
+  # cuda-oxide pins nightly-2026-04-03 via rust-toolchain.toml and uses
+  # `#![feature(rustc_private)]`. Building with stable rustc (1.97) fails
+  # with E0554 plus stable_mir API drift (Rvalue::Use 2 fields, no Retag).
+  pinned = fenix.toolchainOf {
+    channel = "nightly";
+    date = "2026-04-03";
+    sha256 = "sha256-WAg39aJqFUa71UYBIAPxIX9uriD11P6uGKAPNmxSNMo=";
+  };
+  pinnedToolchain = pinned.withComponents [
+    "cargo"
+    "rustc"
+    "rust-src"
+    "rustc-dev"
+    "llvm-tools"
+    "clippy"
+    "rustfmt"
+  ];
+  nightlyRustPlatform = makeRustPlatform {
+    cargo = pinnedToolchain;
+    rustc = pinnedToolchain;
+  };
+in
+nightlyRustPlatform.buildRustPackage (finalAttrs: {
   pname = "shrimply";
   version = "0-unstable-2026-08-30";
 
@@ -54,7 +79,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     hash = "sha256-NcAjNzc7DMDM21CwWIHnXBB9tocYymW7+Q9Nc/gTKYw=";
   };
 
-  cudaOxideTools = rustPlatform.buildRustPackage {
+  cudaOxideTools = nightlyRustPlatform.buildRustPackage {
     pname = "cuda-oxide-tools";
     version = "0.2.1";
     src = finalAttrs.cudaOxide;

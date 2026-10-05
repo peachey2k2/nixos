@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./nvidia.nix
     ./nix.nix
+    ../ncro.nix
     ./boot.nix
     ./misc.nix
     ./locale.nix
@@ -14,6 +15,7 @@
     ./printing.nix
     ./security.nix
     ./network-triage.nix
+    ./tailscale.nix
   ];
 
   users = {

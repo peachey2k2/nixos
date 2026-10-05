@@ -10,7 +10,7 @@ stdenvNoCC.mkDerivation rec {
 
   src = fetchurl {
     url = "https://zynk.it/downloads/latest/linux/cli/x86";
-    hash = "sha256-WbELWtUmk5Qg8J8mOaLwU4571AdXukkKclG8qaBsQCk=";
+    hash = "sha256-hJxATpb78B199HjvDwFPEcBfRsYdSaU6fNyoW0uv+/k=";
   };
 
   unpackPhase = ''

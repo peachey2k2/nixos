@@ -10,10 +10,6 @@
 
       nixConfig = import ./nix-config.nix;
 
-      desktopNixpkgsConfig = {
-        allowUnfree = true;
-      };
-
       hosts = import ./hosts;
 
       flakePartsInputs = args // inputs;
@@ -64,8 +60,8 @@
         let
           pkgs = import inputs.nixpkgs {
             inherit system;
-            config = desktopNixpkgsConfig;
-            overlays = overlaysFor system desktopNixpkgsConfig;
+            config = nixConfig;
+            overlays = overlaysFor system { };
           };
 
           generatedConfigs = (import ./config-generator.nix { inherit pkgs; }).run { };

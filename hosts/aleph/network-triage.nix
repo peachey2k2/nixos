@@ -13,20 +13,38 @@ let
     hash = "sha256-3slujPLhG2E7tGUT3sSFN3+cpaNR5xcS7g4kTyh8Z5A=";
   };
 
-  triageCommand = lib.escapeShellArgs [
-    "${pkgs.python3}/bin/python3"
-    (toString ./network-triage.py)
-    "--eve"
-    "/var/log/suricata/eve.json"
-    "--state-dir"
-    "/var/lib/network-triage"
-    "--summary"
-    "/var/lib/network-triage/noteworthy.txt"
-    "--socket"
-    "/run/network-triage-llm/llama.sock"
-    "--model"
-    "qwen-network-triage"
+  # Destinations the triage model would otherwise see as unattributed remote
+  # infrastructure. It has no WHOIS or reverse DNS, so an undeclared self-hosted
+  # box reads as hostile: it once escalated this VPS to a named ransomware C2.
+  knownInfrastructure = [
+    # Own netcup VPS: apex plus mx/n8n/cinny subdomains, SSH on 22.
+    "2k2pea.ch"
+    "159.195.248.150"
+    # Fastly, fronting cache.nixos.org. Shared CDN, so this suppresses only the
+    # "unfamiliar IP" signal; alert signatures against these addresses still land.
+    "199.232.16.0/22"
   ];
+
+  triageCommand = lib.escapeShellArgs (
+    [
+      "${pkgs.python3}/bin/python3"
+      (toString ./network-triage.py)
+      "--eve"
+      "/var/log/suricata/eve.json"
+      "--state-dir"
+      "/var/lib/network-triage"
+      "--summary"
+      "/var/lib/network-triage/noteworthy.txt"
+      "--socket"
+      "/run/network-triage-llm/llama.sock"
+      "--model"
+      "qwen-network-triage"
+    ]
+    ++ lib.concatMap (entry: [
+      "--known"
+      entry
+    ]) knownInfrastructure
+  );
 in
 {
   users = {
@@ -115,7 +133,7 @@ in
           "--parallel"
           "1"
           "--sleep-idle-seconds"
-          "90"
+          "600"
           "--no-ui"
           "--no-slots"
         ];
@@ -157,7 +175,7 @@ in
       serviceConfig = {
         Type = "oneshot";
         ExecStart = triageCommand;
-        TimeoutStartSec = "5min";
+        TimeoutStartSec = "10min";
         User = "network-triage";
         Group = "network-triage";
         StateDirectory = "network-triage";
@@ -190,11 +208,31 @@ in
     description = "Periodically triage Suricata events";
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnBootSec = "3min";
-      OnUnitActiveSec = "5min";
+      OnBootSec = "5min";
+      OnUnitActiveSec = "15min";
       Persistent = true;
       RandomizedDelaySec = "30s";
       Unit = "network-triage.service";
     };
+  };
+
+  # The summary file was once created by a manual root run; enforce ownership
+  # so the sandboxed service can append to it.
+  systemd.tmpfiles.rules = [
+    "f /var/lib/network-triage/noteworthy.txt 0640 network-triage network-triage -"
+  ];
+
+  # eve.json grows ~18M/day (dns/flow/tls/alert) and is otherwise unbounded.
+  # copytruncate keeps Suricata's fd valid; the triage cursor already handles
+  # truncation (offset > size) and rotation (inode change) by resyncing.
+  services.logrotate.settings."/var/log/suricata/eve.json" = {
+    frequency = "daily";
+    size = "100M";
+    rotate = 7;
+    copytruncate = true;
+    compress = true;
+    delaycompress = true;
+    missingok = true;
+    notempty = true;
   };
 }

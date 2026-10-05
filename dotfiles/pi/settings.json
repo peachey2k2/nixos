@@ -7,9 +7,22 @@
   "defaultModel": "muse-spark-1.3-contributor-free",
   "defaultThinkingLevel": "medium",
   "theme": "ansi-dark",
+  "symbolPreset": "nerd",
   "tuiMode": "fullscreen",
+  "composer": {
+    "shape": "borderless"
+  },
+  "statusLine": {
+    "preset": "minimal",
+    "separator": "none",
+    "sessionAccent": false,
+    "transparent": true,
+    "showHookStatus": false
+  },
+  "display": {
+    "shimmer": "disabled"
+  },
   "packages": [
-    "npm:@narumitw/pi-codex-usage",
     "npm:pi-btw",
     "npm:@narumitw/pi-firecrawl",
     "npm:pi-tool-display"

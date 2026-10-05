@@ -11,8 +11,18 @@
     inputs.disko.nixosModules.disko
     (modulesPath + "/profiles/qemu-guest.nix")
     ./disko.nix
+    ../ncro.nix
     ./nginx.nix
-    ./blight.nix
+    ./website.nix
+    ./matrix.nix
+    ./mail.nix
+    ./bulwark.nix
+    ./cinny.nix
+    ./evolution.nix
+    ./n8n.nix
+    ./tailscale.nix
+    ./pocket-id.nix
+    ./labs.nix
   ];
 
   nix.settings = nixConfig;

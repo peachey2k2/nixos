@@ -16,6 +16,7 @@
       "name": "Slop",
       "baseUrl": "https://slop.amaanq.com/v1",
       "api": "openai-responses",
+      "apiKey": "!jq -r '.slop.key // empty' /home/me/.config/pi/auth.json",
       "authHeader": true,
       "models": [
         {
@@ -64,24 +65,6 @@
           "contextWindow": 272000
         },
         {
-          "id": "gpt-5.4",
-          "reasoning": true,
-          "input": [
-            "text",
-            "image"
-          ],
-          "contextWindow": 272000
-        },
-        {
-          "id": "gpt-5.4-mini",
-          "reasoning": true,
-          "input": [
-            "text",
-            "image"
-          ],
-          "contextWindow": 272000
-        },
-        {
           "id": "gemini-flash-latest",
           "api": "google-generative-ai",
           "baseUrl": "https://slop.amaanq.com/v1beta",
@@ -90,7 +73,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -102,7 +85,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -114,7 +97,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -126,7 +109,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -138,7 +121,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -150,7 +133,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -162,7 +145,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -174,7 +157,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -186,7 +169,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -198,7 +181,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -210,7 +193,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -222,7 +205,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -234,7 +217,7 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
@@ -246,11 +229,44 @@
             "text",
             "image"
           ],
-          "contextWindow": 200000,
+          "contextWindow": 1048576,
           "maxTokens": 65536
         },
         {
           "id": "gpt-6-astra",
+          "api": "openai-responses",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 272000,
+          "maxTokens": 128000
+        },
+        {
+          "id": "gpt-6-sol",
+          "api": "openai-responses",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 272000,
+          "maxTokens": 128000
+        },
+        {
+          "id": "gpt-6-luna",
+          "api": "openai-responses",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 272000,
+          "maxTokens": 128000
+        },
+        {
+          "id": "gpt-6.1-sol",
           "api": "openai-responses",
           "reasoning": true,
           "input": [
@@ -267,7 +283,7 @@
           "input": [
             "text"
           ],
-          "contextWindow": 128000,
+          "contextWindow": 1048576,
           "maxTokens": 16384
         },
         {
@@ -277,7 +293,47 @@
           "input": [
             "text"
           ],
-          "contextWindow": 128000,
+          "contextWindow": 1048576,
+          "maxTokens": 16384
+        },
+        {
+          "id": "mimo-v2.6-flash-free",
+          "api": "openai-completions",
+          "reasoning": true,
+          "input": [
+            "text"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 16384
+        },
+        {
+          "id": "mimo-v2.5-free",
+          "api": "openai-completions",
+          "reasoning": true,
+          "input": [
+            "text"
+          ],
+          "contextWindow": 200000,
+          "maxTokens": 16384
+        },
+        {
+          "id": "space-bunny-free",
+          "api": "openai-completions",
+          "reasoning": true,
+          "input": [
+            "text"
+          ],
+          "contextWindow": 1048576,
+          "maxTokens": 16384
+        },
+        {
+          "id": "fledge-alpha-free",
+          "api": "openai-completions",
+          "reasoning": true,
+          "input": [
+            "text"
+          ],
+          "contextWindow": 1048576,
           "maxTokens": 16384
         }
       ]
