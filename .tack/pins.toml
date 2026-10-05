@@ -13,7 +13,7 @@ nixpkgs-lib = "nixpkgs"
 
 [inputs.nixpkgs]
 # url = "gh:peachey2k2/nixpkgs-weekly"
-url = "gh:NixOS/nixpkgs/nixos-unstable"
+url = "gh:NixOS/nixpkgs/nixos-unstable?rev=8d5d270900d3fc75655ea2d9d248b234f6631439"
 exclude_follow = ["nixpkgs"]
 
 [inputs.tack]
@@ -46,14 +46,8 @@ url = "path:../Projects/reborder"
 [inputs.llm-agents]
 url = "gh:numtide/llm-agents.nix"
 
-# [inputs.beer]
-# url = "git+https://git.notashelf.dev/notashelf/beer.git"
-
 [inputs.blank]
 url = "path:../Projects/blank"
-
-# [inputs.kopuz]
-# url = "github:Kopuz-org/kopuz"
 
 [inputs.mesa]
 url = "github:peachey2k2/nixpkgs-weekly?rev=4365e00c7cec13fb6d16b11638d9c76ae84f9bb7"
@@ -67,10 +61,23 @@ url = "gh:nix-community/disko"
 [inputs.website]
 url = "gh:peachey2k2/peachey2k2.github.io"
 
-[inputs.blight]
-url = "path:../Projects/blight"
+[inputs.cinny]
+url = "gh:cope-hq/cinnity"
 
 [inputs.helium]
 url = "gh:amaanq/helium-flake"
-# url = "git+ssh://git@github.com/cope-hq/blight.git"
 
+[inputs.matrix-client]
+url = "git+https://git.kosslan.dev/kossLAN/matrix-client"
+
+[inputs.ae2-sim]
+url = "git+file:///home/me/Projects/ae2-sim"
+
+[inputs.ae2-sim.follows]
+nixpkgs = "nixpkgs"
+
+[inputs.ncro]
+url = "gh:manic-systems/ncro"
+
+[inputs.ncro.follows]
+nixpkgs = "nixpkgs"

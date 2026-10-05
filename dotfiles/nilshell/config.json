@@ -78,7 +78,10 @@
         "buttons": [
           { "label": "Lid Sleep", "icon": "󰒲",
             "command": ["sh", "-c", "sh $HOME/.config/nilshell/toggle-lid-sleep.sh"],
-            "initCommand": ["sh", "-c", "sh $HOME/.config/nilshell/toggle-lid-sleep.sh status"] }
+            "initCommand": ["sh", "-c", "sh $HOME/.config/nilshell/toggle-lid-sleep.sh status"] },
+          { "label": "Opsec Mode", "icon": "󰒃",
+            "command": ["sh", "-c", "sh $HOME/.config/nilshell/toggle-opsec.sh"],
+            "initCommand": ["sh", "-c", "sh $HOME/.config/nilshell/toggle-opsec.sh status"] }
         ],
         "row": 3, "column": 0, "rowSpan": 1, "columnSpan": 5 }
     ]

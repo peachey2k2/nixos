@@ -1,6 +1,16 @@
 [[language]]
 name = "c"
 file-types = [ "c", "h" ]
+language-servers = ["clangd"]
+
+[[language]]
+name = "cpp"
+file-types = [ "cpp", "cc", "cxx", "hpp", "hh", "hxx" ]
+language-servers = ["clangd"]
+
+[language-server.clangd]
+command = "clangd"
+args = ["--background-index", "--clang-tidy", "--header-insertion=never", "--query-driver=/run/current-system/sw/bin/clang++,/run/current-system/sw/bin/gcc,/nix/store/*/bin/clang++,/nix/store/*/bin/gcc"]
 
 [[language]]
 name = "go"

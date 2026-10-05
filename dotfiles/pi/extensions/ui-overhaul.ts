@@ -353,12 +353,10 @@ class BorderlessPresetEditor extends CustomEditor {
       .map((line) => themedBg(` ${line.replace(BORDER_CHARS, " ")} `, width, bg));
     const completionLines = autocompleteLines.map((line) => padToWidth(` ${line.replace(BORDER_CHARS, " ")} `, width));
 
-    // Fullscreen Pi reserves three rows for the editor container and top-aligns
-    // a shorter custom editor. Whitespace (not empty strings, which Container
-    // drops) keeps the one-row input pinned immediately above the footer.
-    const leadingRows = Math.max(0, 3 - inputLines.length - completionLines.length);
-    const leadingFill = " ".repeat(width);
-    this.lastLines = [...Array<string>(leadingRows).fill(leadingFill), ...inputLines, ...completionLines];
+    // Overlay patch (overlays/default.nix) lowers the editor minSize 3 -> 1,
+    // so no leading fill is needed; the dock sizes to content. (Empty strings
+    // are dropped by Container, so whitespace would be required if padding.)
+    this.lastLines = [...inputLines, ...completionLines];
     this.lastWidth = width;
     this.lastText = text;
     this.lastCursor = cursorKey;

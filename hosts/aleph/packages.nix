@@ -7,11 +7,14 @@
 
 with pkgs;
 [
+  omp
+  tern
+  # comfyui
+  shrimply
   claude-code
   tokscale
   fooyin
   (llama-cpp.override { cudaSupport = true; })
-  chatgpt
   openutau
   zap
   libnotify
@@ -43,11 +46,7 @@ with pkgs;
   fasm
   fd
   feh
-  (fenix.complete.withComponents [
-    "cargo"
-    "rustc"
-    "rust-src"
-  ])
+  (fenix.complete.withComponents ["cargo" "rustc" "rust-src"])
   (flameshot.override { enableWlrSupport = true; })
   freeoffice
   fzf
@@ -168,7 +167,6 @@ with pkgs;
   xwayland-satellite
   yazi
   zathura
-  zen-browser
   zerotierone
   zfxtop
   zig

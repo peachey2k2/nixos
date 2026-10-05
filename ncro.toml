@@ -1,0 +1,60 @@
+[server]
+listen = "127.0.0.1:8080"
+
+[logging]
+timestamps = false
+
+[[upstreams]]
+url = "https://cache.nixos.org"
+priority = 10
+public_key = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+
+[[upstreams]]
+url = "https://cache.numtide.com"
+priority = 15
+public_key = "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+
+[[upstreams]]
+url = "https://comfyui.cachix.org"
+priority = 15
+public_key = "comfyui.cachix.org-1:33mf9VzoIjzVbp0zwj+fT51HG0y31ZTK3nzYZAX0rec="
+
+[[upstreams]]
+url = "https://nix-community.cachix.org"
+priority = 20
+public_key = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+
+[[upstreams]]
+url = "https://cache.iog.io"
+priority = 30
+public_key = "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+
+[[upstreams]]
+url = "https://cache.nixos-cuda.org"
+priority = 30
+public_key = "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+
+[[upstreams]]
+url = "https://nixpkgs-unfree.cachix.org"
+priority = 40
+public_key = "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
+
+[[upstreams]]
+url = "https://kopuz.cachix.org"
+priority = 50
+public_key = "kopuz.cachix.org-1:J2X3AnAYhKTJW5S3aCLoA1ckonQXVNZMQvhZA0YAufw="
+
+[[upstreams]]
+url = "https://cache.tuwunel.chat"
+priority = 50
+public_key = "cache.tuwunel.chat-1:ZafUaXiRMozDa9N2SWim6EdzH0EEjWjwfvlTxXvcjLA="
+
+[[upstreams]]
+url = "https://tuwunel.cachix.org"
+priority = 50
+public_key = "tuwunel.cachix.org-1:VRecUeDcaPxtYDA6bnMF3snPM7VYX8K605z4uuG2nWc="
+
+[fallback_cache]
+enabled = true
+url = "https://cache.nixos.org"
+public_key = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="

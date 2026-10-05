@@ -26,7 +26,12 @@
 
   networking = {
     hostName = hostname;
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      # rtw89_8852be is unstable with Wi-Fi power saving; the driver-level
+      # disable_ps_mode in boot.nix covers the driver, this covers NM.
+      wifi.powersave = false;
+    };
 
     firewall =
       let

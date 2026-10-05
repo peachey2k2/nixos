@@ -32,7 +32,6 @@ if [ -f "$pidfile" ]; then
   if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
     kill "$pid" 2>/dev/null || true
     rm -f "$pidfile"
-    notify "Sleep on lid close enabled"
     exit 0
   fi
   rm -f "$pidfile"
@@ -51,7 +50,6 @@ inhibitor_pid="$!"
 # "enabled" even though the inhibitor starts a moment later.
 for _ in 1 2 3 4 5 6 7 8 9 10; do
   if is_inhibited; then
-    notify "Sleep on lid close disabled"
     exit 0
   fi
   sleep 0.05
